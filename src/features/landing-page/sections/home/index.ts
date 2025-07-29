@@ -1,0 +1,7 @@
+export * from "./HeroSection"
+export * from "./PastQuestion"
+export * from "./Features"
+export * from "./Exams"
+export * from "./Payments"
+export * from "./Testimonial"
+export * from "./PartnerSection"
