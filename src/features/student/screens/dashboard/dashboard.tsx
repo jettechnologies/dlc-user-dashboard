@@ -49,7 +49,7 @@ export const DashboardScreen = ({
 
 		if (paymentStatus === "success") {
 			toast.success(
-				"Subscription successful, you can now access screenclass full features."
+				"Subscription successful, you can now access digital learning circle full features."
 			)
 		} else if (paymentStatus === "error") {
 			toast.error(
@@ -57,7 +57,7 @@ export const DashboardScreen = ({
 			)
 		} else if (paymentStatus === "unpaid") {
 			toast.warning(
-				"No active subscription, please do subscribe to enjoy screenclass full features."
+				"No active subscription, please do subscribe to enjoy digital learning circle full features."
 			)
 			setTimeout(() => router.push("/dashboard/student/subscribe  "), 1500)
 		}
