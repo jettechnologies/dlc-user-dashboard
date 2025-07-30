@@ -10,8 +10,16 @@ import { UpcomingClasses } from "../../components/upcoming-classes"
 import { fetchStudentDashboardQueryOptions } from "@/services/query"
 import { transformLectureToSimpleData } from "@/utils/constants"
 import { useSuspenseQuery } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+import { toast } from "sonner"
 
-export const DashboardScreen = () => {
+export const DashboardScreen = ({
+	paymentStatus
+}: {
+	paymentStatus: "error" | "success" | "unpaid" | undefined
+}) => {
+	const router = useRouter()
 	const { data: dashboardData } = useSuspenseQuery({
 		...fetchStudentDashboardQueryOptions(),
 		select: (data) => {
@@ -36,7 +44,24 @@ export const DashboardScreen = () => {
 		}
 	})
 
-	console.log(dashboardData.recentEnrolledClasses, "recentEnrolledClasses")
+	useEffect(() => {
+		if (!paymentStatus) return
+
+		if (paymentStatus === "success") {
+			toast.success(
+				"Subscription successful, you can now access screenclass full features."
+			)
+		} else if (paymentStatus === "error") {
+			toast.error(
+				"Subscription unsuccessful, please try again to complete your subscription."
+			)
+		} else if (paymentStatus === "unpaid") {
+			toast.warning(
+				"No active subscription, please do subscribe to enjoy screenclass full features."
+			)
+			setTimeout(() => router.push("/dashboard/student/subscribe  "), 1500)
+		}
+	}, [router, paymentStatus])
 
 	return (
 		<main className="min-h-screen p-6">

@@ -8,16 +8,16 @@ const getNavLinks = (userRole: string | null, authToken: string | null) => {
 	const baseLinks = [
 		{ link: "/", label: "Home" },
 
-		{
-			label: "Exams",
-			icon: "/icons/class-icon.png",
-			link: [
-				{ label: "BECE", link: "#" },
-				{ label: "WAEC", link: "#" },
-				{ label: "NECO", link: "#" },
-				{ label: "JAMB", link: "#" }
-			]
-		},
+		// {
+		// 	label: "Exams",
+		// 	icon: "/icons/class-icon.png",
+		// 	link: [
+		// 		{ label: "BECE", link: "#" },
+		// 		{ label: "WAEC", link: "#" },
+		// 		{ label: "NECO", link: "#" },
+		// 		{ label: "JAMB", link: "#" }
+		// 	]
+		// },
 		{ link: "/pricing", label: "Pricing" },
 		{ link: "/contact-us", label: "Contact Us" },
 		{
@@ -70,16 +70,16 @@ const getNavLinks = (userRole: string | null, authToken: string | null) => {
 // ]
 const mobileNavLinks: MobileNavLink[] = [
 	{ link: "/", label: "Home", icon: "/icons/home-icon.svg" },
-	{
-		label: "Exams",
-		icon: "/icons/class-icon.png",
-		link: [
-			{ label: "BECE", link: "#" },
-			{ label: "WAEC", link: "#" },
-			{ label: "NECO", link: "#" },
-			{ label: "JAMB", link: "#" }
-		]
-	},
+	// {
+	// 	label: "Exams",
+	// 	icon: "/icons/class-icon.png",
+	// 	link: [
+	// 		{ label: "BECE", link: "#" },
+	// 		{ label: "WAEC", link: "#" },
+	// 		{ label: "NECO", link: "#" },
+	// 		{ label: "JAMB", link: "#" }
+	// 	]
+	// },
 	{
 		link: "/contact-us",
 		label: "Contact Us",
