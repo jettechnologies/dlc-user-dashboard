@@ -125,7 +125,7 @@ export const MyClasses = () => {
 											key={cardData.id}
 											{...cardData}
 											handleClick={() => handleJoinLecture(cardData.id)}
-											isLoading={isAdding}
+											isLoading={isJoining}
 										/>
 									))}
 								</div>
