@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useAuthState } from "@/stores"
 import { TeacherProfile } from "@/types/response-type"
-import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
