@@ -11,7 +11,10 @@ import {
 	SelectValue
 } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useAddToTimetable } from "@/services/mutation/useQuery-mutation"
+import {
+	useAddToTimetable,
+	useJoinLecture
+} from "@/services/mutation/useQuery-mutation"
 import { studentUpcomingLecturesQueryOptions } from "@/services/query"
 import { studentTransformClassesToCardData } from "@/utils/constants"
 import { useQuery } from "@tanstack/react-query"
@@ -49,8 +52,14 @@ export const MyClasses = () => {
 	const { mutateAsync: addToTimetable, isPending: isAdding } =
 		useAddToTimetable()
 
+	const { mutateAsync: joinLecture, isPending: isJoining } = useJoinLecture()
+
 	const handleAddToTimetable = async (classId: string) => {
 		await addToTimetable(classId)
+	}
+
+	const handleJoinLecture = async (classId: string) => {
+		await joinLecture(classId)
 	}
 
 	if (classesError) return <div>Something went wrong</div>
@@ -115,7 +124,7 @@ export const MyClasses = () => {
 										<ClassCard
 											key={cardData.id}
 											{...cardData}
-											handleClick={() => handleAddToTimetable(cardData.id)}
+											handleClick={() => handleJoinLecture(cardData.id)}
 											isLoading={isAdding}
 										/>
 									))}
