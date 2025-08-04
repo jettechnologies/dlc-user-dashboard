@@ -3,11 +3,8 @@
 import { TestimonialCard } from "../../components"
 import { testimonials } from "../../data"
 import { Carousel } from "@/components/shared"
-import { useIsMobile } from "@/config"
 
 export const Testimonial = () => {
-	const isMobile = useIsMobile()
-
 	return (
 		<section
 			className="min-h-screen w-full lg:bg-center bg-cover"
