@@ -31,7 +31,6 @@ const getNavLinks = (userRole: string | null, authToken: string | null) => {
 		}
 	]
 
-	// Add dashboard link only if userRole exists
 	if (userRole && authToken) {
 		return [
 			{ link: "/", label: "Home" },
@@ -43,70 +42,62 @@ const getNavLinks = (userRole: string | null, authToken: string | null) => {
 	return baseLinks
 }
 
-// const navLinks = [
-// 	{ link: "/", label: "Home" },
+const getMobileNavLinks = (
+	userRole: string | null,
+	authToken: string | null
+): MobileNavLink[] => {
+	const baseMobileLinks: MobileNavLink[] = [
+		{ link: "/", label: "Home", icon: "/icons/home-icon.svg" },
+		{ link: "/pricing", label: "Pricing", icon: "/icons/pricing-icon.svg" },
+		{
+			link: "/contact-us",
+			label: "Contact Us",
+			icon: "/icons/contact-us-icon.svg"
+		},
+		{
+			label: "More",
+			icon: "/icons/more-icon.png",
+			link: [
+				{ label: "About Us", link: "/about-us" },
+				{ label: "FAQs", link: "/faq" },
+				{ label: "Policy", link: "/policy" },
+				{ label: "Terms & Conditions", link: "/terms" }
+			]
+		}
+	]
 
-// 	{
-// 		label: "Exams",
-// 		icon: "/icons/class-icon.png",
-// 		link: [
-// 			{ label: "BECE", link: "#" },
-// 			{ label: "WAEC", link: "#" },
-// 			{ label: "NECO", link: "#" },
-// 			{ label: "JAMB", link: "#" }
-// 		]
-// 	},
-// 	{ link: "/pricing", label: "Pricing" },
-// 	{ link: "/contact-us", label: "Contact Us" },
-// 	{
-// 		label: "More",
-// 		link: [
-// 			{ link: "/about-us", label: "About Us" },
-// 			{ label: "FAQs", link: "/faq" },
-// 			{ label: "Policy", link: "/policy" },
-// 			{ label: "Terms & Conditions", link: "/terms" }
-// 		]
-// 	}
-// ]
-const mobileNavLinks: MobileNavLink[] = [
-	{ link: "/", label: "Home", icon: "/icons/home-icon.svg" },
-	// {
-	// 	label: "Exams",
-	// 	icon: "/icons/class-icon.png",
-	// 	link: [
-	// 		{ label: "BECE", link: "#" },
-	// 		{ label: "WAEC", link: "#" },
-	// 		{ label: "NECO", link: "#" },
-	// 		{ label: "JAMB", link: "#" }
-	// 	]
-	// },
-	{
-		link: "/contact-us",
-		label: "Contact Us",
-		icon: "/icons/contact-us-icon.svg"
-	},
-	{ link: "/pricing", label: "Pricing", icon: "/icons/pricing-icon.svg" },
-	{ link: "/about-us", label: "About Us", icon: "/icons/about-us-icon.svg" },
-	{ link: "/faq", label: "FAQs", icon: "/icons/faq-icon.svg" },
-	{
-		label: "More",
-		icon: "/icons/more-icon.png",
-		link: [
-			{ label: "Policy", link: "/policy" },
-			{ label: "Terms", link: "/terms" }
-		]
-	}
-]
+	const authLinks: MobileNavLink[] =
+		userRole && authToken
+			? [
+					{
+						link: `/dashboard/${userRole.toLowerCase()}`,
+						label: "Dashboard",
+						icon: "/icons/dashboard-icon.png"
+					}
+				]
+			: [
+					{
+						link: "/signin",
+						label: "Login",
+						icon: "/icons/login-icon.svg"
+					},
+					{
+						link: "/signup",
+						label: "Sign up",
+						icon: "/icons/sign-up-icon.svg"
+					}
+				]
 
+	return [...baseMobileLinks, ...authLinks]
+}
 export function Header() {
 	const { accessToken, role: userRole } = useAuthState()
 
 	const navLinks = getNavLinks(userRole, accessToken)
-
-	console.log(userRole, "userRole")
+	const mobileNavLinks = getMobileNavLinks(userRole, accessToken)
 
 	return (
-		<header id="header" className="w-full bg-[#F8F8FD]">
+		<header id="header" className="w-full bg-[#F8F8FD] border-2 border-black">
 			<Navbar
 				links={navLinks}
 				logoSrc="/images/dlc-logo.svg"

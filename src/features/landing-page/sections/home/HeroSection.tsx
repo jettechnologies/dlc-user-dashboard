@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export const HeroSection = () => {
 	return (
-		<section className="font-poppins min-h-[90vh] border-2 border-black w-full bg-light-yellow bg-cover bg-center flex relative lg:bg-[url('/images/hero-section-bg.png')] overflow-clip">
+		<section className="font-poppins min-h-[90vh] w-full bg-light-yellow bg-cover bg-center flex relative lg:bg-[url('/images/hero-section-bg.png')] overflow-clip">
 			<div className="w-full lg:w-[50dvw] grid place-content-center min-h-full">
 				<div className="w-[390px] md:h-[385px] flex flex-col gap-y-10 max-sm:items-center">
 					<div>
