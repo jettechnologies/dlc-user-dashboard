@@ -1,5 +1,5 @@
 import { ResponseSingleType, SubscriptionResponse } from "@/types/response-type"
-import { authFetch } from "@/utils/constants"
+import { authFetch } from "@/utils/lib/auth-fetch"
 import { ENDPOINTS } from "@/utils/constants"
 
 export interface addOnDemandParams {

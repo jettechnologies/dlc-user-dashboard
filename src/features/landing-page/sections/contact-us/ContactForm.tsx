@@ -12,9 +12,9 @@ const location = { lat: 6.569680110827858, lng: 3.371306080013683 }
 export const ContactForm = () => {
 	return (
 		<>
-			<section className="grid min-h-screen w-full place-items-center bg-light-yellow-200 pt-18">
-				<div className="flex min-h-screen w-full flex-col-reverse gap-8 md:flex-row">
-					<div className="w-full px-8 pb-12 max-sm:order-2 md:w-1/2 lg:px-16 xl:px-24">
+			<section className="grid min-h-screen w-full place-items-center bg-light-yellow-200 max-sm:pb-18 pt-18">
+				<div className="flex min-h-screen w-full flex-col-reverse gap-8 md:flex-row ">
+					<div className="w-full px-8 pb-12 max-sm:order-2 md:w-1/2 lg:px-16 xl:px-24 ">
 						<div className="w-full space-y-1.5 mb-8">
 							<h3 className="text-light-blue font-poppins font-semibold text-2xl lg:text-3xl">
 								Contact Us
@@ -27,7 +27,7 @@ export const ContactForm = () => {
 						<EnhancedForm.Root
 							schema={contactFormSchema}
 							onSubmit={(values) => console.log(values)}
-							className="flex min-h-screen w-full flex-col justify-center gap-y-4"
+							className="flex lg:min-h-screen w-full flex-col justify-center gap-y-4 "
 						>
 							<div className="flex w-full flex-col gap-y-4">
 								<div className="flex flex-1 flex-col gap-y-6">
@@ -76,10 +76,10 @@ export const ContactForm = () => {
 							</div>
 						</EnhancedForm.Root>
 					</div>
-					<div className="max-sm:order-1 md:w-1/2 md:pr-4">
+					<div className="max-sm:order-1 md:w-1/2 md:pr-4 max-sm:px-6">
 						<APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY!}>
 							<div
-								className="relative h-[300px] max-h-[500px] min-h-[250px] w-full rounded-md border-2 border-black shadow-md lg:h-[430px]"
+								className="relative h-[300px] max-h-[500px] min-h-[250px] w-full rounded-md  shadow-md lg:h-[430px]"
 								aria-label="Location map"
 							>
 								<Map
@@ -110,23 +110,25 @@ export const ContactForm = () => {
 							</div>
 						</APIProvider>
 						<div className="w-full space-y-4 mt-12">
-							<div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
-								<Phone size={24} className="text-light-blue font-semibold" />
-								<Link
-									href={"tel:+234704330300"}
-									className="text-xs font-medium text-light-blue sm:text-sm"
-								>
-									+234 704 330 3000
-								</Link>
-								<p className="text-xs font-medium text-light-blue sm:text-sm">
-									or
-								</p>
-								<Link
-									href={"tel:+2348092933330"}
-									className="text-xs font-medium text-light-blue sm:text-sm"
-								>
-									+234 809 293 3330
-								</Link>
+							<div className="w-full flex gap-4 flex-col lg:flex-row">
+								<div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
+									<Phone size={24} className="text-light-blue font-semibold" />
+									<Link
+										href={"tel:+234704330300"}
+										className="text-xs font-medium text-light-blue sm:text-sm"
+									>
+										+234 704 330 3000
+									</Link>
+								</div>
+								<div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
+									<Phone size={24} className="text-light-blue font-semibold" />
+									<Link
+										href={"tel:+2348092933330"}
+										className="text-xs font-medium text-light-blue sm:text-sm"
+									>
+										+234 809 293 3330
+									</Link>
+								</div>
 							</div>
 							<div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
 								<Mail size={24} className="text-light-blue font-semibold" />

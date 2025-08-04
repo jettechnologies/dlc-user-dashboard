@@ -15,7 +15,7 @@ export const PartnersSection = () => {
 	}
 
 	return (
-		<section className="grid min-h-screen w-full place-items-center py-6 pl-2 font-poppins sm:pl-8 lg:pl-14 bg-white/50">
+		<section className="grid min-h-screen w-full place-items-center py-6 pl-2 font-poppins sm:pl-8 lg:pl-14 bg-dlc-light-yellow">
 			<div className="mx-auto flex min-h-[60dvh] w-full max-w-screen-xl flex-col gap-y-12">
 				<h3 className="text-center text-lg font-semibold text-black md:text-2xl lg:text-4xl xl:text-5xl">
 					OUR PARTNERS
