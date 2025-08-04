@@ -97,7 +97,7 @@ export function Header() {
 	const mobileNavLinks = getMobileNavLinks(userRole, accessToken)
 
 	return (
-		<header id="header" className="w-full bg-[#F8F8FD] border-2 border-black">
+		<header id="header" className="w-full bg-[#F8F8FD]">
 			<Navbar
 				links={navLinks}
 				logoSrc="/images/dlc-logo.svg"
