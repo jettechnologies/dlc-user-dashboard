@@ -3,7 +3,7 @@
 import { DashboardHeader } from "../../components/dashboard-header"
 import { EnrolledClasses } from "../../components/enrolled-classes"
 import { NotificationsList } from "../../components/notification-list"
-import { ResourcesList } from "../../components/resources-list"
+// import { ResourcesList } from "../../components/resources-list"
 import { StatsGrid } from "../../components/stats-grid"
 import { HoursChart } from "../../components/study-bar-chart"
 import { UpcomingClasses } from "../../components/upcoming-classes"

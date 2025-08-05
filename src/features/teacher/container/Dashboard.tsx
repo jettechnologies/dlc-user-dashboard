@@ -3,7 +3,6 @@
 import {
 	PerformanceTrend,
 	QuickActions,
-	RecentDocuments,
 	UpcomingClasses,
 	WelcomeHeader
 } from "../components/home"

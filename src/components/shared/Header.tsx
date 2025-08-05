@@ -1,6 +1,6 @@
 "use client"
 
-import { NotificationDialog } from "./notification"
+// import { NotificationDialog } from "./notification"
 // import { useAuthState } from "@/stores"
 import type { TeacherProfile, StudentProfile } from "@/types/response-type"
 import Image from "next/image"

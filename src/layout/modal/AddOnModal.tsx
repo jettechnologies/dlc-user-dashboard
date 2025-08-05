@@ -57,8 +57,7 @@ export const AddOnModal = ({ isOpen, setIsOpen, examId }: AddOnModalProps) => {
 		}
 	})
 
-	const { mutateAsync: addOnDemand, isPending: isAddingOnDemand } =
-		useAddOnDemand()
+	const { mutateAsync: addOnDemand } = useAddOnDemand()
 
 	const handleAddOnDemand = async (planId: string) => {
 		try {
