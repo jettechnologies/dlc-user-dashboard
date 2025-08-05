@@ -7,6 +7,7 @@ import {
 } from "../components/my-class/ClassCard"
 import { PageWrapper, TabIndicator } from "../components/shared"
 import { Button } from "@/components/ui"
+import { CancelClassModal } from "@/layout/modal"
 import {
 	useDeleteLecture,
 	useStartLecture
@@ -20,47 +21,48 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { toast } from "sonner"
 
-const draftClasses: ClassData[] = [
-	{
-		id: "5",
-		name: "NECO",
-		subject: "Mathematics",
-		time: "10:00 AM - 11:00 AM",
-		students: 40,
-		files: 4,
-		status: "30-days-ago"
-	},
-	{
-		id: "6",
-		name: "WAEC",
-		subject: "Mathematics",
-		time: "10:00 AM - 11:00 AM",
-		students: 40,
-		files: 4,
-		status: "30-days-ago"
-	},
-	{
-		id: "7",
-		name: "WAEC",
-		subject: "Mathematics",
-		time: "10:00 AM - 11:00 AM",
-		students: 40,
-		files: 4,
-		status: "30-days-ago"
-	},
-	{
-		id: "8",
-		name: "WAEC",
-		subject: "Mathematics",
-		time: "10:00 AM - 11:00 AM",
-		students: 40,
-		files: 4,
-		status: "30-days-ago"
-	}
-]
+// const draftClasses: ClassData[] = [
+// 	{
+// 		id: "5",
+// 		name: "NECO",
+// 		subject: "Mathematics",
+// 		time: "10:00 AM - 11:00 AM",
+// 		students: 40,
+// 		files: 4,
+// 		status: "30-days-ago"
+// 	},
+// 	{
+// 		id: "6",
+// 		name: "WAEC",
+// 		subject: "Mathematics",
+// 		time: "10:00 AM - 11:00 AM",
+// 		students: 40,
+// 		files: 4,
+// 		status: "30-days-ago"
+// 	},
+// 	{
+// 		id: "7",
+// 		name: "WAEC",
+// 		subject: "Mathematics",
+// 		time: "10:00 AM - 11:00 AM",
+// 		students: 40,
+// 		files: 4,
+// 		status: "30-days-ago"
+// 	},
+// 	{
+// 		id: "8",
+// 		name: "WAEC",
+// 		subject: "Mathematics",
+// 		time: "10:00 AM - 11:00 AM",
+// 		students: 40,
+// 		files: 4,
+// 		status: "30-days-ago"
+// 	}
+// ]
 
 export default function ClassList() {
 	const [activeTab, setActiveTab] = useState<ClassType>("upcoming")
+	const [currentClassId, setCurrentClassId] = useState<string | null>(null)
 	const { data: lectureData } = useSuspenseQuery({
 		...getLecturesQueryOptions(activeTab),
 		select: (response) => {
@@ -95,86 +97,99 @@ export default function ClassList() {
 		}
 	}
 
-	const handleDeleteLecture = async (classId: string) => {
-		await deleteLecture(classId)
+	const handleDeleteLecture = async () => {
+		if (currentClassId !== null) {
+			await deleteLecture(currentClassId)
+			setCurrentClassId(null)
+		}
 	}
 
 	return (
-		<PageWrapper className="space-y-5">
-			<div className="w-full font-poppins">
-				<h3 className="font-semibold text-2xl text-black">My Classes</h3>
-				<p className="font-normal text-xs text-black ">
-					Manage your class schedules
-				</p>
-			</div>
-			<div className="w-full bg-white mx-auto p-6">
-				<TabIndicator
-					activeTab={activeTab}
-					setActiveTab={setActiveTab}
-					tabs={["upcoming", "completed", "drafts"]}
-					tabLabels={{
-						upcoming: "Upcoming",
-						completed: "Past",
-						drafts: "Drafts"
-					}}
-				/>
-
-				{/* Class List */}
-				<div>
-					{activeTab === "upcoming" ? (
-						<div className="w-full space-y-4">
-							{lectureData.length > 0 ? (
-								lectureData.map((classData) => (
-									<ClassCard
-										key={classData.id}
-										classData={classData}
-										classType="upcoming"
-										startClass={(id) => handleStartLecture(id)}
-										cancelClass={(id) => handleDeleteLecture(id)}
-									/>
-								))
-							) : (
-								<div className="w-full space-y-4 py-8 grid place-items-center">
-									<p>No class Data found</p>
-									<Button
-										className="bg-light-yellow hover:bg-light-yellow text-black font-medium py-3 h-auto w-[250px]"
-										onClick={handleScheduleClass}
-									>
-										Schedule Class
-									</Button>
-								</div>
-							)}
-						</div>
-					) : activeTab === "completed" ? (
-						<div className="w-full space-y-4">
-							{lectureData.length > 0 ? (
-								lectureData.map((classData) => (
-									<ClassCard
-										key={classData.id}
-										classData={classData}
-										classType="completed"
-										deleteClass={(id) => handleDeleteLecture(id)}
-									/>
-								))
-							) : (
-								<div className="w-full space-y-4 py-8 grid place-items-center">
-									<p>No class Data found</p>
-								</div>
-							)}
-						</div>
-					) : (
-						<div className="w-full space-y-4">
-							{draftClasses.map((classData) => (
-								<ClassCard
-									key={classData.id}
-									classData={classData}
-									classType="drafts"
-								/>
-							))}
-						</div>
-					)}
+		<>
+			<PageWrapper className="space-y-5">
+				<div className="w-full font-poppins">
+					<h3 className="font-semibold text-2xl text-black">My Classes</h3>
+					<p className="font-normal text-xs text-black ">
+						Manage your class schedules
+					</p>
 				</div>
-			</div>
-		</PageWrapper>
+				<div className="w-full bg-white mx-auto p-6">
+					<TabIndicator
+						activeTab={activeTab}
+						setActiveTab={setActiveTab}
+						tabs={["upcoming", "completed", "drafts"]}
+						tabLabels={{
+							upcoming: "Upcoming",
+							completed: "Past",
+							drafts: "Drafts"
+						}}
+					/>
+
+					{/* Class List */}
+					<div>
+						{activeTab === "upcoming" ? (
+							<div className="w-full space-y-4">
+								{lectureData.length > 0 ? (
+									lectureData.map((classData) => (
+										<ClassCard
+											key={classData.id}
+											classData={classData}
+											classType="upcoming"
+											startClass={(id) => handleStartLecture(id)}
+											cancelClass={(id) => setCurrentClassId(id)}
+										/>
+									))
+								) : (
+									<div className="w-full space-y-4 py-8 grid place-items-center">
+										<p>No class Data found</p>
+										<Button
+											className="bg-light-yellow hover:bg-light-yellow text-black font-medium py-3 h-auto w-[250px]"
+											onClick={handleScheduleClass}
+										>
+											Schedule Class
+										</Button>
+									</div>
+								)}
+							</div>
+						) : activeTab === "completed" ? (
+							<div className="w-full space-y-4">
+								{lectureData.length > 0 ? (
+									lectureData.map((classData) => (
+										<ClassCard
+											key={classData.id}
+											classData={classData}
+											classType="completed"
+											deleteClass={(id) => setCurrentClassId(id)}
+										/>
+									))
+								) : (
+									<div className="w-full space-y-4 py-8 grid place-items-center">
+										<p>No upcoming class Data found</p>
+									</div>
+								)}
+							</div>
+						) : (
+							<div className="w-full space-y-4">
+								{/* {draftClasses.map((classData) => (
+									<ClassCard
+										key={classData.id}
+										classData={classData}
+										classType="drafts"
+									/>
+								))} */}
+								<div className="w-full space-y-4 py-8 grid place-items-center">
+									<p>No draft class Data found</p>
+								</div>
+							</div>
+						)}
+					</div>
+				</div>
+			</PageWrapper>
+			<CancelClassModal
+				onCancelClass={handleDeleteLecture}
+				open={currentClassId !== null}
+				onOpenChange={(open) => setCurrentClassId(open ? currentClassId : null)}
+			/>
+		</>
 	)
 }

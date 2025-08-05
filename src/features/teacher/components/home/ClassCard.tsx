@@ -128,9 +128,9 @@ export function ClassCard({
 				>
 					{badgeText}
 				</Badge>
-				<Badge className="bg-white text-dlc-blue text-xs px-[10px] py-1 rounded-[10px]">
+				{/* <Badge className="bg-white text-dlc-blue text-xs px-[10px] py-1 rounded-[10px]">
 					View details
-				</Badge>
+				</Badge> */}
 			</div>
 		</div>
 	)

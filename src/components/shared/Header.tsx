@@ -2,8 +2,8 @@
 
 // import { NotificationDialog } from "./notification"
 // import { useAuthState } from "@/stores"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import type { TeacherProfile, StudentProfile } from "@/types/response-type"
-import Image from "next/image"
 import React from "react"
 
 interface HeaderProps {
@@ -26,12 +26,10 @@ export function Header({ userProfile }: HeaderProps) {
 							{userProfile?.role}
 						</p>
 					</div>
-					<Image
-						src="/icons/profile-icon.svg"
-						alt="profile icon"
-						width={40}
-						height={40}
-					/>
+					<Avatar>
+						<AvatarImage src="/icons/profile-icon.svg" />
+						<AvatarFallback>CN</AvatarFallback>
+					</Avatar>
 				</div>
 			</div>
 		</div>

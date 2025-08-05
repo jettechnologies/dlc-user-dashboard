@@ -236,7 +236,7 @@ export const ScheduleForm = () => {
 							<Button
 								variant="default"
 								type="button"
-								className="w-[144px] h-[44px] rounded-[6px] text-black flex items-center justify-center font-poppins text-base font-normal bg-gray-200"
+								className="w-[144px] h-[44px] rounded-[6px] text-black flex items-center justify-center font-poppins text-base font-normal bg-gray-200 opacity-30"
 							>
 								Save as draft
 							</Button>

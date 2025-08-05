@@ -11,8 +11,6 @@ interface StatsCardProps {
 }
 
 export function StatsGrid({ userStats }: StatsCardProps) {
-	console.log(userStats, "user stats")
-
 	const statsData = useMemo(
 		() => [
 			{

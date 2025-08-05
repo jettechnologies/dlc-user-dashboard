@@ -94,13 +94,13 @@ const ActionsButtons = memo(function ActionsButtons({
 		<div className="flex items-center space-x-3">
 			{classType === "upcoming" ? (
 				<>
-					<Button
+					{/* <Button
 						className="text-blue-600 hover:text-blue-700 hover:bg-gray-100 p-2 rounded-md bg-gray-100 "
 						onClick={() => viewClass?.(classId)}
 					>
 						View details
 						<ChevronRight className="w-4 h-4 ml-1" />
-					</Button>
+					</Button> */}
 					<Button
 						className="text-gray-600 hover:text-gray-700 hover:bg-gray-100 p-2 rounded-md bg-gray-100"
 						onClick={() => startClass?.(classId)}
@@ -118,13 +118,13 @@ const ActionsButtons = memo(function ActionsButtons({
 				</>
 			) : classType === "completed" ? (
 				<>
-					<Button
+					{/* <Button
 						className="text-blue-600 hover:text-blue-700 hover:bg-gray-100 p-2 rounded-md bg-gray-100"
 						onClick={() => viewClass?.(classId)}
 					>
 						View details
 						<ChevronRight className="w-4 h-4 ml-1" />s
-					</Button>
+					</Button> */}
 					<Button
 						className="text-red-600 hover:text-red-700 hover:bg-gray-100 p-2 rounded-md bg-gray-100"
 						onClick={() => deleteClass?.(classId)}
