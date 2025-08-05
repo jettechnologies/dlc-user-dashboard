@@ -70,22 +70,18 @@ export const SigninForm = () => {
 							<div className="mt-6 flex items-center flex-col w-full lg:w-[376px] ">
 								<div className="w-full">
 									<div className="w-full lg:w-[376px]">
-										{/* <p className="text-sm font-medium text-black">
-											Select Role
-										</p> */}
-										<div className="mb-4 flex w-full gap-x-4 justify-center bg-[#E3E3E3] rounded-[100px]">
+										<div className="mb-8 flex w-full gap-x-4 justify-center bg-white rounded-[100px]">
 											{userRoles.map((role) => (
 												<button
 													key={role}
 													type="button"
-													className={`flex h-[36px] flex-1  items-center gap-x-4 rounded-[100px] px-[14px] py-[6px] lowercase  ${
+													className={`flex h-[36px] flex-1  items-center justify-center gap-x-4 rounded-[100px] px-[14px] py-[6px] lowercase  ${
 														userRole === role
 															? "bg-light-blue text-white"
 															: "bg-transparent text-black"
 													} `}
 													onClick={() => handleSelectUserRole(role)}
 												>
-													<Check size={20} color="white" />
 													<p className="text-[10px] font-normal capitalize lg:text-xs">
 														{role.toLowerCase()}
 													</p>

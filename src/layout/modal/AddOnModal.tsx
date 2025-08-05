@@ -60,8 +60,6 @@ export const AddOnModal = ({ isOpen, setIsOpen, examId }: AddOnModalProps) => {
 	const { mutateAsync: addOnDemand, isPending: isAddingOnDemand } =
 		useAddOnDemand()
 
-	console.log(isAddingOnDemand, "isAddingOnDemand")
-
 	const handleAddOnDemand = async (planId: string) => {
 		try {
 			if (!examId) throw new Error("No Exam Id isn't provided")
@@ -79,8 +77,6 @@ export const AddOnModal = ({ isOpen, setIsOpen, examId }: AddOnModalProps) => {
 			toast.error(errorMessage)
 		}
 	}
-
-	console.log(onDemandPlans, "onDemandPlans")
 
 	return (
 		<ModalLayout
@@ -144,7 +140,7 @@ export const AddOnModal = ({ isOpen, setIsOpen, examId }: AddOnModalProps) => {
 				<p className=" font-poppins font-[500] text-[14px] text-black mt-4">
 					Select a plan
 				</p>
-				<div className="flex mt-8 justify-between w-full">
+				<div className="flex mt-8 gap-4 w-full flex-wrap max-h-[200px] overflow-y-auto p-4">
 					{onDemandPlans?.map((plan, index) => (
 						<OnDemandCard
 							key={index}

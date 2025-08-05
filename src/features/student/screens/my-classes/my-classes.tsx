@@ -132,7 +132,7 @@ export const MyClasses = () => {
 							) : (
 								<div className="w-full flex flex-col items-center justify-center py-12 bg-white rounded-lg border border-dashed border-gray-300">
 									<p className="text-gray-500">
-										No upcoming classes to display.
+										No ongoing classes to display.
 									</p>
 								</div>
 							)}

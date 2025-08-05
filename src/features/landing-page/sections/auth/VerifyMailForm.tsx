@@ -39,7 +39,7 @@ export const VerifyEmailForm = ({ setOtp }: VerifyEmailFormProps) => {
 					email: "",
 					fullName: ""
 				}}
-				className="mt-10 flex w-fit flex-col gap-y-8 md:min-w-[350px]"
+				className="mt-10 flex w-full flex-col gap-y-8 md:min-w-[350px]"
 			>
 				{(methods) => {
 					const watchedFields = methods.watch(["email", "fullName"])
@@ -50,7 +50,7 @@ export const VerifyEmailForm = ({ setOtp }: VerifyEmailFormProps) => {
 							<EnhancedForm.Field name="fullName" control={methods.control}>
 								<EnhancedForm.Input
 									name="fullName"
-									placeholder="Fullname"
+									placeholder="Full Name"
 									inputSize="lg"
 									radius="10px"
 									className="h-[52px] border-2 border-dlc-blue-400 text-SC-Brand-Blue shadow-md placeholder:text-SC-Brand-Blue text-xs"

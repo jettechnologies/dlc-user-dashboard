@@ -1,4 +1,9 @@
 import { Button } from "@/components/ui/button"
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger
+} from "@/components/ui/tooltip"
 import { useAuthState } from "@/stores"
 import { TeacherProfile } from "@/types/response-type"
 import { useRouter } from "next/navigation"
@@ -34,9 +39,17 @@ export const QuickActions = () => {
 					Schedule Class
 				</Button>
 				{/* </Link> */}
-				<Button className="bg-dlc-blue-200 hover:bg-dlc-blue-200 text-white font-medium py-3 h-auto">
-					Set Availability
-				</Button>
+
+				<Tooltip>
+					<TooltipTrigger className="w-full">
+						<Button className="bg-dlc-blue-200 hover:bg-dlc-blue-200 text-white font-medium py-3 h-auto opacity-30 w-full">
+							Set Availability
+						</Button>
+					</TooltipTrigger>
+					<TooltipContent>
+						<p>Upcoming</p>
+					</TooltipContent>
+				</Tooltip>
 			</div>
 		</div>
 	)

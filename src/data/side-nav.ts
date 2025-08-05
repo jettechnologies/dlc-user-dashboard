@@ -16,32 +16,33 @@ export const teacherSideNavItems: NavItem[] = [
 		path: "/teacher",
 		icon: LayoutGrid
 	},
+
 	{
 		id: 2,
-		label: "Live Sessions",
-		path: "/teacher/live-sessions",
-		icon: TvMinimalPlay,
-		upcoming: true
-	},
-	{
-		id: 3,
 		label: "My Exam",
 		path: "/teacher/my-exam",
 		icon: BookOpenText
 	},
 	{
-		id: 4,
+		id: 3,
 		label: "My Classes",
 		path: "/teacher/my-classes",
 		icon: Presentation
 	},
 	{
-		id: 5,
+		id: 4,
 		label: "Progress Analysis",
 		path: "/teacher/progress-analysis",
 		icon: ChartNoAxesCombined,
 		upcoming: true
 	}
+	// {
+	// 	id: 5,
+	// 	label: "Live Sessions",
+	// 	path: "/teacher/live-sessions",
+	// 	icon: TvMinimalPlay,
+	// 	upcoming: true
+	// }
 ]
 
 export const studentSideNavItems: NavItem[] = [
@@ -71,22 +72,22 @@ export const studentSideNavItems: NavItem[] = [
 	},
 	{
 		id: 5,
+		label: "My Subscription",
+		path: "/student/my-subscription",
+		icon: GalleryVerticalEnd
+	},
+	{
+		id: 6,
 		label: "Resources",
 		path: "/student/resources",
 		icon: FolderOpenDot,
 		upcoming: true
 	},
 	{
-		id: 6,
+		id: 7,
 		label: "Progress Analysis",
 		path: "/student/progress-analysis",
 		icon: ChartNoAxesCombined,
 		upcoming: true
-	},
-	{
-		id: 7,
-		label: "My Subscription",
-		path: "/student/my-subscription",
-		icon: GalleryVerticalEnd
 	}
 ]

@@ -68,7 +68,7 @@ export const TeacherForm = () => {
 					type: "SCHOOL",
 					confirmPassword: ""
 				}}
-				className="mt-10 flex w-fit flex-col gap-y-8 md:min-w-[350px]"
+				className="mt-10 flex w-full flex-col gap-y-8 md:min-w-[350px]"
 			>
 				{(methods) => {
 					const watchedFields = methods.watch([

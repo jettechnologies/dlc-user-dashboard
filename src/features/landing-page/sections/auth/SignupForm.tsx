@@ -13,20 +13,16 @@ const registerRole = ["student", "teacher"] as RegisterTab[]
 
 export const SignupForm = ({ examOptions }: SignupProps) => {
 	const [activeTab, setActiveTab] = useState<RegisterTab>("student")
-	// const [userDetails, setUserDetails] = useState({
-	// 	fullName: "",
-	// 	email: ""
-	// })
 	const { store } = useUiComponentStore()
 
 	return (
-		<div className="grid min-h-[300px] w-full max-w-[554px] place-items-center rounded-lg bg-[#EDF7FE] py-12 shadow-md">
+		<div className="grid min-h-[300px] w-full max-w-[554px]  place-items-center rounded-lg bg-[#EDF7FE] py-12 shadow-md">
 			<div className="w-fit px-3">
 				<h3 className="text-center text-xl font-semibold capitalize text-black lg:text-2xl">
 					Register
 				</h3>
 
-				<div className="w-full md:min-w-[370px] mt-[45px]">
+				<div className="w-full md:min-w-[370px] mt-[45px] ">
 					<p className="font-poppins text-center text-sm font-normal text-black">
 						Select role
 					</p>
@@ -44,7 +40,7 @@ export const SignupForm = ({ examOptions }: SignupProps) => {
 						/>
 					</div>
 				</div>
-				<div className="w-full min-h-[300px]">
+				<div className="w-full min-h-[300px] ">
 					{activeTab === "student" ? (
 						<StudentForm examOptions={examOptions} />
 					) : store !== "email-verifed" ? (

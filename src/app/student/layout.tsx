@@ -23,6 +23,7 @@ export default function StudentLayout({
 	const profile = data.data as StudentProfile
 
 	setUserProfile(profile)
+
 	return (
 		<div className="grid min-h-[100dvh] max-w-[100dvw] grid-cols-1 gap-y-10 bg-dlc-brand-yellow tracking-wide text-slate-900 sm:grid-rows-[auto_1fr] md:grid md:grid-cols-[auto_1fr]">
 			<div className="sticky top-0 z-50 w-full backdrop-blur-md backdrop-filter md:col-span-1 md:row-start-1">

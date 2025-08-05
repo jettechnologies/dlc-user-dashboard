@@ -6,16 +6,19 @@ import {
 	ClassType
 } from "../components/my-class/ClassCard"
 import { PageWrapper, TabIndicator } from "../components/shared"
+import { Button } from "@/components/ui"
 import {
 	useDeleteLecture,
 	useStartLecture
 } from "@/services/mutation/useQuery-mutation"
 import { getLecturesQueryOptions } from "@/services/query"
+import { useAuthState } from "@/stores"
+import type { TeacherProfile } from "@/types/response-type"
 import { transformToClassData } from "@/utils/constants"
 import { useSuspenseQuery } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
-
-// import { toast } from "sonner"
+import { toast } from "sonner"
 
 const draftClasses: ClassData[] = [
 	{
@@ -70,23 +73,29 @@ export default function ClassList() {
 
 	const { mutateAsync: deleteLecture } = useDeleteLecture()
 
+	const { userProfile } = useAuthState()
+	const teacherProfile = userProfile as TeacherProfile
+	const router = useRouter()
+
+	const handleScheduleClass = () => {
+		const isApproved = teacherProfile.isApproved
+
+		if (isApproved) {
+			router.push("/teacher/schedule-class")
+		} else {
+			toast.warning("You need to be approved to schedule a class")
+		}
+	}
+
 	const handleStartLecture = async (classId: string) => {
 		try {
 			await startLecture(classId)
-
-			// if (!response.data?.moderatorJoinUrl) {
-			// 	toast.error("No attendee URL to use in joining")
-			// 	return
-			// }
-
-			// window.location.href = response?.data.moderatorJoinUrl
 		} catch (error) {
 			console.log(error, "error")
 		}
 	}
 
 	const handleDeleteLecture = async (classId: string) => {
-		console.log("its working")
 		await deleteLecture(classId)
 	}
 
@@ -114,15 +123,27 @@ export default function ClassList() {
 				<div>
 					{activeTab === "upcoming" ? (
 						<div className="w-full space-y-4">
-							{lectureData.map((classData) => (
-								<ClassCard
-									key={classData.id}
-									classData={classData}
-									classType="upcoming"
-									startClass={(id) => handleStartLecture(id)}
-									cancelClass={(id) => handleDeleteLecture(id)}
-								/>
-							))}
+							{lectureData.length > 0 ? (
+								lectureData.map((classData) => (
+									<ClassCard
+										key={classData.id}
+										classData={classData}
+										classType="upcoming"
+										startClass={(id) => handleStartLecture(id)}
+										cancelClass={(id) => handleDeleteLecture(id)}
+									/>
+								))
+							) : (
+								<div className="w-full space-y-4 py-8 grid place-items-center">
+									<p>No class Data found</p>
+									<Button
+										className="bg-light-yellow hover:bg-light-yellow text-black font-medium py-3 h-auto w-[250px]"
+										onClick={handleScheduleClass}
+									>
+										Schedule Class
+									</Button>
+								</div>
+							)}
 						</div>
 					) : activeTab === "completed" ? (
 						<div className="w-full space-y-4">

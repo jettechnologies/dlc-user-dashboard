@@ -8,11 +8,11 @@ export function WelcomeHeader() {
 	return (
 		<div className="bg-white rounded-lg p-6 shadow-sm">
 			<h1 className="text-2xl font-semibold text-gray-900 mb-2">
-				Welcome back {userProfile?.fullName} 👋
+				Welcome {userProfile?.fullName} 👋
 			</h1>
-			<p className="text-black font-normal text-xs">
+			{/* <p className="text-black font-normal text-xs">
 				You have 3 classes scheduled for tomorrow.
-			</p>
+			</p> */}
 		</div>
 	)
 }

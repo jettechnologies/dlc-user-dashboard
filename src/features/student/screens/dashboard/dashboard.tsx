@@ -71,9 +71,9 @@ export const DashboardScreen = ({
 				<UpcomingClasses />
 			</div>
 
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+			<div className="grid grid-cols-1 gap-6 mt-6">
 				<HoursChart />
-				<ResourcesList />
+				{/* <ResourcesList /> */}
 			</div>
 
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
