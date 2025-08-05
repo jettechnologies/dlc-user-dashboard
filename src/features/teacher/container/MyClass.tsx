@@ -1,7 +1,7 @@
 "use client"
 
 import {
-	ClassData,
+	// ClassData,
 	ClassCard,
 	ClassType
 } from "../components/my-class/ClassCard"

@@ -10,7 +10,8 @@ import {
 import { IExam, ResponseSingleType } from "@/types/response-type"
 import { cn } from "@/utils/lib/utils"
 import { useSuspenseQueries } from "@tanstack/react-query"
-import { Info } from "lucide-react"
+
+// import { Info } from "lucide-react"
 
 interface TitleContainerProps {
 	title: string

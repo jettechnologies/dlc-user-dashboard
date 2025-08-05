@@ -4,7 +4,6 @@ import {
 	FileText,
 	Clock,
 	Users,
-	ChevronRight,
 	Play,
 	X,
 	Trash2,
@@ -90,6 +89,7 @@ const ActionsButtons = memo(function ActionsButtons({
 	viewClass,
 	cancelClass
 }: BaseProps & { classId: string }) {
+	console.log(viewClass)
 	return (
 		<div className="flex items-center space-x-3">
 			{classType === "upcoming" ? (
