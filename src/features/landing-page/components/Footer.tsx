@@ -5,9 +5,9 @@ import React from "react"
 
 export const Footer = () => {
 	return (
-		<div className="w-full pt-5 bg-black-200">
-			<div className="w-full min-h-[250px] container grid grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto_auto] justify-between gap-y-[48px]">
-				<div className="flex w-fit gap-x-[24px] gap-y-[12px] h-full flex-col lg:flex-row">
+		<div className="w-full pt-5 bg-black-200 ">
+			<div className="w-full min-h-[250px] container grid grid-cols-[auto_auto] lg:grid-cols-[auto_auto_auto_auto] justify-between gap-x-[20px] gap-y-[48px] ">
+				<div className="flex w-fit gap-x-[24px] gap-y-[12px] h-full flex-col lg:flex-row ">
 					<Link href="/" className="w-fit">
 						<Image
 							src="/images/dlc-white-logo.svg"
