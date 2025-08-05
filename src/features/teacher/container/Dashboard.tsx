@@ -58,7 +58,7 @@ export function Dashboard() {
 				icon: Presentation,
 				value: String(dashboardStats.missedLectures),
 				title: "Missed lectures",
-				description: ` from of ${dashboardStats.totalLectures} classes completed`,
+				description: `out of ${dashboardStats.totalLectures} classes completed`,
 				iconBg: "bg-blue-500"
 			},
 			{

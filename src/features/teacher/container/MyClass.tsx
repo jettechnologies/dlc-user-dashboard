@@ -73,7 +73,8 @@ export default function ClassList() {
 
 	const { mutateAsync: startLecture } = useStartLecture()
 
-	const { mutateAsync: deleteLecture } = useDeleteLecture()
+	const { mutateAsync: deleteLecture, isPending: isDeleting } =
+		useDeleteLecture()
 
 	const { userProfile } = useAuthState()
 	const teacherProfile = userProfile as TeacherProfile
@@ -189,6 +190,7 @@ export default function ClassList() {
 				onCancelClass={handleDeleteLecture}
 				open={currentClassId !== null}
 				onOpenChange={(open) => setCurrentClassId(open ? currentClassId : null)}
+				isDeleting={isDeleting}
 			/>
 		</>
 	)

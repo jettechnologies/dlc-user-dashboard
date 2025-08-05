@@ -8,13 +8,15 @@ type LogoutModalProps = Pick<
 	"open" | "onOpenChange" | "title"
 > & {
 	onCancelClass: () => void
+	isDeleting?: boolean
 }
 
 export const CancelClassModal = ({
 	open,
 	onOpenChange,
 	title,
-	onCancelClass
+	onCancelClass,
+	isDeleting
 }: LogoutModalProps) => {
 	return (
 		<ModalLayout
@@ -42,7 +44,7 @@ export const CancelClassModal = ({
 						className="w-[144px] h-[44px] rounded-xl p-2.5 bg-red-500 text-white hover:bg-red-500"
 						onClick={onCancelClass}
 					>
-						Confirm
+						{isDeleting ? "Deleting..." : "Confirm"}
 					</Button>
 				</div>
 			</div>
