@@ -4,7 +4,7 @@ import type { LucideIcon } from "lucide-react"
 interface StatsCardProps {
 	title: string
 	value: string
-	change: string
+	change?: string
 	icon: LucideIcon
 	iconColor: string
 }
