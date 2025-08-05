@@ -83,7 +83,9 @@ export const MobileNavBar: React.FC<MobileNavbarProps> = ({
 											/>
 										</div>
 										{!isDropdown ? (
-											<Link href={navLink.link as string}>{navLink.label}</Link>
+											<Link href={navLink.link as string} onClick={onClose}>
+												{navLink.label}
+											</Link>
 										) : (
 											<span>{navLink.label}</span>
 										)}
@@ -109,6 +111,7 @@ export const MobileNavBar: React.FC<MobileNavbarProps> = ({
 											>
 												<Link
 													href={sublink.link}
+													onClick={onClose}
 													className="block rounded-full px-4 py-1 capitalize focus-within:bg-SC-Light-orange focus-within:ring-2 focus-within:ring-SC-Orange hover:bg-SC-Light-orange focus:bg-SC-Light-orange"
 												>
 													{sublink.label}
