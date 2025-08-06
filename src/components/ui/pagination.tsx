@@ -5,7 +5,7 @@ import {
 	ChevronRightIcon,
 	MoreHorizontalIcon
 } from "lucide-react"
-import Link from "next/link"
+// import Link from "next/link"
 import * as React from "react"
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
@@ -40,7 +40,7 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 type PaginationLinkProps = {
 	isActive?: boolean
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-	React.ComponentProps<typeof Link>
+	React.ComponentProps<"a">
 
 function PaginationLink({
 	className,

@@ -56,6 +56,7 @@ export function SubscriptionHistoryTable({
 		setPage(newPage)
 	}
 
+	console.log(handleChange, "handleChange")
 	const MobileView = () => (
 		<div className="w-full">
 			{rows.map((row, index) => (

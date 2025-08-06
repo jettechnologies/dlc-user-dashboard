@@ -2,7 +2,6 @@ import {
 	differenceInDays,
 	differenceInWeeks,
 	differenceInMonths,
-	format,
 	parseISO
 } from "date-fns"
 

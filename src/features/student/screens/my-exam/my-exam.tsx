@@ -37,8 +37,6 @@ export const MyExam = () => {
 
 	const studentProfile = getStudentProfile()
 
-	console.log(studentProfile, "student profile")
-
 	return (
 		<>
 			<div className="p-6">
