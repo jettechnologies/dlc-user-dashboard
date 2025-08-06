@@ -15,7 +15,10 @@ import {
 	fetchStudentDashboard,
 	fetchUpcomingLecturesByExamId
 } from "./queries/student"
-import { fetchAllSubscriptions } from "./queries/subscription"
+import {
+	fetchAllSubscriptions,
+	fetchSubscriptionHistory
+} from "./queries/subscription"
 import { LectureStatus } from "@/types/response-type"
 import { UserRoles } from "@/utils/constants"
 import { queryOptions } from "@tanstack/react-query"
@@ -49,7 +52,8 @@ export const queryKeys = {
 		getAllExams: () => [...queryKeys.teacher.all(), "exams"]
 	},
 	subscriptions: {
-		all: () => ["subscriptions"]
+		all: () => ["subscriptions"],
+		subscriptionHistory: () => [...queryKeys.subscriptions.all(), "history"]
 	},
 	ondemand: {
 		all: () => ["ondemand"],
@@ -152,7 +156,19 @@ export const fetchAllOnDemandExamsQueryOpts = () => {
 		queryKey: queryKeys.ondemand.getAllOndemandExams(),
 		queryFn: () => fetchAllOndemandExams(),
 		select: (data) => {
-			if (!data.data) throw new Error(data.message || "Exams data not found")
+			if (!data.data) throw new Error(data.message || "Ondemand data not found")
+			return data.data
+		}
+	})
+}
+
+export const fetchSubscriptionHistoryQueryOpts = () => {
+	return queryOptions({
+		queryKey: queryKeys.subscriptions.subscriptionHistory(),
+		queryFn: () => fetchSubscriptionHistory(),
+		select: (data) => {
+			if (!data.data)
+				throw new Error(data.message || "Subscription History data not found")
 			return data.data
 		}
 	})

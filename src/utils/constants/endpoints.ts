@@ -40,7 +40,8 @@ const studentEndpoints = {
 
 const subscriptionEndpoints = {
 	getAllSubscriptions: `${DLC_BASE_URL}/subscription/get-all`,
-	initializePayment: `${DLC_BASE_URL}/subscription/payment-url`
+	initializePayment: `${DLC_BASE_URL}/subscription/payment-url`,
+	getSubscriptionHistory: `${DLC_BASE_URL}/subscription/history`
 }
 
 const onDemandEndpoints = {

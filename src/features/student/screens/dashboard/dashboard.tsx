@@ -48,9 +48,7 @@ export const DashboardScreen = ({
 		if (!paymentStatus) return
 
 		if (paymentStatus === "success") {
-			toast.success(
-				"Subscription successful, you can now access digital learning circle full features."
-			)
+			toast.success("Subscription successful.")
 		} else if (paymentStatus === "error") {
 			toast.error(
 				"Subscription unsuccessful, please try again to complete your subscription."

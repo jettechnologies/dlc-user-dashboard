@@ -6,7 +6,8 @@ import {
 	Presentation,
 	FolderOpenDot,
 	GalleryVerticalEnd,
-	ChartNoAxesCombined
+	ChartNoAxesCombined,
+	ReceiptText
 } from "lucide-react"
 
 export const teacherSideNavItems: NavItem[] = [
@@ -78,13 +79,19 @@ export const studentSideNavItems: NavItem[] = [
 	},
 	{
 		id: 6,
+		label: "Subscription History",
+		path: "/student/subscription-history",
+		icon: ReceiptText
+	},
+	{
+		id: 7,
 		label: "Resources",
 		path: "/student/resources",
 		icon: FolderOpenDot,
 		upcoming: true
 	},
 	{
-		id: 7,
+		id: 8,
 		label: "Progress Analysis",
 		path: "/student/progress-analysis",
 		icon: ChartNoAxesCombined,

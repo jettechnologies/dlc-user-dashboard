@@ -12,6 +12,7 @@ import { StudentProfile } from "@/types/response-type"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { Info } from "lucide-react"
 import { useCallback, useState } from "react"
+import { toast } from "sonner"
 
 export const MyExam = () => {
 	const [examId, setExamId] = useState<string | null>(null)
@@ -35,6 +36,8 @@ export const MyExam = () => {
 	}, [userProfile])
 
 	const studentProfile = getStudentProfile()
+
+	console.log(studentProfile, "student profile")
 
 	return (
 		<>
@@ -98,7 +101,13 @@ export const MyExam = () => {
 								name={exam.name}
 								numberOfClasses={exam.lectures.length}
 								type="other"
-								onAddExams={() => setExamId(exam._id)}
+								onAddExams={() => {
+									studentProfile.subscriptionStatus
+										? setExamId(exam._id)
+										: toast.warning(
+												"You need to be subscribed to add an On-Demand Exam"
+											)
+								}}
 							/>
 						))}
 					</div>

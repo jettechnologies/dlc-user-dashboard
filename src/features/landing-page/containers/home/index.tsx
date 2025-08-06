@@ -3,7 +3,7 @@ import {
 	PastQuestion,
 	Features,
 	Exams,
-	Payments,
+	// Payments,
 	Testimonial,
 	PartnersSection
 } from "../../sections/home"
@@ -15,7 +15,7 @@ export const Home = () => {
 			<PastQuestion />
 			<Exams />
 			<Features />
-			<Payments />
+			{/* <Payments /> */}
 			<Testimonial />
 			<PartnersSection />
 		</div>

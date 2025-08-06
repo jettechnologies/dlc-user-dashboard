@@ -36,7 +36,7 @@ export function SideNav({ navItems }: SideNavProps) {
 
 	return (
 		<>
-			<nav className="bg-white min-h-full h-full w-full p-4 overflow-auto relative">
+			<nav className="bg-white py-6 min-h-screen h-full w-full p-4 overflow-auto relative">
 				<Link href="/">
 					<Image
 						src="/images/dlc-logo.svg"

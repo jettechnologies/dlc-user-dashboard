@@ -113,7 +113,7 @@ const ActionsButtons = memo(function ActionsButtons({
 						onClick={() => cancelClass?.(classId)}
 					>
 						<X className="w-4 h-4 mr-1" />
-						Cancel Class
+						Delete Class
 					</Button>
 				</>
 			) : classType === "completed" ? (

@@ -160,6 +160,7 @@ export interface StudentProfile extends BaseProfile {
 	otpVerifiedForReset: boolean
 	createdAt: string
 	updatedAt: string
+	subscriptionStatus: boolean
 	role: "STUDENT"
 }
 
@@ -219,6 +220,27 @@ export type SubscriptionResponse = {
 	access_code: string
 	reference: string
 }
+
+interface PlanType {
+	_id: string
+	name: string
+	validity: number
+	price: string
+}
+
+interface SubscriptionHistory {
+	_id: string
+	student: string
+	plan: PlanType
+	startDate: string
+	expiryDate: string
+	status: "active" | "expired" | string
+	createdAt: string
+	updatedAt: string
+	__v: number
+}
+
+export type SubscriptionHistoryResponse = SubscriptionHistory[]
 
 export type Lecture = {
 	_id: string

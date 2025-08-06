@@ -1,3 +1,11 @@
+import {
+	differenceInDays,
+	differenceInWeeks,
+	differenceInMonths,
+	format,
+	parseISO
+} from "date-fns"
+
 export interface SubscriptionPlan {
 	_id: string
 	name: string
@@ -47,4 +55,24 @@ export const transformPlans = (originalPlans: SubscriptionPlan[]) => {
 			bgColor: isAdvancedPlan ? gradients.advanced : gradients.basic
 		}
 	})
+}
+
+export function getDateDifferenceLabel(
+	startDate: string | Date,
+	endDate: string | Date
+): { value: number; label: "day(s)" | "week(s)" | "month(s)" } {
+	const start = typeof startDate === "string" ? parseISO(startDate) : startDate
+	const end = typeof endDate === "string" ? parseISO(endDate) : endDate
+
+	const months = differenceInMonths(end, start)
+	const weeks = differenceInWeeks(end, start)
+	const days = differenceInDays(end, start)
+
+	if (months >= 1) {
+		return { value: months, label: "month(s)" }
+	} else if (weeks >= 1) {
+		return { value: weeks, label: "week(s)" }
+	} else {
+		return { value: days, label: "day(s)" }
+	}
 }

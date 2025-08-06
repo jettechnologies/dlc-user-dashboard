@@ -32,7 +32,7 @@ export default function StudentLayout({
 				</div>
 			</div>
 
-			<div className="sticky top-0 hidden h-[100dvh] w-[305px] overflow-auto bg-white py-6 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 lg:col-start-1 lg:col-end-2 lg:row-span-full lg:block ">
+			<div className="sticky top-0 hidden h-[100dvh] w-[305px] overflow-auto bg-white scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 lg:col-start-1 lg:col-end-2 lg:row-span-full lg:block">
 				{/* <SideNav /> */}
 				<SideNav navItems={studentSideNavItems} />
 			</div>
