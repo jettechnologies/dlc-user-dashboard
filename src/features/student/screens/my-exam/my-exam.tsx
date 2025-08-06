@@ -100,11 +100,13 @@ export const MyExam = () => {
 								numberOfClasses={exam.lectures.length}
 								type="other"
 								onAddExams={() => {
-									studentProfile.subscriptionStatus
-										? setExamId(exam._id)
-										: toast.warning(
-												"You need to be subscribed to add an On-Demand Exam"
-											)
+									if (studentProfile.subscriptionStatus) {
+										setExamId(exam._id)
+									} else {
+										toast.warning(
+											"You need to be subscribed to add an On-Demand Exam"
+										)
+									}
 								}}
 							/>
 						))}
