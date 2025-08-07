@@ -70,7 +70,7 @@ export function SideNav({ navItems }: SideNavProps) {
 					})}
 				</ul>
 				<Button
-					className="w-[148px] pl-4 border border-gray-100 hover:text-[#F47A1C] hover:bg-transparent h-[48px] flex gap-x-[14px] items-center rounded-xl text-[#F47A1C] absolute bottom-0 left-4 right-4 border ="
+					className="w-[148px] pl-4 border border-gray-100 hover:text-[#F47A1C] hover:bg-transparent h-[48px] flex gap-x-[14px] items-center rounded-xl text-[#F47A1C] absolute bottom-0 left-4 right-4"
 					variant="ghost"
 					onClick={() => setIsLogoutModalOpen(true)}
 				>
