@@ -1,5 +1,10 @@
 import { addOnDemand, addOnDemandParams } from "../ondemand"
-import { studentAddClassToTimetable, studentAttendClass } from "../student"
+import {
+	studentAddClassToTimetable,
+	studentAttendClass,
+	ContactUsParams,
+	contactUs
+} from "../student"
 import { initializePayment } from "../subscription"
 import {
 	CreateLectureParams,
@@ -74,5 +79,14 @@ export const useAddOnDemand = () =>
 		meta: {
 			invalidatesQuery: queryKeys.ondemand.all(),
 			errorMessage: "Error while adding on-demand exam"
+		}
+	})
+
+export const useContactUs = () =>
+	useMutation({
+		mutationFn: (params: ContactUsParams) => contactUs(params),
+		meta: {
+			// invalidatesQuery: queryKeys.ondemand.all(),
+			errorMessage: "Error while contacting us"
 		}
 	})

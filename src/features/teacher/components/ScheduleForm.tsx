@@ -30,45 +30,81 @@ export const ScheduleForm = () => {
 
 	const examOptions = createExamIdOptions(exams.data ?? [])
 
-	const handleFormSubmit: SubmitHandler<ScheduleClassValues> = async (data) => {
-		try {
-			const {
-				examId,
-				course,
-				topic,
-				date,
-				time,
-				duration,
-				max_students,
-				description
-			} = data
+	// const handleFormSubmit: SubmitHandler<ScheduleClassValues> = async (data) => {
+	// 	try {
+	// 		const {
+	// 			examId,
+	// 			course,
+	// 			topic,
+	// 			date,
+	// 			time,
+	// 			duration,
+	// 			max_students,
+	// 			description
+	// 		} = data
 
-			const dateString = format(date, "yyyy-MM-dd")
+	// 		const dateString = format(date, "yyyy-MM-dd")
 
-			const newData = {
-				examId,
-				subject: course,
-				topic,
-				description,
-				date: dateString,
-				time,
-				duration: parseInt(duration, 10),
-				maxStudents: parseInt(max_students, 10)
-			}
+	// 		const newData = {
+	// 			examId,
+	// 			subject: course,
+	// 			topic,
+	// 			description,
+	// 			date: dateString,
+	// 			time,
+	// 			duration: parseInt(duration, 10),
+	// 			maxStudents: parseInt(max_students, 10)
+	// 		}
 
-			await createLecture(newData)
-			router.push("/teacher/my-classes")
-		} catch (e) {
-			const errorMessage =
-				e instanceof Error ? e.message : "An unexpected error occurred."
-			toast.error(errorMessage)
-		}
-	}
+	// 		await createLecture(newData)
+	// 		router.push("/teacher/my-classes")
+	// 	} catch (e) {
+	// 		const errorMessage =
+	// 			e instanceof Error ? e.message : "An unexpected error occurred."
+	// 		toast.error(errorMessage)
+	// 	}
+	// }
 
 	if (exams.data === null && isError) return <div>Something went wrong</div>
 
 	return (
-		<EnhancedForm.Root schema={ScheduleClassSchema} onSubmit={handleFormSubmit}>
+		<EnhancedForm.Root
+			schema={ScheduleClassSchema}
+			onSubmit={async (data) => {
+				try {
+					const {
+						examId,
+						course,
+						topic,
+						date,
+						time,
+						duration,
+						max_students,
+						description
+					} = data
+
+					const dateString = format(date, "yyyy-MM-dd")
+
+					const newData = {
+						examId,
+						subject: course,
+						topic,
+						description,
+						date: dateString,
+						time,
+						duration: parseInt(duration, 10),
+						maxStudents: parseInt(max_students, 10)
+					}
+
+					await createLecture(newData)
+					router.push("/teacher/my-classes")
+				} catch (e) {
+					const errorMessage =
+						e instanceof Error ? e.message : "An unexpected error occurred."
+					toast.error(errorMessage)
+				}
+			}}
+		>
 			{(methods) => {
 				return (
 					<div className="flex flex-col gap-y-5">

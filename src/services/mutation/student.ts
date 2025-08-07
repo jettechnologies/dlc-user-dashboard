@@ -46,3 +46,31 @@ export const studentAddClassToTimetable = async (lectureId: string) => {
 		throw new Error(errorMessage)
 	}
 }
+
+export interface ContactUsParams {
+	name: string
+	email: string
+	phone: string
+	reason: string
+	message: string
+}
+
+export const contactUs = async (params: ContactUsParams) => {
+	try {
+		const url = `${ENDPOINTS.contactUs}`
+		const response = await authFetch<ResponseSingleType<unknown>>({
+			url,
+			options: {
+				method: "POST",
+				body: JSON.stringify({
+					...params
+				})
+			}
+		})
+		return response
+	} catch (error) {
+		const errorMessage =
+			error instanceof Error ? error.message : "An unexpected error occurred."
+		throw new Error(errorMessage)
+	}
+}

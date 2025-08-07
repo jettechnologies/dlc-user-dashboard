@@ -4,7 +4,7 @@ import {
 	TvMinimalPlay,
 	BookOpenText,
 	Presentation,
-	FolderOpenDot,
+	// FolderOpenDot,
 	GalleryVerticalEnd,
 	ChartNoAxesCombined,
 	ReceiptText
@@ -82,19 +82,19 @@ export const studentSideNavItems: NavItem[] = [
 		label: "Subscription History",
 		path: "/student/subscription-history",
 		icon: ReceiptText
-	},
-	{
-		id: 7,
-		label: "Resources",
-		path: "/student/resources",
-		icon: FolderOpenDot,
-		upcoming: true
-	},
-	{
-		id: 8,
-		label: "Progress Analysis",
-		path: "/student/progress-analysis",
-		icon: ChartNoAxesCombined,
-		upcoming: true
 	}
+	// {
+	// 	id: 7,
+	// 	label: "Resources",
+	// 	path: "/student/resources",
+	// 	icon: FolderOpenDot,
+	// 	upcoming: true
+	// },
+	// {
+	// 	id: 8,
+	// 	label: "Progress Analysis",
+	// 	path: "/student/progress-analysis",
+	// 	icon: ChartNoAxesCombined,
+	// 	upcoming: true
+	// }
 ]

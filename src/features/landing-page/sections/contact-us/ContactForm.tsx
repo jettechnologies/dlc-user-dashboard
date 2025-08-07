@@ -1,15 +1,19 @@
 "use client"
 
 import { EnhancedForm } from "@/components/shared/EnhancedForm"
+import { useContactUs } from "@/services/mutation/useQuery-mutation"
 import { contactFormSchema } from "@/utils/schemas"
 import { Map, APIProvider } from "@vis.gl/react-google-maps"
 import { Mail, Phone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { toast } from "sonner"
 
 const location = { lat: 6.569680110827858, lng: 3.371306080013683 }
 
 export const ContactForm = () => {
+	const { mutateAsync: contactUs, isPending } = useContactUs()
+
 	return (
 		<>
 			<section className="grid min-h-screen w-full place-items-center bg-light-yellow-200 max-sm:pb-18 pt-18">
@@ -26,7 +30,23 @@ export const ContactForm = () => {
 						</div>
 						<EnhancedForm.Root
 							schema={contactFormSchema}
-							onSubmit={(values) => console.log(values)}
+							onSubmit={async (values, options) => {
+								const data = {
+									name: values.name,
+									email: values.email,
+									phone: values.contact,
+									reason: values.subject,
+									message: values.message
+								}
+
+								const response = await contactUs(data)
+								if (response.success) {
+									toast.success(response.message)
+									options?.resetForm()
+								} else {
+									toast.error(response.message)
+								}
+							}}
 							className="flex lg:min-h-screen w-full flex-col justify-center gap-y-4 "
 						>
 							<div className="flex w-full flex-col gap-y-4">
@@ -71,6 +91,8 @@ export const ContactForm = () => {
 							<div className="mt-6 w-full">
 								<EnhancedForm.Submit
 									content="Send Message"
+									loading={isPending}
+									loadingText="Sending..."
 									className="font-normal lg:text-sm bg-light-blue text-white py-3 w-full rounded-lg h-[60px]"
 								/>
 							</div>

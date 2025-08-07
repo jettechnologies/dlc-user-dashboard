@@ -29,11 +29,7 @@ export const LiveSession = () => {
 		}
 	})
 
-	const {
-		data: timetableData,
-		isError: timetableError
-		// isLoading: timetableLoading
-	} = useSuspenseQuery({
+	const { data: timetableData, isError: timetableError } = useSuspenseQuery({
 		...studentTimetableLecturesQueryOptions(),
 		select: (data) =>
 			data.data?.map((lecture) =>
@@ -44,16 +40,7 @@ export const LiveSession = () => {
 	const { mutateAsync: joinLecture, isPending } = useJoinLecture()
 
 	const handleJoinLecture = async (classId: string) => {
-		// console.log("its working")
 		await joinLecture(classId)
-		// console.log(response, "response")
-
-		// if (!response.data?.attendeeJoinUrl) {
-		// 	toast.error("No attendee URL to use in joining")
-		// 	return
-		// }
-
-		// window.location.href = response?.data.attendeeJoinUrl
 	}
 
 	const isError = classesError || timetableError
@@ -86,25 +73,6 @@ export const LiveSession = () => {
 			</div>
 
 			<h2 className="text-lg mb-4  font-bold text-gray-900">Your TimeTable</h2>
-
-			{/* {timetableLoading ? (
-				<div className="w-full h-48 grid place-items-center bg-white p-6 rounded-lg border-[1px] border-[#D9D9D9]">
-					<div className="w-fit h-fit flex space-x-3">
-						<Spinner />
-						<p className="text-lg font-semibold text-gray-900">Loading...</p>
-					</div>
-				</div>
-			) : timetableData && timetableData.length > 0 ? (
-				<ClassScheduleCalender classEvents={timetableData} />
-			) : (
-				<section className=" bg-white p-6 rounded-lg border-[1px] border-[#D9D9D9]">
-					<div className="w-full h-48 grid place-items-center">
-						<p className="text-lg font-semibold text-gray-900">
-							No Timetable Data
-						</p>
-					</div>
-				</section>
-			)} */}
 
 			{timetableData && timetableData.length > 0 ? (
 				<ClassScheduleCalender classEvents={timetableData} />

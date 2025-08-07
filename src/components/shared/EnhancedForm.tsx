@@ -19,6 +19,7 @@ import {
 	useForm,
 	FormProvider,
 	SubmitHandler,
+	UseFormReset,
 	useFormContext,
 	Controller,
 	type FieldValues,
@@ -78,13 +79,20 @@ interface SubmitButtonProps extends VariantProps<typeof buttonVariants> {
 	children?: ReactNode
 	isDisabled?: boolean
 	loading?: boolean
+	loadingText?: string
 	content?: string
 }
 
 type FormProps<T extends z.ZodTypeAny> = {
 	schema: T
 	fields?: FormField<z.infer<T>>[]
-	onSubmit: SubmitHandler<z.infer<T>>
+	onSubmit: (
+		data: z.infer<T>,
+		options?: { resetForm: UseFormReset<z.infer<T>> }
+	) => void
+	// onSubmit: SubmitHandler<z.infer<T>> & {
+	// 	resetForm?: UseFormReset<z.infer<T>>
+	// }
 	children?: ReactNode | ((methods: UseFormReturn<z.infer<T>>) => ReactNode)
 	defaultValues?: DefaultValues<z.infer<T>>
 	className?: string
@@ -269,7 +277,10 @@ export const EnhancedForm = {
 		return (
 			<FormProvider {...methods}>
 				<form
-					onSubmit={methods.handleSubmit(onSubmit)}
+					onSubmit={methods.handleSubmit((data) =>
+						onSubmit(data, { resetForm: methods.reset })
+					)}
+					// onSubmit={methods.handleSubmit(onSubmit)}
 					className={className}
 					style={style}
 				>
@@ -357,6 +368,7 @@ export const EnhancedForm = {
 		children,
 		className,
 		isDisabled,
+		loadingText,
 		loading,
 		content,
 		...props
@@ -369,7 +381,9 @@ export const EnhancedForm = {
 				type="submit"
 				{...props}
 			>
-				{formState.isLoading || loading ? "Loading..." : content || children}
+				{formState.isLoading || loading
+					? loadingText || "Loading..."
+					: content || children}
 			</Button>
 		)
 	},

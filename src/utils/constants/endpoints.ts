@@ -61,5 +61,6 @@ export const ENDPOINTS = {
 	student: studentEndpoints,
 	teacher: teacherEndpoints,
 	subscription: subscriptionEndpoints,
-	onDemand: onDemandEndpoints
+	onDemand: onDemandEndpoints,
+	contactUs: `${DLC_BASE_URL}/student/submit-contact`
 }

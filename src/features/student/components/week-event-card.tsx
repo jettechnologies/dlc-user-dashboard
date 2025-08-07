@@ -12,7 +12,7 @@ interface WeekEventCardProps {
 export function WeekEventCard({ event, style, onClick }: WeekEventCardProps) {
 	return (
 		<div
-			className="absolute left-1 right-1 rounded-md p-2 cursor-pointer hover:shadow-md transition-shadow border-l-8 text-xs h-max"
+			className={`absolute left-1 right-1 rounded-md ${style?.height === "60px" ? "p-2" : "py-0 px-2"} cursor-pointer hover:shadow-md transition-shadow border-l-8 text-xs h-max`}
 			style={{
 				backgroundColor: event.backgroundColor,
 				borderLeftColor: event.color,
@@ -22,14 +22,18 @@ export function WeekEventCard({ event, style, onClick }: WeekEventCardProps) {
 			onClick={() => onClick?.(event)}
 		>
 			<div className="font-semibold truncate">{event.subject}</div>
-			<div className="text-xs opacity-80 truncate">
+			{/* <div className="text-xs opacity-80 truncate">
 				{event.startTime} - {event.endTime}
 			</div>
 			{event.location && (
 				<div className="text-xs opacity-70 truncate">{event.location}</div>
-			)}
+			)} */}
 			{event.instructor && (
-				<div className="text-xs opacity-70 truncate">{event.instructor}</div>
+				<div
+					className={`${style?.height === "60px" ? "text-xs" : "text-[8px]"} opacity-70 truncate`}
+				>
+					{event.instructor}
+				</div>
 			)}
 		</div>
 	)
