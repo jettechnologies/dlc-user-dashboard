@@ -4,7 +4,6 @@ import { EnhancedForm } from "@/components/shared/EnhancedForm"
 import { teacherVerifyOtp } from "@/services/mutation"
 import { otpSchema, type OtpFormValues } from "@/utils/schemas"
 import { useRouter } from "next/navigation"
-import { type SubmitHandler } from "react-hook-form"
 import { toast } from "sonner"
 
 interface OtpFormProps {
@@ -13,33 +12,32 @@ interface OtpFormProps {
 
 export const OtpForm = ({ email }: OtpFormProps) => {
 	const router = useRouter()
-	const submit: SubmitHandler<OtpFormValues> = async (data: OtpFormValues) => {
-		try {
-			const verifyData = {
-				email,
-				otp: data.otp
-			}
-			const response = await teacherVerifyOtp(verifyData)
-			if (!response.success) {
-				toast.error(response.message)
-			}
-
-			setTimeout(() => {
-				toast.success(response.message)
-				router.push("/signup?ui=email-verifed")
-			}, 600)
-		} catch (e) {
-			const errorMessage =
-				e instanceof Error ? e.message : "An unexpected error occurred."
-			toast.error(errorMessage)
-		}
-	}
 
 	return (
 		<div>
 			<EnhancedForm.Root
 				schema={otpSchema}
-				onSubmit={submit}
+				onSubmit={async (data: OtpFormValues) => {
+					try {
+						const verifyData = {
+							email,
+							otp: data.otp
+						}
+						const response = await teacherVerifyOtp(verifyData)
+						if (!response.success) {
+							toast.error(response.message)
+						}
+
+						setTimeout(() => {
+							toast.success(response.message)
+							router.push("/signup?ui=email-verifed")
+						}, 600)
+					} catch (e) {
+						const errorMessage =
+							e instanceof Error ? e.message : "An unexpected error occurred."
+						toast.error(errorMessage)
+					}
+				}}
 				defaultValues={{ otp: "" }}
 				className="mt-14 flex w-fit flex-col gap-y-8 md:min-w-[350px]"
 			>

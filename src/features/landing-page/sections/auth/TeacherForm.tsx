@@ -6,16 +6,12 @@ import {
 	useTeacherSignupActions,
 	useTeacherSignupState
 } from "@/stores/teacher-signup-flow"
-import {
-	teacherPartialSignupSchema,
-	type TeacherPartialSignupValues
-} from "@/utils/schemas"
+import { teacherPartialSignupSchema } from "@/utils/schemas"
 import { TeacherRoles } from "@/utils/types"
 import { Check } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { SubmitHandler } from "react-hook-form"
 import { toast } from "sonner"
 
 export const TeacherForm = () => {
@@ -25,43 +21,41 @@ export const TeacherForm = () => {
 	const { teacherInfo } = useTeacherSignupState()
 	const router = useRouter()
 
-	const submit: SubmitHandler<TeacherPartialSignupValues> = async (data) => {
-		const { phoneNumber, password } = data
-		const newMobile = `234${phoneNumber.substring(1)}`
-
-		if (teacherInfo && teacherInfo.email && teacherInfo.fullName) {
-			const fullName = teacherInfo?.fullName
-			const email = teacherInfo?.email
-
-			const signupData = {
-				fullName,
-				phoneNumber: newMobile,
-				email,
-				password,
-				type: selectedRole
-			}
-
-			setTeacherInfo(signupData)
-			updateTeacherInfo(signupData)
-
-			setTimeout(() => {
-				router.push("/teacher-signup?ui=teacher-exams")
-			}, 300)
-
-			return
-		}
-
-		toast.warning("Email and fullname not filled")
-		setTimeout(() => {
-			router.push("/signup")
-		}, 300)
-	}
-
 	return (
 		<div>
 			<EnhancedForm.Root
 				schema={teacherPartialSignupSchema}
-				onSubmit={submit}
+				onSubmit={async (data) => {
+					const { phoneNumber, password } = data
+					const newMobile = `234${phoneNumber.substring(1)}`
+
+					if (teacherInfo && teacherInfo.email && teacherInfo.fullName) {
+						const fullName = teacherInfo?.fullName
+						const email = teacherInfo?.email
+
+						const signupData = {
+							fullName,
+							phoneNumber: newMobile,
+							email,
+							password,
+							type: selectedRole
+						}
+
+						setTeacherInfo(signupData)
+						updateTeacherInfo(signupData)
+
+						setTimeout(() => {
+							router.push("/teacher-signup?ui=teacher-exams")
+						}, 300)
+
+						return
+					}
+
+					toast.warning("Email and fullname not filled")
+					setTimeout(() => {
+						router.push("/signup")
+					}, 300)
+				}}
 				defaultValues={{
 					phoneNumber: "",
 					password: "",

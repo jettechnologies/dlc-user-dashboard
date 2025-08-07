@@ -1,10 +1,6 @@
 import { EnhancedForm } from "@/components/shared/EnhancedForm"
 import { teacherRequestOtp } from "@/services/mutation"
-import {
-	teacherVerifyMailSchema,
-	type TeacherVerifyMailFormValues
-} from "@/utils/schemas"
-import { SubmitHandler } from "react-hook-form"
+import { teacherVerifyMailSchema } from "@/utils/schemas"
 import { toast } from "sonner"
 
 interface VerifyEmailFormProps {
@@ -12,29 +8,28 @@ interface VerifyEmailFormProps {
 }
 
 export const VerifyEmailForm = ({ setOtp }: VerifyEmailFormProps) => {
-	const submit: SubmitHandler<TeacherVerifyMailFormValues> = async (data) => {
-		try {
-			const response = await teacherRequestOtp(data)
-			if (!response.success) {
-				toast.error(response.message)
-				return
-			}
-
-			setTimeout(() => {
-				toast.success(response.message)
-				setOtp(data.email, data.fullName)
-			}, 600)
-		} catch (e) {
-			const errorMessage =
-				e instanceof Error ? e.message : "An unexpected error occurred."
-			toast.error(errorMessage)
-		}
-	}
 	return (
 		<div>
 			<EnhancedForm.Root
 				schema={teacherVerifyMailSchema}
-				onSubmit={submit}
+				onSubmit={async (data) => {
+					try {
+						const response = await teacherRequestOtp(data)
+						if (!response.success) {
+							toast.error(response.message)
+							return
+						}
+
+						setTimeout(() => {
+							toast.success(response.message)
+							setOtp(data.email, data.fullName)
+						}, 600)
+					} catch (e) {
+						const errorMessage =
+							e instanceof Error ? e.message : "An unexpected error occurred."
+						toast.error(errorMessage)
+					}
+				}}
 				defaultValues={{
 					email: "",
 					fullName: ""

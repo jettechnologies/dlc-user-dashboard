@@ -11,9 +11,8 @@ import {
 	useTeacherSignupActions,
 	useTeacherSignupState
 } from "@/stores/teacher-signup-flow"
-import { CredentialsSchema, type CredentialsFormValues } from "@/utils/schemas"
+import { CredentialsSchema } from "@/utils/schemas"
 import { useRouter } from "next/navigation"
-import { type SubmitHandler } from "react-hook-form"
 import { toast } from "sonner"
 
 export const CredentialForm = () => {
@@ -22,63 +21,6 @@ export const CredentialForm = () => {
 	const { setAccessToken } = useAuthActions()
 
 	const router = useRouter()
-
-	const handleFormSubmit: SubmitHandler<CredentialsFormValues> = async (
-		data
-	) => {
-		try {
-			if (teacherInfo && teacherInfo.email && teacherInfo.fullName && level) {
-				const credentials = [
-					{
-						file_0: data.bed_certificate,
-						name_1: "bed_certificate"
-					},
-					{
-						file_1: data.trcn_certificate,
-						name_2: "trcn_certificate"
-					},
-					{
-						file_2: data.cv,
-						name_3: "CV"
-					},
-					...(data.other_certifications
-						? data.other_certifications.map((file, index) => ({
-								[`file_${index + 3}`]: file,
-								[`name_${index + 4}`]: file.name.split(".")[0]
-							}))
-						: [])
-				]
-
-				const teacherCredentials = credentials as CredentialItem[]
-
-				const signupData = {
-					...teacherInfo,
-					level,
-					credentials: teacherCredentials
-				}
-
-				const response = await teacherSignup(signupData)
-				if (!response.success) {
-					throw new Error(response.message)
-				}
-
-				setTimeout(() => {
-					const token = response.data?.token ?? ""
-					const role = response.data?.teacherDetails.role ?? ""
-					if (token && role) {
-						setAccessToken(token, role)
-						toast.success(response.message)
-						router.push("/teacher")
-						resetSignupState()
-					}
-				}, 600)
-			}
-		} catch (e) {
-			const errorMessage =
-				e instanceof Error ? e.message : "An unexpected error occurred."
-			toast.error(errorMessage)
-		}
-	}
 
 	return (
 		<section className="w-[80%] space-y-6">
@@ -92,7 +34,65 @@ export const CredentialForm = () => {
 			<section className="w-full py-8 px-4 bg-white mx-auto min-h-[400px]">
 				<EnhancedForm.Root
 					schema={CredentialsSchema}
-					onSubmit={handleFormSubmit}
+					onSubmit={async (data) => {
+						try {
+							if (
+								teacherInfo &&
+								teacherInfo.email &&
+								teacherInfo.fullName &&
+								level
+							) {
+								const credentials = [
+									{
+										file_0: data.bed_certificate,
+										name_1: "bed_certificate"
+									},
+									{
+										file_1: data.trcn_certificate,
+										name_2: "trcn_certificate"
+									},
+									{
+										file_2: data.cv,
+										name_3: "CV"
+									},
+									...(data.other_certifications
+										? data.other_certifications.map((file, index) => ({
+												[`file_${index + 3}`]: file,
+												[`name_${index + 4}`]: file.name.split(".")[0]
+											}))
+										: [])
+								]
+
+								const teacherCredentials = credentials as CredentialItem[]
+
+								const signupData = {
+									...teacherInfo,
+									level,
+									credentials: teacherCredentials
+								}
+
+								const response = await teacherSignup(signupData)
+								if (!response.success) {
+									throw new Error(response.message)
+								}
+
+								setTimeout(() => {
+									const token = response.data?.token ?? ""
+									const role = response.data?.teacherDetails.role ?? ""
+									if (token && role) {
+										setAccessToken(token, role)
+										toast.success(response.message)
+										router.push("/teacher")
+										resetSignupState()
+									}
+								}, 600)
+							}
+						} catch (e) {
+							const errorMessage =
+								e instanceof Error ? e.message : "An unexpected error occurred."
+							toast.error(errorMessage)
+						}
+					}}
 				>
 					{(methods) => {
 						return (

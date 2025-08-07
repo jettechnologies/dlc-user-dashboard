@@ -6,55 +6,53 @@ import { EnhancedForm } from "@/components/shared/EnhancedForm"
 import CustomSelect from "@/components/shared/form/Select"
 import { studentSignup } from "@/services/mutation"
 import { useAuthActions } from "@/stores"
-import { signupSchema, type SignupFormValues } from "@/utils/schemas"
+import { signupSchema } from "@/utils/schemas"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { SubmitHandler } from "react-hook-form"
 import { toast } from "sonner"
 
 export const StudentForm = ({ examOptions }: SignupProps) => {
 	const { setAccessToken } = useAuthActions()
 	const router = useRouter()
-	const submit: SubmitHandler<SignupFormValues> = async (data) => {
-		try {
-			const { fullName, mobile, email, password, exam } = data
-
-			const newMobile = `234${mobile.substring(1)}`
-
-			const signupData = {
-				fullName,
-				phoneNumber: newMobile,
-				email,
-				password,
-				exam
-			}
-
-			const response = await studentSignup(signupData)
-			if (!response.success) {
-				throw new Error(response.message)
-			}
-
-			setTimeout(() => {
-				const token = response.data?.token ?? ""
-				const role = response.data?.studentDetails.role ?? ""
-				if (token && role) {
-					setAccessToken(token, role)
-					toast.success(response.message)
-					router.push("/student")
-				}
-			}, 600)
-		} catch (e) {
-			const errorMessage =
-				e instanceof Error ? e.message : "An unexpected error occurred."
-			toast.error(errorMessage)
-		}
-	}
 
 	return (
 		<div>
 			<EnhancedForm.Root
 				schema={signupSchema}
-				onSubmit={submit}
+				onSubmit={async (data) => {
+					try {
+						const { fullName, mobile, email, password, exam } = data
+
+						const newMobile = `234${mobile.substring(1)}`
+
+						const signupData = {
+							fullName,
+							phoneNumber: newMobile,
+							email,
+							password,
+							exam
+						}
+
+						const response = await studentSignup(signupData)
+						if (!response.success) {
+							throw new Error(response.message)
+						}
+
+						setTimeout(() => {
+							const token = response.data?.token ?? ""
+							const role = response.data?.studentDetails.role ?? ""
+							if (token && role) {
+								setAccessToken(token, role)
+								toast.success(response.message)
+								router.push("/student")
+							}
+						}, 600)
+					} catch (e) {
+						const errorMessage =
+							e instanceof Error ? e.message : "An unexpected error occurred."
+						toast.error(errorMessage)
+					}
+				}}
 				defaultValues={{
 					fullName: "",
 					mobile: "",
