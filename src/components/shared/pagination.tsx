@@ -26,7 +26,7 @@ export const Pagination = ({
 	}
 
 	const getPaginationGroup = () => {
-		let start = Math.floor((currentPage - 1) / 5) * 5
+		const start = Math.floor((currentPage - 1) / 5) * 5
 		return new Array(5)
 			.fill(0)
 			.map((_, idx) => start + idx + 1)

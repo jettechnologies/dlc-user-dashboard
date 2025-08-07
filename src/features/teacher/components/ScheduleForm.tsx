@@ -8,15 +8,11 @@ import { Button } from "@/components/ui"
 import { useCreateLecture } from "@/services/mutation/useQuery-mutation"
 import { getTeacherExamsQueryOptions } from "@/services/query"
 import { createExamIdOptions } from "@/utils/constants"
-import {
-	ScheduleClassValues,
-	ScheduleClassSchema
-} from "@/utils/schemas/schedule-class"
+import { ScheduleClassSchema } from "@/utils/schemas/schedule-class"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { format } from "date-fns"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { type SubmitHandler } from "react-hook-form"
 import { toast } from "sonner"
 
 export const ScheduleForm = () => {
@@ -29,41 +25,6 @@ export const ScheduleForm = () => {
 	)
 
 	const examOptions = createExamIdOptions(exams.data ?? [])
-
-	// const handleFormSubmit: SubmitHandler<ScheduleClassValues> = async (data) => {
-	// 	try {
-	// 		const {
-	// 			examId,
-	// 			course,
-	// 			topic,
-	// 			date,
-	// 			time,
-	// 			duration,
-	// 			max_students,
-	// 			description
-	// 		} = data
-
-	// 		const dateString = format(date, "yyyy-MM-dd")
-
-	// 		const newData = {
-	// 			examId,
-	// 			subject: course,
-	// 			topic,
-	// 			description,
-	// 			date: dateString,
-	// 			time,
-	// 			duration: parseInt(duration, 10),
-	// 			maxStudents: parseInt(max_students, 10)
-	// 		}
-
-	// 		await createLecture(newData)
-	// 		router.push("/teacher/my-classes")
-	// 	} catch (e) {
-	// 		const errorMessage =
-	// 			e instanceof Error ? e.message : "An unexpected error occurred."
-	// 		toast.error(errorMessage)
-	// 	}
-	// }
 
 	if (exams.data === null && isError) return <div>Something went wrong</div>
 
