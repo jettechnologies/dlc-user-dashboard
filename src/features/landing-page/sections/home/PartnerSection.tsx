@@ -38,10 +38,10 @@ export const PartnersSection = () => {
 						</PartnerCarousel>
 					</div>
 				</div>
-				<p className="text-center text-lg font-medium text-black lg:text-2xl">
+				{/* <p className="text-center text-lg font-medium text-black lg:text-2xl">
 					Trusted by <span className="text-dlc-blue-200 font-bold">100+</span>{" "}
 					Top Companies
-				</p>
+				</p> */}
 			</div>
 		</section>
 	)

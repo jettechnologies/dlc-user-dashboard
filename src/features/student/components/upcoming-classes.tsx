@@ -92,7 +92,12 @@ export function UpcomingClasses() {
 			</div>
 
 			<div className="relative overflow-hidden w-full max-w-[1024px]">
-				<Carousel isAutoPlay autoPlayInterval={3000} options={carouselSettings}>
+				<Carousel
+					isAutoPlay
+					hasNavigationButtons={true}
+					autoPlayInterval={3000}
+					options={carouselSettings}
+				>
 					{classesData?.map((classItem) => (
 						<ClassCard
 							key={classItem.id}

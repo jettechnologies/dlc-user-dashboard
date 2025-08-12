@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 
 export const HeroSection = () => {
@@ -33,7 +32,7 @@ export const HeroSection = () => {
 						get started
 					</Link>
 					{/* Download Buttons */}
-					<div className="z-20 flex w-fit gap-x-4 max-[768px]:mx-auto max-sm:hidden">
+					{/* <div className="z-20 flex w-fit gap-x-4 max-[768px]:mx-auto max-sm:hidden">
 						{[
 							{
 								src: "/images/google-play-icon.png",
@@ -65,7 +64,7 @@ export const HeroSection = () => {
 								</div>
 							</button>
 						))}
-					</div>
+					</div> */}
 				</div>
 				<div
 					className="md:hidden w-full h-[445px] bg-cover flex items-end mt-4"
@@ -75,7 +74,7 @@ export const HeroSection = () => {
 						backgroundPosition: "80% 100%"
 					}}
 				>
-					<div className="z-20 flex w-fit gap-x-4 max-[768px]:mx-auto">
+					{/* <div className="z-20 flex w-fit gap-x-4 max-[768px]:mx-auto">
 						{[
 							{
 								src: "/images/google-play-icon.png",
@@ -107,7 +106,7 @@ export const HeroSection = () => {
 								</div>
 							</button>
 						))}
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</section>

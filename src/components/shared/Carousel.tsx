@@ -13,6 +13,7 @@ type PropType = {
 	autoPlayInterval?: number
 	options?: EmblaOptionsType
 	className?: string
+	hasNavigationButtons?: boolean
 }
 
 export const Carousel: React.FC<PropType> = ({
@@ -20,6 +21,7 @@ export const Carousel: React.FC<PropType> = ({
 	isAutoPlay = false,
 	autoPlayInterval = 3000,
 	options,
+	hasNavigationButtons = false,
 	className
 }) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel(options, [
@@ -65,39 +67,45 @@ export const Carousel: React.FC<PropType> = ({
 			</div>
 
 			{/* Buttons for larger screens */}
-			<div className="hidden md:flex absolute top-1/2 left-0 -translate-y-1/2">
-				<button
-					onClick={scrollPrev}
-					className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
-				>
-					<ChevronLeft className="w-5 h-5" />
-				</button>
-			</div>
+			{!hasNavigationButtons ? null : (
+				<>
+					<div className="hidden md:flex absolute top-1/2 left-0 -translate-y-1/2">
+						<button
+							onClick={scrollPrev}
+							className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
+						>
+							<ChevronLeft className="w-5 h-5" />
+						</button>
+					</div>
 
-			<div className="hidden md:flex absolute top-1/2 right-0 -translate-y-1/2">
-				<button
-					onClick={scrollNext}
-					className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
-				>
-					<ChevronRight className="w-5 h-5" />
-				</button>
-			</div>
+					<div className="hidden md:flex absolute top-1/2 right-0 -translate-y-1/2">
+						<button
+							onClick={scrollNext}
+							className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
+						>
+							<ChevronRight className="w-5 h-5" />
+						</button>
+					</div>
+				</>
+			)}
 
 			{/* Buttons below for small screens */}
-			<div className="flex md:hidden justify-center gap-24 mt-2">
-				<button
-					onClick={scrollPrev}
-					className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
-				>
-					<ChevronLeft className="w-5 h-5" />
-				</button>
-				<button
-					onClick={scrollNext}
-					className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
-				>
-					<ChevronRight className="w-5 h-5" />
-				</button>
-			</div>
+			{!hasNavigationButtons ? null : (
+				<div className="flex md:hidden justify-center gap-24 mt-2">
+					<button
+						onClick={scrollPrev}
+						className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
+					>
+						<ChevronLeft className="w-5 h-5" />
+					</button>
+					<button
+						onClick={scrollNext}
+						className="bg-white/80 hover:bg-white rounded-full p-2 shadow-md"
+					>
+						<ChevronRight className="w-5 h-5" />
+					</button>
+				</div>
+			)}
 		</div>
 	)
 }
