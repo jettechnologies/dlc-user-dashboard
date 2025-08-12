@@ -69,7 +69,7 @@ export const ScheduleForm = () => {
 			{(methods) => {
 				return (
 					<div className="flex flex-col gap-y-5">
-						<div className="w-[80%]">
+						<div className="w-full lg:w-[80%]">
 							<EnhancedForm.Field
 								name="examId"
 								control={methods.control}
@@ -91,7 +91,7 @@ export const ScheduleForm = () => {
 							/>
 						</div>
 
-						<div className="w-[80%] flex gap-x-4 ">
+						<div className="w-full lg:w-[80%] flex flex-col md:flex-row gap-4 ">
 							<EnhancedForm.Field
 								name="course"
 								control={methods.control}
@@ -121,7 +121,7 @@ export const ScheduleForm = () => {
 								/>
 							</EnhancedForm.Field>
 						</div>
-						<div className="w-[80%] flex gap-x-4">
+						<div className="w-full lg:w-[80%] flex gap-x-4">
 							<EnhancedForm.Field
 								name="description"
 								control={methods.control}
@@ -137,7 +137,7 @@ export const ScheduleForm = () => {
 								/>
 							</EnhancedForm.Field>
 						</div>
-						<div className="w-[80%] flex gap-x-4">
+						<div className="w-full lg:w-[80%] flex flex-col md:flex-row gap-4">
 							<DatePickerField
 								name="date"
 								control={methods.control}
@@ -162,7 +162,7 @@ export const ScheduleForm = () => {
 								/>
 							</EnhancedForm.Field>
 						</div>
-						<div className="w-[80%] flex gap-x-4">
+						<div className="w-full lg:w-[80%] flex flex-col md:flex-row gap-4">
 							<EnhancedForm.Field
 								name="duration"
 								control={methods.control}
@@ -192,7 +192,7 @@ export const ScheduleForm = () => {
 								/>
 							</EnhancedForm.Field>
 						</div>
-						{/* <div className="w-[80%]">
+						{/* <div className="w-full lg:w-[80%]">
 							<FileUploadZone
 								name="resources"
 								control={methods.control}
@@ -224,7 +224,7 @@ export const ScheduleForm = () => {
 								}}
 							/>
 						</div> */}
-						<div className="w-[80%] flex gap-x-10 px-12">
+						<div className="w-full lg:w-[80%] flex gap-x-10 px-12">
 							<EnhancedForm.Submit
 								loading={isPending}
 								className="w-[144px] h-[44px] rounded-[6px] bg-dlc-blue hover:bg-dlc-blue"

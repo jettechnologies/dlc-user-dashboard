@@ -29,14 +29,14 @@ export const teacherSideNavItems: NavItem[] = [
 		label: "My Classes",
 		path: "/teacher/my-classes",
 		icon: Presentation
-	},
-	{
-		id: 4,
-		label: "Progress Analysis",
-		path: "/teacher/progress-analysis",
-		icon: ChartNoAxesCombined,
-		upcoming: true
 	}
+	// {
+	// 	id: 4,
+	// 	label: "Progress Analysis",
+	// 	path: "/teacher/progress-analysis",
+	// 	icon: ChartNoAxesCombined,
+	// 	upcoming: true
+	// }
 	// {
 	// 	id: 5,
 	// 	label: "Live Sessions",

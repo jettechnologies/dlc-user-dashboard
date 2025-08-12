@@ -12,6 +12,16 @@ export interface SubscriptionPlan {
 	validity: number
 }
 
+export const getInitials = (fullName: string): string | null => {
+	if (!fullName.trim()) return null
+	const words = fullName.split(" ")
+	const initials = words
+		.map((word) => word[0]?.toUpperCase())
+		.slice(0, 2)
+		.join("")
+	return initials || null
+}
+
 export const transformPlans = (originalPlans: SubscriptionPlan[]) => {
 	// Map validity days to duration labels
 	const getDuration = (validityDays: number) => {

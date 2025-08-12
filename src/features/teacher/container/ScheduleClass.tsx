@@ -15,7 +15,7 @@ export const ScheduleClass = () => {
 					<h4 className="text-2xl font-poppins text-black font-semibold">
 						Enter Class details
 					</h4>
-					<div className="w-full mt-10">
+					<div className="w-full mt-10 ">
 						<ScheduleForm />
 					</div>
 				</div>

@@ -60,7 +60,7 @@ export function UpcomingClasses() {
 
 	return (
 		<div className="space-y-4">
-			<div className="flex items-center justify-between">
+			<div className="flex flex-col md:flex-row lg:items-center lg:justify-between gap-y-4">
 				<div>
 					<h2 className="text-xl font-bold text-gray-900">Upcoming Classes</h2>
 					<p className="text-sm text-gray-600">

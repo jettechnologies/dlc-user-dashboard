@@ -3,8 +3,10 @@
 import { SideNav } from "@/components/shared"
 import { Header } from "@/components/shared/Header"
 import { studentSideNavItems } from "@/data"
+import { LogoutModal } from "@/layout/modal"
 import { getUserProfileQueryOptions } from "@/services/query"
 import { useAuthActions } from "@/stores"
+import { useLogoutModal } from "@/stores/logout-modal"
 import { StudentProfile } from "@/types/response-type"
 import { useSuspenseQuery } from "@tanstack/react-query"
 
@@ -23,23 +25,26 @@ export default function StudentLayout({
 	const profile = data.data as StudentProfile
 
 	setUserProfile(profile)
+	const { isOpen, close } = useLogoutModal()
+
+	console.log(isOpen, "logout modal is open")
 
 	return (
 		<div className="grid min-h-[100dvh] max-w-[100dvw] grid-cols-1 gap-y-10 bg-dlc-brand-yellow tracking-wide text-slate-900 sm:grid-rows-[auto_1fr] md:grid md:grid-cols-[auto_1fr]">
 			<div className="sticky top-0 z-50 w-full backdrop-blur-md backdrop-filter md:col-span-1 md:row-start-1">
 				<div className="bg-white/80 px-6 h-fit">
-					<Header userProfile={profile} />
+					<Header userProfile={profile} navItems={studentSideNavItems} />
 				</div>
 			</div>
 
 			<div className="sticky top-0 hidden h-[100dvh] w-[305px] overflow-auto bg-white scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-400 lg:col-start-1 lg:col-end-2 lg:row-span-full lg:block">
-				{/* <SideNav /> */}
 				<SideNav navItems={studentSideNavItems} />
 			</div>
 
-			<div className="z-20 min-h-screen w-full p-0 md:col-start-2 md:col-end-3 md:row-start-2 px-6">
+			<div className="z-20 min-h-screen w-full p-0 md:col-start-2 md:col-end-3 md:row-start-2 px-6 max-w-[1360px] border-2 border-black">
 				{children}
 			</div>
+			<LogoutModal open={isOpen} onOpenChange={close} />
 		</div>
 	)
 }

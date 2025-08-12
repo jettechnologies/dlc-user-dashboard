@@ -2,8 +2,10 @@
 
 import { Header, SideNav } from "@/components/shared"
 import { teacherSideNavItems } from "@/data"
+import { LogoutModal } from "@/layout/modal"
 import { getUserProfileQueryOptions } from "@/services/query"
 import { useAuthActions } from "@/stores"
+import { useLogoutModal } from "@/stores/logout-modal"
 import { TeacherProfile } from "@/types/response-type"
 import { useSuspenseQuery } from "@tanstack/react-query"
 
@@ -13,6 +15,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	const { data, isError } = useSuspenseQuery(
 		getUserProfileQueryOptions("teacher")
 	)
+
+	const { isOpen, close } = useLogoutModal()
 
 	const { setUserProfile } = useAuthActions()
 	if (isError || !data) return null
@@ -24,7 +28,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 		<div className="grid min-h-[100dvh] max-w-[100dvw] grid-cols-1 gap-y-10 bg-dlc-brand-yellow tracking-wide text-slate-900 sm:grid-rows-[auto_1fr] md:grid md:grid-cols-[auto_1fr]">
 			<div className="sticky top-0 z-50 w-full backdrop-blur-md backdrop-filter md:col-span-1 md:row-start-1">
 				<div className="bg-white/80 px-6 h-fit">
-					<Header userProfile={profile} />
+					<Header userProfile={profile} navItems={teacherSideNavItems} />
 				</div>
 			</div>
 
@@ -35,6 +39,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			<div className="z-20 min-h-screen w-full p-0 md:col-start-2 md:col-end-3 md:row-start-2 px-6">
 				{children}
 			</div>
+
+			<LogoutModal open={isOpen} onOpenChange={close} />
 		</div>
 	)
 }

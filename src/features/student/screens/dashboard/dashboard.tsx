@@ -31,9 +31,7 @@ export const DashboardScreen = ({
 					attendedClasses: data.data.totalAttended,
 					enrolledClasses: data.data.totalTimetable
 				},
-				// upcomingClasses: data.data.upcomingLectures.map((lecture) =>
-				// 	studentTransformClassesToCardData(lecture)
-				// ),
+
 				upcomingClasses: data.data.upcomingLectures,
 				recentEnrolledClasses: data.data.recentTimetableEntries.map(
 					(lecture) => ({
@@ -62,7 +60,7 @@ export const DashboardScreen = ({
 	}, [router, paymentStatus])
 
 	return (
-		<main className="min-h-screen p-6">
+		<main className="min-h-screen md:p-6">
 			<div className="space-y-6">
 				<DashboardHeader />
 				<StatsGrid userStats={dashboardData.userStats} />
