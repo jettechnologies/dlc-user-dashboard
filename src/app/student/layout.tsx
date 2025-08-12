@@ -39,7 +39,7 @@ export default function StudentLayout({
 				<SideNav navItems={studentSideNavItems} />
 			</div>
 
-			<div className="z-20 min-h-screen w-full p-0 md:col-start-2 md:col-end-3 md:row-start-2 px-6 max-w-[1360px] border-2 border-black">
+			<div className="z-20 min-h-screen w-full p-0 md:col-start-2 md:col-end-3 md:row-start-2 px-6 max-w-[1360px]">
 				{children}
 			</div>
 			<LogoutModal open={isOpen} onOpenChange={close} />

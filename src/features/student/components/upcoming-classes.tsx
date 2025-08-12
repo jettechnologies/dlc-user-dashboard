@@ -112,23 +112,6 @@ export function UpcomingClasses() {
 					))}
 				</Carousel>
 			</div>
-
-			{/* <div className="relative border-2 ">
-				<div className="flex gap-4 overflow-x-auto pb-4 ">
-					{classesData?.map((classItem) => (
-						<ClassCard
-							key={classItem.id}
-							{...classItem}
-							handleClick={(id) =>
-								classItem.status === "Ongoing"
-									? handleJoinLecture(id)
-									: handleAddToTimetable(id)
-							}
-							isLoading={isPending}
-						/>
-					))}
-				</div>
-			</div> */}
 		</div>
 	)
 }

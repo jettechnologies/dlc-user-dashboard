@@ -13,7 +13,9 @@ export function CalendarHeader({
 
 	return (
 		<div className="flex justify-between items-center mb-8">
-			<h1 className="text-2xl font-bold text-gray-900">Class Schedule</h1>
+			<h3 className="text-xl lg:text-2xl font-bold text-gray-900">
+				Class Schedule
+			</h3>
 			<div className="flex gap-6">
 				{views.map((view) => (
 					<button

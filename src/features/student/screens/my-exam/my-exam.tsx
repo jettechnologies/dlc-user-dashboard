@@ -39,7 +39,7 @@ export const MyExam = () => {
 
 	return (
 		<>
-			<div className="p-6">
+			<div className="lg:p-6 pb-6">
 				{/* Header */}
 				<PageHeaderText>Your Exam</PageHeaderText>
 

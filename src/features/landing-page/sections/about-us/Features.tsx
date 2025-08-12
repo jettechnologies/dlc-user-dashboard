@@ -5,7 +5,7 @@ import { aboutFeatures } from "../../data"
 export const Features = () => {
 	return (
 		<section className="min-h-screen w-full">
-			<div className="grid h-[40dvh] w-full place-items-center border-2 border-black bg-[url('/images/about-features-banner.png')] bg-cover bg-center bg-no-repeat">
+			<div className="grid h-[40dvh] w-full place-items-center  bg-[url('/images/about-features-banner.png')] bg-cover bg-center bg-no-repeat">
 				<h3 className="text-center text-3xl font-bold uppercase text-white xl:text-5xl">
 					WHAT WE DO
 				</h3>

@@ -70,7 +70,7 @@ const getMobileNavLinks = (
 		userRole && authToken
 			? [
 					{
-						link: `/dashboard/${userRole.toLowerCase()}`,
+						link: `/${userRole.toLowerCase()}`,
 						label: "Dashboard",
 						icon: "/icons/dashboard-icon.png"
 					}

@@ -6,6 +6,7 @@ import { NavItem } from "./Sidenav"
 import { CustomAvatar } from "./custom-avatar"
 import { MobileSidebar } from "./mobile-sidebar"
 import type { TeacherProfile, StudentProfile } from "@/types/response-type"
+import Image from "next/image"
 import React from "react"
 
 interface HeaderProps {
@@ -15,7 +16,15 @@ interface HeaderProps {
 
 export function Header({ userProfile, navItems }: HeaderProps) {
 	return (
-		<div className="w-full bg-white h-[81px] flex items-center justify-end">
+		<div className="w-full bg-white h-[81px] flex items-center justify-between lg:justify-end">
+			<div className="md:hidden">
+				<Image
+					src="/images/dlc-logo-sm.png"
+					alt="dlc logo"
+					width={54}
+					height={36}
+				/>
+			</div>
 			<div className="flex items-center gap-5">
 				{/* <NotificationDialog /> */}
 				<div className="items-center gap-x-4 hidden md:flex">

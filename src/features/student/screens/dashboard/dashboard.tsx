@@ -60,7 +60,7 @@ export const DashboardScreen = ({
 	}, [router, paymentStatus])
 
 	return (
-		<main className="min-h-screen md:p-6">
+		<main className="min-h-screen pb-6 lg:p-6">
 			<div className="space-y-6">
 				<DashboardHeader />
 				<StatsGrid userStats={dashboardData.userStats} />

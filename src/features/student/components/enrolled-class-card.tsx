@@ -1,4 +1,4 @@
-import { StarRating } from "@/components/shared"
+// import { StarRating } from "@/components/shared"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -59,9 +59,9 @@ export function EnrolledClassCard({
 						</div>
 						{/* Rating and Avatars */}
 						<div className="flex items-center gap-[52px]">
-							<div className="flex items-center gap-1">
+							{/* <div className="flex items-center gap-1">
 								<StarRating value={4} showValue size="sm" />
-							</div>
+							</div> */}
 
 							{/* Avatar Group */}
 							<div className="flex -space-x-2">

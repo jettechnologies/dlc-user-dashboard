@@ -25,8 +25,6 @@ const tabs = ["Ongoing", "Upcoming", "Past Classes"]
 export const MyClasses = () => {
 	const [activeTab, setActiveTab] = useState(tabs[0])
 
-	console.log(activeTab, "active tab")
-
 	const {
 		data,
 		isError: classesError,

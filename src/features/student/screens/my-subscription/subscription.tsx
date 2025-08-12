@@ -99,7 +99,7 @@ export const Subscription = () => {
 
 	return (
 		<>
-			<div className="p-6">
+			<div className="pb-6 lg:p-6">
 				<PageHeaderText>Subscription Plan</PageHeaderText>
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 					{subscriptionPlans.map((plan) => (
