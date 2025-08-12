@@ -231,6 +231,40 @@ export const teacherRequestOtp = async (
 	}
 }
 
+export const teacherResendOtp = async (params: {
+	email: string
+}): Promise<ResponseSingleType<{} | null>> => {
+	const { teacherResendOtp } = authEndpoints
+
+	try {
+		const response = await fetch(teacherResendOtp, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(params)
+		})
+
+		const data: ResponseSingleType<{}> = await response.json()
+
+		if (!response.ok) {
+			const errorMessage =
+				data?.message ?? `Request failed with status ${response.status}`
+			throw new Error(errorMessage)
+		}
+
+		return data
+	} catch (error: any) {
+		const errorMessage =
+			error instanceof Error ? error.message : "An unexpected error occurred."
+		return {
+			success: false,
+			message: errorMessage,
+			data: null
+		}
+	}
+}
+
 export const teacherVerifyOtp = async (
 	params: VerifyOTPParams
 ): Promise<ResponseSingleType<{} | null>> => {
@@ -309,6 +343,117 @@ export const userSignin = async (
 		const errorMessage =
 			error instanceof Error ? error.message : "An unexpected error occurred."
 
+		return {
+			success: false,
+			message: errorMessage,
+			data: null
+		}
+	}
+}
+
+// for forget password flow
+export const studentForgetPassword = async (params: {
+	email: string
+}): Promise<ResponseSingleType<{} | null>> => {
+	const { forgetPassword } = authEndpoints
+
+	try {
+		const response = await fetch(forgetPassword, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(params)
+		})
+
+		const data: ResponseSingleType<{}> = await response.json()
+
+		if (!response.ok) {
+			const errorMessage =
+				data?.message ?? `Request failed with status ${response.status}`
+			throw new Error(errorMessage)
+		}
+
+		return data
+	} catch (error: any) {
+		const errorMessage =
+			error instanceof Error ? error.message : "An unexpected error occurred."
+		return {
+			success: false,
+			message: errorMessage,
+			data: null
+		}
+	}
+}
+
+export const studentVerifyOtp = async (params: {
+	email: string
+	otp: string
+}): Promise<
+	ResponseSingleType<{
+		verified: true
+	} | null>
+> => {
+	const { forgetPasswordVerifyOtp } = authEndpoints
+
+	try {
+		const response = await fetch(forgetPasswordVerifyOtp, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(params)
+		})
+
+		const data: ResponseSingleType<{
+			verified: true
+		}> = await response.json()
+
+		if (!response.ok) {
+			const errorMessage =
+				data?.message ?? `Request failed with status ${response.status}`
+			throw new Error(errorMessage)
+		}
+
+		return data
+	} catch (error: any) {
+		const errorMessage =
+			error instanceof Error ? error.message : "An unexpected error occurred."
+		return {
+			success: false,
+			message: errorMessage,
+			data: null
+		}
+	}
+}
+
+export const studentResetPassword = async (params: {
+	email: string
+	newPassword: string
+}): Promise<ResponseSingleType<{} | null>> => {
+	const { resetPassword } = authEndpoints
+
+	try {
+		const response = await fetch(resetPassword, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(params)
+		})
+
+		const data: ResponseSingleType<{}> = await response.json()
+
+		if (!response.ok) {
+			const errorMessage =
+				data?.message ?? `Request failed with status ${response.status}`
+			throw new Error(errorMessage)
+		}
+
+		return data
+	} catch (error: any) {
+		const errorMessage =
+			error instanceof Error ? error.message : "An unexpected error occurred."
 		return {
 			success: false,
 			message: errorMessage,

@@ -5,7 +5,6 @@ import { createExamOptions } from "@/utils/constants"
 
 const Page = async () => {
 	const exams = await fetchAllExams()
-	console.log(exams, "exams")
 	if (!exams.success && exams.data === null)
 		return <div>Something went wrong</div>
 

@@ -1,3 +1,5 @@
+import { verify } from "crypto"
+
 const DLC_BASE_URL = `${process.env.NEXT_PUBLIC_DLC_LIVE_URL}/api`
 
 const authEndpoints = {
@@ -6,9 +8,13 @@ const authEndpoints = {
 	studentRequestOtp: `${DLC_BASE_URL}/student/request-otp`,
 	studentVerifyOtp: `${DLC_BASE_URL}/student/verify-otp`,
 	getStudentProfile: `${DLC_BASE_URL}/student/me`,
+	forgetPassword: `${DLC_BASE_URL}/student/forgot-password`,
+	forgetPasswordVerifyOtp: `${DLC_BASE_URL}/student/verify-reset-otp`,
+	resetPassword: `${DLC_BASE_URL}/student/reset-password`,
 	teacherSignup: `${DLC_BASE_URL}/teacher/register`,
 	teacherLogin: `${DLC_BASE_URL}/teacher/login`,
 	teacherRequestOtp: `${DLC_BASE_URL}/teacher/request-otp`,
+	teacherResendOtp: `${DLC_BASE_URL}/teacher/resend-verify-otp`,
 	teacherVerifyOtp: `${DLC_BASE_URL}/teacher/verify-otp`,
 	getTeacherProfile: `${DLC_BASE_URL}/teacher/me`
 }

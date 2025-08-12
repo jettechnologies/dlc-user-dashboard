@@ -1,10 +1,14 @@
 "use client"
 
 import { EnhancedForm } from "@/components/shared/EnhancedForm"
+import { studentResetPassword } from "@/services/mutation"
 import { resetPasswordSchema } from "@/utils/schemas"
+import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
 export const ResetPasswordForm = () => {
+	const router = useRouter()
+
 	return (
 		<div className="grid min-h-[300px] w-full max-w-[554px] place-items-center rounded-lg bg-[#EDF7FE] py-12 shadow-md">
 			<div className="w-fit px-3">
@@ -13,9 +17,26 @@ export const ResetPasswordForm = () => {
 				</h3>
 				<EnhancedForm.Root
 					schema={resetPasswordSchema}
-					onSubmit={(values) => {
-						console.log(values)
-						toast.success("Login successful")
+					onSubmit={async (values, options) => {
+						try {
+							const data = {
+								email: localStorage.getItem("forget-password-email") ?? "",
+								newPassword: values.password
+							}
+
+							const response = await studentResetPassword(data)
+							if (!response.success) {
+								toast.error(response.message)
+								return
+							}
+							toast.success(response.message)
+							options?.resetForm()
+							router.push("/signin")
+						} catch (e) {
+							const errorMessage =
+								e instanceof Error ? e.message : "An unexpected error occurred."
+							toast.error(errorMessage)
+						}
 					}}
 					defaultValues={{ password: "", confirmPassword: "" }}
 				>

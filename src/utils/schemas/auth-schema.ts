@@ -105,18 +105,19 @@ export const signinSchema = z.object({
 export type SigninFormValues = z.infer<typeof signinSchema>
 
 export const forgetPasswordSchema = z.object({
-	resetField: z
-		.string()
-		.refine(
-			(value) =>
-				/^\d{11}$/.test(value) ||
-				/^SC\d{4}$/.test(value) ||
-				/^SCG\d{4}$/.test(value),
-			{
-				message:
-					"Enter a valid 11-digit phone number or a valid SSC ID (e.g., SC1234 or SCG1234)"
-			}
-		)
+	// resetField: z
+	// 	.string()
+	// 	.refine(
+	// 		(value) =>
+	// 			/^\d{11}$/.test(value) ||
+	// 			/^SC\d{4}$/.test(value) ||
+	// 			/^SCG\d{4}$/.test(value),
+	// 		{
+	// 			message:
+	// 				"Enter a valid 11-digit phone number or a valid SSC ID (e.g., SC1234 or SCG1234)"
+	// 		}
+	// 	)
+	resetField: z.string().email("Invalid email format")
 })
 
 export type ForgetPasswordFormValues = z.infer<typeof forgetPasswordSchema>
@@ -133,11 +134,12 @@ export const resetPasswordSchema = z
 
 export type ResetPasswordFormValues = z.infer<typeof resetPasswordSchema>
 
-export const otpSchema = z.object({
-	otp: z.string().length(6, "OTP must be exactly 6 digits")
-})
+export const otpSchema = (otpDigits: number) =>
+	z.object({
+		otp: z.string().length(otpDigits, `OTP must be exactly ${otpDigits} digits`)
+	})
 
-export type OtpFormValues = z.infer<typeof otpSchema>
+// export type OtpFormValues = z.infer<typeof otpSchema()>
 
 export const CredentialsSchema = z.object({
 	bed_certificate: DocumentFileSchema.nullable(),

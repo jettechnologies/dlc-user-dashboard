@@ -37,7 +37,7 @@ export const StudentForm = ({ examOptions }: SignupProps) => {
 						if (!response.success) {
 							throw new Error(response.message)
 						}
-
+						
 						setTimeout(() => {
 							const token = response.data?.token ?? ""
 							const role = response.data?.studentDetails.role ?? ""
