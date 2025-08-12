@@ -6,7 +6,7 @@ import {
 	Presentation,
 	// FolderOpenDot,
 	GalleryVerticalEnd,
-	ChartNoAxesCombined,
+	// ChartNoAxesCombined,
 	ReceiptText
 } from "lucide-react"
 

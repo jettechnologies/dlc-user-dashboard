@@ -18,6 +18,7 @@ export default function StudentLayout({
 	const { data, isError } = useSuspenseQuery(
 		getUserProfileQueryOptions("student")
 	)
+	const { isOpen, close } = useLogoutModal()
 
 	const { setUserProfile } = useAuthActions()
 	if (isError || !data) return null
@@ -25,9 +26,6 @@ export default function StudentLayout({
 	const profile = data.data as StudentProfile
 
 	setUserProfile(profile)
-	const { isOpen, close } = useLogoutModal()
-
-	console.log(isOpen, "logout modal is open")
 
 	return (
 		<div className="grid min-h-[100dvh] max-w-[100dvw] grid-cols-1 gap-y-10 bg-dlc-brand-yellow tracking-wide text-slate-900 sm:grid-rows-[auto_1fr] md:grid md:grid-cols-[auto_1fr]">

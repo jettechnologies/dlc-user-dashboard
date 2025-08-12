@@ -1,5 +1,3 @@
-import { verify } from "crypto"
-
 const DLC_BASE_URL = `${process.env.NEXT_PUBLIC_DLC_LIVE_URL}/api`
 
 const authEndpoints = {
