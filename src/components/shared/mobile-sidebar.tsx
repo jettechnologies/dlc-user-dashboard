@@ -49,14 +49,14 @@ export function MobileSidebar({ navItems, user }: MobileSidebarProps) {
 						<CustomAvatar
 							size="lg"
 							textColor="text-light-yellow"
-							name={user.fullName}
+							name={user?.fullName}
 						/>
 						<div className="flex flex-col gap-1 ml-3">
 							<h3 className="text-[18px] font-medium text-white font-poppins">
-								{user.fullName}
+								{user?.fullName}
 							</h3>
 							<p className="text-xs font-normal text-white font-poppins">
-								{user.role}
+								{user?.role}
 							</p>
 						</div>
 					</div>
