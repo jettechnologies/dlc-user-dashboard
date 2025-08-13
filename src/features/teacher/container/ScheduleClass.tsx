@@ -1,9 +1,11 @@
 import { ScheduleForm } from "../components"
 import { PageWrapper } from "../components/shared"
+import { BackButton } from "@/components/shared"
 
 export const ScheduleClass = () => {
 	return (
 		<PageWrapper>
+			<BackButton />
 			<div className="w-full font-poppins">
 				<h3 className="font-semibold text-2xl text-black">Schedule a Class</h3>
 				<p className="font-normal text-xs text-black ">

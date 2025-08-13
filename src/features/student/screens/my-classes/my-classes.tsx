@@ -136,7 +136,10 @@ export const MyClasses = () => {
 							)}
 						</TabsContent>
 
-						<TabsContent value="upcoming" className="mt-8">
+						<TabsContent
+							value="upcoming"
+							className="mt-8 border-2 border-red-500"
+						>
 							{classesLoading ? (
 								<div className="w-full h-48 flex items-center justify-center bg-white p-6 rounded-lg ">
 									<div className="flex items-center space-x-3">
@@ -149,7 +152,7 @@ export const MyClasses = () => {
 							) : data?.upcomingLectures &&
 							  data?.upcomingLectures.length > 0 ? (
 								<div
-									className="flex gap-4 overflow-x-auto pb-4 flex-wrap"
+									className="flex gap-4 overflow-x-auto pb-4 flex-wrap border-2 border-black"
 									aria-label="Upcoming classes list"
 								>
 									{data?.upcomingLectures.map((cardData) => (

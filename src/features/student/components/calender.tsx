@@ -3,9 +3,10 @@
 import { CalendarHeader } from "./calender-header"
 import { MonthView } from "./month-view"
 import { WeekView } from "./week-view"
+import { useIsTabletOrMobile } from "@/config"
 import { CalendarView } from "@/types/calender"
 import { ClassEvent } from "@/types/index"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface ClassScheduleCalenderProps {
 	classEvents: ClassEvent[]
@@ -14,7 +15,13 @@ interface ClassScheduleCalenderProps {
 export default function ClassScheduleCalender({
 	classEvents
 }: ClassScheduleCalenderProps) {
-	const [activeView, setActiveView] = useState<CalendarView>("Week")
+	const isTabletOrMobile = useIsTabletOrMobile()
+
+	const [activeView, setActiveView] = useState<CalendarView | null>(null)
+
+	useEffect(() => {
+		setActiveView(isTabletOrMobile ? "Month" : "Week")
+	}, [isTabletOrMobile])
 
 	const handleViewChange = (view: CalendarView) => {
 		setActiveView(view)
@@ -33,7 +40,7 @@ export default function ClassScheduleCalender({
 	}
 
 	return (
-		<div className=" bg-white p-6 rounded-lg border-[1px] border-[#D9D9D9]">
+		<div className=" bg-white p-6 rounded-lg border-[1px] border-[#D9D9D9] max-w-[1110px]">
 			<div className="max-w-7xl mx-auto">
 				<CalendarHeader
 					activeView={activeView}

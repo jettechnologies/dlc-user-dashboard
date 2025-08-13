@@ -18,7 +18,7 @@ export function NotificationsList() {
 	return (
 		<Card className="bg-white border-0 shadow-sm">
 			<CardHeader className="flex flex-row items-center justify-between">
-				<CardTitle className="text-lg font-semibold">Notifications</CardTitle>
+				<CardTitle className="text-lg font-semibold">Activities</CardTitle>
 				<Button variant="ghost" size="sm" className="text-blue-600">
 					View All
 				</Button>

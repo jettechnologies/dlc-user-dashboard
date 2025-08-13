@@ -1,7 +1,8 @@
+import { useIsTabletOrMobile } from "@/config"
 import { CalendarView } from "@/types/calender"
 
 interface CalendarHeaderProps {
-	activeView: CalendarView
+	activeView: CalendarView | null
 	onViewChange: (view: CalendarView) => void
 }
 
@@ -9,7 +10,8 @@ export function CalendarHeader({
 	activeView,
 	onViewChange
 }: CalendarHeaderProps) {
-	const views: CalendarView[] = ["Week", "Month"]
+	const isTabletOrMobile = useIsTabletOrMobile()
+	const views: CalendarView[] = isTabletOrMobile ? ["Month"] : ["Week", "Month"]
 
 	return (
 		<div className="flex justify-between items-center mb-8">

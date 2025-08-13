@@ -72,7 +72,7 @@ export const Footer = () => {
 					<ul className="flex flex-col gap-y-4 font-medium text-gray-500">
 						<li>
 							<Link
-								href="/about-us"
+								href="/policy"
 								className="text-xs font-medium text-white sm:text-sm"
 							>
 								Policy
@@ -80,7 +80,7 @@ export const Footer = () => {
 						</li>
 						<li>
 							<Link
-								href="/contact-us"
+								href="/#"
 								className="text-xs font-medium text-white sm:text-sm"
 							>
 								Instruction
@@ -88,7 +88,7 @@ export const Footer = () => {
 						</li>
 						<li>
 							<Link
-								href="/faq"
+								href="/terms"
 								className="text-xs font-medium text-white sm:text-sm"
 							>
 								Terms and Conditions

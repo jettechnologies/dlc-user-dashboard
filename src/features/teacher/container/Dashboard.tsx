@@ -64,8 +64,8 @@ export function Dashboard() {
 			{
 				icon: Presentation,
 				value: String(dashboardStats.totalLectures),
-				title: "Total Lectures",
-				description: "Total Lectures",
+				title: "Total Classes",
+				description: "Total Classes",
 				iconBg: "bg-yellow-500"
 			}
 		]

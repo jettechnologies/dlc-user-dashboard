@@ -1,6 +1,5 @@
 "use client"
 
-import { Star } from "lucide-react"
 import Image from "next/image"
 import React from "react"
 import { twMerge } from "tailwind-merge"
@@ -9,7 +8,7 @@ interface TestimonialCardProps {
 	image: string
 	name: string
 	content: string
-	rating: number
+	// rating: number
 	bgColor?: string
 	textColor?: string
 	starColor?: string
@@ -20,7 +19,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
 	image,
 	name,
 	content,
-	rating,
+	// rating,
 	bgColor = "bg-gray-800",
 	textColor = "text-white",
 	starColor,
@@ -39,7 +38,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
 					<h3 className="font-semibold text-lg">{name}</h3>
 					<p className="text-sm mt-1 mb-3">{content}</p>
 				</div>
-				<div className="flex gap-1 ">
+				{/* <div className="flex gap-1 ">
 					{Array.from({ length: 5 }).map((_, idx) => (
 						<Star
 							key={idx}
@@ -47,7 +46,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
 							fill={idx < rating ? "currentColor" : "none"}
 						/>
 					))}
-				</div>
+				</div> */}
 			</div>
 		</div>
 	)

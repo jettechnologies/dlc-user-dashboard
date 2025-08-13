@@ -1,6 +1,6 @@
 "use client"
 
-import StarRating from "./StarRating"
+// import StarRating from "./StarRating"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,7 @@ export interface ClassCardData {
 	id: string
 	title: string
 	instructor: string
-	rating: number
+	// rating: number
 	time: string
 	status: ClassStatus
 	badge: string
@@ -31,7 +31,7 @@ export function ClassCard({
 	id,
 	title,
 	instructor,
-	rating,
+	// rating,
 	time,
 	status,
 	badge,
@@ -65,10 +65,10 @@ export function ClassCard({
 						<AvatarFallback>DP</AvatarFallback>
 					</Avatar>
 					<span className="text-xs">{instructor}</span>
-					<div className="flex items-center gap-1">
+					{/* <div className="flex items-center gap-1">
 						<StarRating rating={4} />
 						<span className="text-sm">{rating}</span>
-					</div>
+					</div> */}
 				</div>
 
 				<div className="flex items-center justify-between">

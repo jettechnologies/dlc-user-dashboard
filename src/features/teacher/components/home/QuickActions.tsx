@@ -47,7 +47,7 @@ export const QuickActions = () => {
 						</Button>
 					</TooltipTrigger>
 					<TooltipContent>
-						<p>Upcoming</p>
+						<p>Coming Soon</p>
 					</TooltipContent>
 				</Tooltip>
 			</div>

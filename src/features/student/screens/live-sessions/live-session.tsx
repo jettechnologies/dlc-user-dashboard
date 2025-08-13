@@ -48,7 +48,7 @@ export const LiveSession = () => {
 	if (isError) return <section>Something went Wrong</section>
 
 	return (
-		<div className="lg:p-6 pb-6">
+		<div className="lg:p-6 pb-6 w-full">
 			<PageHeaderText>Live Sessions</PageHeaderText>
 
 			<div className="relative">
