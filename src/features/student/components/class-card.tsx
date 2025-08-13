@@ -93,10 +93,15 @@ export function ClassCard({
 								handleClick?.(id)
 								setActiveId(id)
 							}}
+							// className={`${
+							// 	status === "Ongoing"
+							// 		? "bg-yellow-500 text-black hover:bg-yellow-600"
+							// 		: "bg-transparent border-white text-white hover:bg-white hover:text-blue-600"
+							// } rounded-full text-xs`}
 							className={`${
 								status === "Ongoing"
-									? "bg-yellow-500 text-black hover:bg-yellow-600"
-									: "bg-transparent border-white text-white hover:bg-white hover:text-blue-600"
+									? "bg-yellow-500 text-black hover:bg-yellow-600 shadow-lg shadow-yellow-400 animate-pulse-glow"
+									: "bg-transparent border border-white text-white hover:bg-white hover:text-blue-600"
 							} rounded-full text-xs`}
 						>
 							{isLoading && activeId === id ? (

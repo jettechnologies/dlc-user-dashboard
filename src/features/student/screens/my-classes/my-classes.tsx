@@ -64,8 +64,8 @@ export const MyClasses = () => {
 
 	return (
 		<>
-			<div className="p-6">
-				<div className="flex justify-between items-center w-full">
+			<div className="pb-6 lg:p-6">
+				<div className="flex justify-between md:items-center w-full flex-col md:flex-row">
 					<PageHeaderText>My Classes</PageHeaderText>
 
 					<div className="flex items-start gap-2 flex-col max-w-[200px] w-full">
@@ -116,7 +116,7 @@ export const MyClasses = () => {
 							) : data?.ongoingLectures && data?.ongoingLectures.length > 0 ? (
 								<div
 									className="flex gap-4 overflow-x-auto pb-4 flex-wrap"
-									aria-label="Upcoming classes list"
+									aria-label="Ongoing classes list"
 								>
 									{data?.ongoingLectures.map((cardData) => (
 										<ClassCard

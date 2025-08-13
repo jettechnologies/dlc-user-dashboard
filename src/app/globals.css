@@ -227,3 +227,28 @@
 .active > span:nth-of-type(2) {
 	@apply flex size-10 items-center justify-center rounded-full bg-black text-white;
 }
+
+@keyframes pulse-glow {
+	0% {
+		box-shadow:
+			0 0 5px #facc15,
+			0 0 10px #facc15,
+			0 0 15px #facc15;
+	}
+	50% {
+		box-shadow:
+			0 0 15px #facc15,
+			0 0 30px #facc15,
+			0 0 45px #facc15;
+	}
+	100% {
+		box-shadow:
+			0 0 5px #facc15,
+			0 0 10px #facc15,
+			0 0 15px #facc15;
+	}
+}
+
+.animate-pulse-glow {
+	animation: pulse-glow 1.5s infinite;
+}
