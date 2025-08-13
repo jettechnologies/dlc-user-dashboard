@@ -73,7 +73,7 @@ export const ScheduleForm = () => {
 							<EnhancedForm.Field
 								name="examId"
 								control={methods.control}
-								label="course"
+								label="Exams"
 								labelClassName="font-poppins font-normal text-xs text-black capitalize"
 								render={(field) => (
 									<CustomSelect
