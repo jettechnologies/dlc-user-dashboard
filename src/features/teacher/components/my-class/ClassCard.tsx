@@ -176,8 +176,8 @@ export const ClassCard = memo(function ClassCard({
 
 	return (
 		<div className="p-3 rounded-xl h-full flex items-center bg-[hsla(0, 0%, 98%, 1)] shadow-sm">
-			<div className="flex items-center justify-between w-full">
-				<div className="flex items-center space-x-4">
+			<div className="flex flex-col lg:flex-row lg:items-center gap-y-5 justify-between w-full">
+				<div className="flex items-center space-x-6 lg:space-x-4">
 					<div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
 						<FileText className="w-6 h-6 text-white" />
 					</div>
@@ -192,7 +192,7 @@ export const ClassCard = memo(function ClassCard({
 							)}
 						</div>
 						<p className="text-gray-600 mb-2">{classData.subject}</p>
-						<div className="flex items-center space-x-4 text-sm text-gray-500">
+						<div className="flex flex-wrap items-center gap-2 lg:gap-4 text-sm text-gray-500">
 							<div className="flex items-center space-x-1">
 								<Clock className="w-4 h-4" />
 								<span>{classData.time}</span>

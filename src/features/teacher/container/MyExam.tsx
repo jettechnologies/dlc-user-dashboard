@@ -76,7 +76,7 @@ export const MyExams = () => {
 					<h4 className="font-poppins font-semibold text-2xl text-black uppercase">
 						Teacher Exams
 					</h4>
-					<div className="mt-3 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center md:justify-start gap-4">
+					<div className="mt-3 w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center md:justify-start gap-4">
 						{teacherExamsStats.map((examStat, index) => (
 							<ExamCard
 								key={index}

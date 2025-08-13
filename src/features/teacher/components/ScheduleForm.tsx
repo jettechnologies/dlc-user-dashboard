@@ -224,7 +224,7 @@ export const ScheduleForm = () => {
 								}}
 							/>
 						</div> */}
-						<div className="w-full lg:w-[80%] flex gap-x-10 px-12">
+						<div className="w-full lg:w-[80%] flex gap-x-10 md:px-12">
 							<EnhancedForm.Submit
 								loading={isPending}
 								className="w-[144px] h-[44px] rounded-[6px] bg-dlc-blue hover:bg-dlc-blue"

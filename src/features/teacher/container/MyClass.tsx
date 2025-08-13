@@ -7,6 +7,13 @@ import {
 } from "../components/my-class/ClassCard"
 import { PageWrapper, TabIndicator } from "../components/shared"
 import { Button } from "@/components/ui"
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue
+} from "@/components/ui/select"
 import { CancelClassModal } from "@/layout/modal"
 import {
 	useDeleteLecture,
@@ -59,6 +66,8 @@ import { toast } from "sonner"
 // 		status: "30-days-ago"
 // 	}
 // ]
+
+const tabs = ["upcoming", "completed", "drafts"] as ClassType[]
 
 export default function ClassList() {
 	const [activeTab, setActiveTab] = useState<ClassType>("upcoming")
@@ -115,16 +124,45 @@ export default function ClassList() {
 					</p>
 				</div>
 				<div className="w-full bg-white mx-auto p-6">
-					<TabIndicator
-						activeTab={activeTab}
-						setActiveTab={setActiveTab}
-						tabs={["upcoming", "completed", "drafts"]}
-						tabLabels={{
-							upcoming: "Upcoming",
-							completed: "Past",
-							drafts: "Drafts"
-						}}
-					/>
+					{/* tabs indicator for desktop */}
+					<div className="w-full hidden lg:block">
+						<TabIndicator
+							activeTab={activeTab}
+							setActiveTab={setActiveTab}
+							tabs={tabs}
+							tabLabels={{
+								upcoming: "Upcoming",
+								completed: "Past",
+								drafts: "Drafts"
+							}}
+						/>
+					</div>
+					{/* for mobile display */}
+					<div className="block lg:hidden w-full mb-6">
+						<div className="w-full space-y-4">
+							<h4 className="font-semibold text-base font-poppins text-black">
+								Select class type
+							</h4>
+							<Select
+								value={activeTab}
+								onValueChange={(value) => setActiveTab(value as ClassType)}
+							>
+								<SelectTrigger className="w-full">
+									<SelectValue
+										className="capitalize"
+										placeholder="Select class type"
+									/>
+								</SelectTrigger>
+								<SelectContent>
+									{tabs.map((tab) => (
+										<SelectItem key={tab} value={tab} className="capitalize">
+											{tab}
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+						</div>
+					</div>
 
 					{/* Class List */}
 					<div>

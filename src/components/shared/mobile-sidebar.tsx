@@ -41,10 +41,10 @@ export function MobileSidebar({ navItems, user }: MobileSidebarProps) {
 				<Menu size={24} color="#000" />
 			</DrawerTrigger>
 			<DrawerContent className="!w-[336px]">
-				<DrawerClose className="w-[55px] h-[55px] rounded-full bg-dlc-blue-200 absolute top-10 -left-6 ">
+				<DrawerClose className="w-[55px] h-[55px] rounded-full bg-dlc-blue-200 absolute top-10 -left-6">
 					<ChevronRight size={24} color="#fff" className="ml-3" />
 				</DrawerClose>
-				<DrawerHeader className="h-[160px] bg-dlc-blue-200 grid place-items-center px-[42px]">
+				<DrawerHeader className="h-[160px]  bg-dlc-blue-200 grid place-items-center px-[42px]">
 					<div className="flex w-full gap-x-[1rem] items-center">
 						<CustomAvatar
 							size="lg"

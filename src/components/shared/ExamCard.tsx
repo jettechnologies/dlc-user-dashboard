@@ -61,7 +61,7 @@ export const ExamCard = ({
 	return (
 		<div
 			className={cn(
-				"bg-white w-[225px] p-2 min-h-[335px] rounded-[22px] drop-shadow-xl",
+				"bg-white  w-full md:w-[225px] p-2 md:min-h-[335px] rounded-[22px] drop-shadow-xl",
 				className
 			)}
 		>
