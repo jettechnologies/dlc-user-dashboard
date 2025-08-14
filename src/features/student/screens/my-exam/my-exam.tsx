@@ -130,7 +130,7 @@ export const MyExam = () => {
 
 			<VoucherModal
 				isOpen={!!planId}
-				setIsOpen={() => setExamId(null)}
+				setIsOpen={() => setPlanId(null)}
 				planId={planId}
 				examId={examId}
 			/>
