@@ -126,7 +126,7 @@ export const VoucherModal = ({
 											<EnhancedForm.Submit
 												loading={methods.formState.isSubmitting}
 												content="Apply"
-												className={`h-[40px] w-[125px] bg-transparent !rounded-none text-sm font-normal hover:bg-transparent text-black border-l-2 border-gray-400 flex-shrink-0 ${methods.getValues("voucher_code")?.length === 8 || methods.formState.isValid ? "text-dlc-blue" : ""}`}
+												className={`h-[40px] px-4 md:px-0 md:w-[125px] bg-transparent !rounded-none text-sm font-normal hover:bg-transparent text-black border-l-2 border-gray-400 flex-shrink-0 ${methods.getValues("voucher_code")?.length === 8 || methods.formState.isValid ? "text-dlc-blue" : ""}`}
 											/>
 										</div>
 									</EnhancedForm.Field>
