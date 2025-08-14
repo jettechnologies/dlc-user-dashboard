@@ -43,7 +43,7 @@ export const ScreenOne = () => {
 			<h2 className="text-[1.5rem] md:text-4xl font-semibold text-black text-center mb-8 md:mb-16">
 				Welcome to Digital Learning Circle
 			</h2>
-			<div className="flex justify-between items-center flex-col md:flex-row mb-10 md:mb-16 border-2 border-black">
+			<div className="flex justify-between items-center flex-col md:flex-row mb-10 md:mb-16">
 				<Image
 					src={
 						isTabletOrMobile
