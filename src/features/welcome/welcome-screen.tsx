@@ -9,7 +9,7 @@ export const WelcomeScreen = () => {
 
 	useEffect(() => {
 		updateUiStore("screen-one")
-	}, [updateUiStore])
+	}, [])
 
 	return (
 		<div className="w-full min-h-screen bg-dlc-brand-yellow grid place-items-center py-[2.5rem]">
