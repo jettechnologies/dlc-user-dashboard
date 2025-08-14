@@ -113,8 +113,7 @@ export const testimonials = [
 		content: "This platform made my WAEC prep easy and stress-free!",
 		rating: 3,
 		bgColor: "bg-dlc-gray",
-		textColor: "text-white",
-		starColor: "text-yellow-400"
+		textColor: "text-white"
 	},
 	{
 		image: "/images/testimonial-two.png",
@@ -130,8 +129,7 @@ export const testimonials = [
 		content: "Their JAMB resources helped me improve my scores.",
 		rating: 3,
 		bgColor: "bg-dlc-gray",
-		textColor: "text-white",
-		starColor: "text-yellow-400"
+		textColor: "text-white"
 	},
 	{
 		image: "/images/testimonial-two.png",
@@ -147,7 +145,6 @@ export const testimonials = [
 		content: "I loved the clear explanations after each quiz",
 		rating: 5,
 		bgColor: "bg-dlc-gray",
-		textColor: "text-white",
-		starColor: "text-yellow-400"
+		textColor: "text-white"
 	}
 ]

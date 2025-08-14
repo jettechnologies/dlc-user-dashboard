@@ -11,7 +11,6 @@ interface TestimonialCardProps {
 	// rating: number
 	bgColor?: string
 	textColor?: string
-	starColor?: string
 	className?: string
 }
 
@@ -22,7 +21,6 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
 	// rating,
 	bgColor = "bg-gray-800",
 	textColor = "text-white",
-	starColor,
 	className = ""
 }) => {
 	return (

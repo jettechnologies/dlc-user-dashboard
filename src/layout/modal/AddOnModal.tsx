@@ -3,7 +3,6 @@ import { Carousel, Spinner } from "@/components/shared"
 import { Button } from "@/components/ui"
 import { ClassCard } from "@/features/student/components/class-card"
 import { OnDemandCard } from "@/features/student/components/ondemand-card"
-import { useAddOnDemand } from "@/services/mutation/useQuery-mutation"
 import {
 	fetchUpcomingLecturesByExamIdQueryOpts,
 	fetchAllOnDemandsQueryOpts

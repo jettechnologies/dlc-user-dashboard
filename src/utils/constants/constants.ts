@@ -240,7 +240,6 @@ export const studentTransformClassesToCardData = (
 		id: lecture._id,
 		title: lecture.topic,
 		instructor: lecture.userId.fullName,
-		rating: 4.0,
 		time,
 		status,
 		badge: lecture.examId.name,
