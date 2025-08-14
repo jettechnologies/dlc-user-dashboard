@@ -2,7 +2,7 @@
 
 import PageHeaderText from "../../components/PageHeader"
 import ExamCard from "../../components/exam-card"
-import { AddOnModal } from "@/layout/modal"
+import { AddOnModal, VoucherModal } from "@/layout/modal"
 import {
 	getAllExamsQueryOpts,
 	fetchAllOnDemandExamsQueryOpts
@@ -11,11 +11,12 @@ import { useAuthState } from "@/stores"
 import { StudentProfile } from "@/types/response-type"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { Info } from "lucide-react"
-import { useCallback, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { toast } from "sonner"
 
 export const MyExam = () => {
 	const [examId, setExamId] = useState<string | null>(null)
+	const [planId, setPlanId] = useState<string | null>(null)
 	const { data: exams } = useSuspenseQuery({
 		...getAllExamsQueryOpts()
 	})
@@ -36,6 +37,13 @@ export const MyExam = () => {
 	}, [userProfile])
 
 	const studentProfile = getStudentProfile()
+
+	const availableExams = useMemo(() => {
+		return exams.filter(
+			(exam) =>
+				exam.name.toLowerCase() !== studentProfile.exam?.name.toLowerCase()
+		)
+	}, [exams, studentProfile.exam])
 
 	return (
 		<>
@@ -93,7 +101,7 @@ export const MyExam = () => {
 
 					{/* Exam Cards Grid */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-						{exams.map((exam) => (
+						{availableExams.map((exam) => (
 							<ExamCard
 								key={exam._id}
 								name={exam.name}
@@ -117,6 +125,14 @@ export const MyExam = () => {
 				examId={examId}
 				isOpen={!!examId}
 				setIsOpen={() => setExamId(null)}
+				handlePayment={(planId) => setPlanId(planId)}
+			/>
+
+			<VoucherModal
+				isOpen={!!planId}
+				setIsOpen={() => setExamId(null)}
+				planId={planId}
+				examId={examId}
 			/>
 		</>
 	)

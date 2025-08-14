@@ -37,14 +37,14 @@ export const StudentForm = ({ examOptions }: SignupProps) => {
 						if (!response.success) {
 							throw new Error(response.message)
 						}
-						
+
 						setTimeout(() => {
 							const token = response.data?.token ?? ""
 							const role = response.data?.studentDetails.role ?? ""
 							if (token && role) {
 								setAccessToken(token, role)
 								toast.success(response.message)
-								router.push("/student")
+								router.push("/welcome?ui=screen-one")
 							}
 						}, 600)
 					} catch (e) {

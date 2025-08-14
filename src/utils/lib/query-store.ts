@@ -4,6 +4,8 @@ export type UiComponents =
 	| "teacher-credentials"
 	| "teacher-exams"
 	| "email-verifed"
+	| "screen-one"
+	| "screen-two"
 	| ""
 
 const uiComponentParser = createParser({

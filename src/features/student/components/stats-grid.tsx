@@ -39,7 +39,7 @@ export function StatsGrid({ userStats }: StatsCardProps) {
 				value: "46",
 				// change: "10% increase from last month",
 				icon: Clock,
-				iconColor: "bg-yellow-600"
+				iconColor: "bg-yellow-500"
 			}
 		],
 		[userStats]

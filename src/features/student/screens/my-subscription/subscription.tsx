@@ -4,11 +4,14 @@ import PageHeaderText from "../../components/PageHeader"
 import { SubscriptionCard } from "../../components/subscription-card"
 import { PaymentModeModal } from "@/layout/modal"
 import { useInitializePayment } from "@/services/mutation/useQuery-mutation"
-import { subcriptionPlanQueryOptions } from "@/services/query"
+import {
+	subcriptionPlanQueryOptions,
+	fetchSubscriptionHistoryQueryOpts
+} from "@/services/query"
 import type { SubscriptionPlan } from "@/types/index"
 import { SubscriptionPlanResponse } from "@/types/response-type"
 import { useSuspenseQuery } from "@tanstack/react-query"
-import { useState, useCallback } from "react"
+import { useState, useCallback, useMemo } from "react"
 import { toast } from "sonner"
 
 export const Subscription = () => {
@@ -16,6 +19,12 @@ export const Subscription = () => {
 		id: "",
 		isOpen: false
 	})
+
+	const { data } = useSuspenseQuery(fetchSubscriptionHistoryQueryOpts())
+
+	const activeSubscription = data?.find(
+		(subscription) => subscription.status === "active"
+	)
 
 	const { mutateAsync: initializePayment, isPending } = useInitializePayment()
 
@@ -27,7 +36,8 @@ export const Subscription = () => {
 		)
 
 		return {
-			id: `${raw.name.toLowerCase()}-${raw._id.slice(-4)}`,
+			// id: `${raw.name.toLowerCase()}-${raw._id.slice(-4)}`,
+			id: raw._id,
 			name: raw.name.toUpperCase(),
 			type: "Subscription",
 			price: `N${raw.price}`,
@@ -43,6 +53,12 @@ export const Subscription = () => {
 		...subcriptionPlanQueryOptions(),
 		select: (data) => data.data.map((plan) => transformToSubscriptionPlan(plan))
 	})
+
+	const availablePlans = useMemo(() => {
+		return subscriptionPlans?.filter(
+			(plan) => plan.id !== activeSubscription?.plan._id
+		)
+	}, [subscriptionPlans, activeSubscription])
 
 	const handleCardPayments = useCallback(
 		async (amount: number) => {
@@ -102,7 +118,7 @@ export const Subscription = () => {
 			<div className="pb-6 lg:p-6">
 				<PageHeaderText>Subscription Plan</PageHeaderText>
 				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{subscriptionPlans.map((plan) => (
+					{availablePlans.map((plan) => (
 						<SubscriptionCard key={plan.id} plan={plan} />
 					))}
 				</div>

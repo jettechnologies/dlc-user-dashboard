@@ -18,6 +18,7 @@ export type CustomModalProps = {
 	onOpenChange?: (open: boolean) => void
 	triggerChild?: React.ReactElement<any, any>
 	title?: string
+	titleClassName?: string
 	description?: string
 	children?: React.ReactNode
 	footer?: React.ReactNode
@@ -39,6 +40,7 @@ export function ModalLayout({
 	open,
 	onOpenChange,
 	title,
+	titleClassName,
 	triggerChild,
 	description,
 	children,
@@ -57,7 +59,9 @@ export function ModalLayout({
 				{(title || description) && (
 					<DialogHeader>
 						{title && (
-							<DialogTitle className="text-primary">{title}</DialogTitle>
+							<DialogTitle className={cn("text-primary", titleClassName)}>
+								{title}
+							</DialogTitle>
 						)}
 						{description && (
 							<DialogDescription>{description}</DialogDescription>
