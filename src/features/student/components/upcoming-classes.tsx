@@ -94,7 +94,7 @@ export function UpcomingClasses() {
 			<div className="relative overflow-hidden w-full max-w-[1024px]">
 				<Carousel
 					isAutoPlay
-					hasNavigationButtons={true}
+					hasNavigationButtons={classesData?.length === 0 ? false : true}
 					autoPlayInterval={3000}
 					options={carouselSettings}
 				>
