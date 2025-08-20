@@ -67,7 +67,6 @@ export const SelectTeacherExams = ({ levelData }: TeacherSignupProps) => {
 											<ExamCard
 												key={`${data.code}-${exam._id}`}
 												examName={examStat.examName}
-												rating={{ value: examStat.rating }}
 												studentCount={examStat.numberOfStudents}
 												examImage={`/teacher/exam-img-${index + 1}.png`}
 											/>

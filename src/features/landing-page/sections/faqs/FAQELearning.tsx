@@ -22,8 +22,8 @@ export const FAQELearing = () => {
 						</h3>
 						<p className="w-full max-w-[509px] text-sm font-normal text-black lg:text-base">
 							We empower students with 21st century skill: Join our E-learning
-							community and unlock your potential. Screenclass Is a management
-							stystem (LMS) Developed to meet and suit the learning process.
+							community and unlock your potential. DLC Is a management stystem
+							(LMS) Developed to meet and suit the learning process.
 						</p>
 						<Link
 							href="/signup"
