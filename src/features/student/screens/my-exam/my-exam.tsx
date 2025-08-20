@@ -37,11 +37,16 @@ export const MyExam = () => {
 	}, [userProfile])
 
 	const studentProfile = getStudentProfile()
+	const studentExams = [
+		studentProfile.exam?.name.toLowerCase(),
+		...onDemandExams.flatMap((exam) => exam.examId.name.toLowerCase())
+	]
 
 	const availableExams = useMemo(() => {
 		return exams.filter(
 			(exam) =>
-				exam.name.toLowerCase() !== studentProfile.exam?.name.toLowerCase()
+				!studentExams.includes(exam.name.toLowerCase()) &&
+				exam.status === "active"
 		)
 	}, [exams, studentProfile.exam])
 
@@ -87,7 +92,7 @@ export const MyExam = () => {
 				<div>
 					<div className="flex items-center gap-3 mb-6">
 						<h2 className="text-xl md:text-2xl font-bold text-gray-900">
-							Other Exams
+							Ondemand Exams
 						</h2>
 					</div>
 

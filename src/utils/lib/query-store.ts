@@ -6,6 +6,8 @@ export type UiComponents =
 	| "email-verifed"
 	| "screen-one"
 	| "screen-two"
+	| "screen-three"
+	| "from-signup"
 	| ""
 
 const uiComponentParser = createParser({

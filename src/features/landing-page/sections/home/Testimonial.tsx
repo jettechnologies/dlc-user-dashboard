@@ -25,7 +25,11 @@ export const Testimonial = () => {
 						className="pl-4 pr-4"
 					>
 						{testimonials.map((testimonial, idx) => (
-							<TestimonialCard key={idx} {...testimonial} />
+							<TestimonialCard
+								key={idx}
+								{...testimonial}
+								className="h-[350px]"
+							/>
 						))}
 					</Carousel>
 				</div>

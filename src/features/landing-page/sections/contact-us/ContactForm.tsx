@@ -152,7 +152,7 @@ export const ContactForm = () => {
 									</Link>
 								</div>
 							</div>
-							<div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
+							{/* <div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
 								<Mail size={24} className="text-light-blue font-semibold" />
 								<Link
 									href={"mailto:info@screenclass.com"}
@@ -160,7 +160,7 @@ export const ContactForm = () => {
 								>
 									info@screenclass.com
 								</Link>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>

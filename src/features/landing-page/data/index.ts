@@ -13,31 +13,7 @@ export const features = [
 	}
 ]
 
-export const faqs = [
-	{
-		title: "What is Digital Learning Circle?",
-		description:
-			"Distance Learning Circle (DLC) is an innovative online platform designed to transform the learning experience for students, with the added benefit of guardian supervision and virtual teacher-led classes. To deliver a fully integrated virtual classroom experience within the Digital Learning Classroom (DLC)."
-	},
-	{
-		title: "Advantages of Digital Learning Circle (DLC)?",
-		description:
-			"The DLC is built to deliver a fully integrated virtual classroom experience, which means students get more than just recorded lectures. They participate in live, teacher-led virtual classes, fostering dynamic interaction and real-time engagement that closely mirrors a traditional classroom setting. This innovative approach helps students stay focused and provides immediate opportunities for questions and clarification, leading to a deeper understanding of the material."
-	},
-	{
-		title: "How do learners access exams?",
-		description:
-			"After signing up, users can access my exams on their students' dashboard. They click on my exams, they see what exams they had picked at the point of registration, then they have access to various levels such as common entrance, O-level and A-level."
-	},
-	{
-		title: "Is support available?",
-		description:
-			"Yes! Contact us via live chat, phone (+234 901-293-3330), or email (support@digitallearningcircle.com). Our team assists with any issues."
-	}
-]
-
 export const exams = [
-	"common entrace class",
 	"BECE class",
 	"NECO Class",
 	"WAEC class",
@@ -46,7 +22,8 @@ export const exams = [
 	"IJMB class",
 	"IELTS class",
 	"GMAT class",
-	"ICAN class"
+	"ICAN class",
+	"TOEFL class"
 ]
 
 export const aboutFeatures: AboutFeatureProps[] = [
@@ -109,40 +86,45 @@ export const supportFeatures = [
 export const testimonials = [
 	{
 		image: "/images/testimonial-one.png",
-		name: "Tolu A.",
-		content: "This platform made my WAEC prep easy and stress-free!",
+		name: "John D.",
+		content:
+			"I’ve used many online learning platforms for training, but Digital Learning Circle stands out. It combines structured lessons with interactive elements that truly engage employees.",
 		rating: 3,
 		bgColor: "bg-dlc-gray",
 		textColor: "text-white"
 	},
 	{
 		image: "/images/testimonial-two.png",
-		name: "Chika E.",
-		content: "I passed my IJMB with good grades thanks to the practice tests.",
+		name: "Tolu S.",
+		content:
+			"Studying with peers in a Digital learning circle makes learning so much more enjoyable. The group discussions and collaborative projects help me understand topics in ways lectures alone can’t",
 		rating: 4,
 		bgColor: "bg-light-yellow",
 		textColor: "text-black"
 	},
 	{
 		image: "/images/testimonial-three.png",
-		name: "Samuel O.",
-		content: "Their JAMB resources helped me improve my scores.",
+		name: "Dr. Chinedu I.",
+		content:
+			"I recommend Digital Learning Circle to my students because it encourages independent learning. The interactive resources help them grasp concepts faster and more effectively.",
 		rating: 3,
 		bgColor: "bg-dlc-gray",
 		textColor: "text-white"
 	},
 	{
 		image: "/images/testimonial-two.png",
-		name: "Emmanuel T.",
-		content: "Using this site daily kept me consistent for my Post-UTME.",
+		name: "Mrs. Kemi O.",
+		content:
+			"As a teacher, I love how Digital Learning Circle blends fun with structured learning. It helps me keep my students engaged while also tracking their progress effectively.",
 		rating: 4,
 		bgColor: "bg-light-yellow",
 		textColor: "text-black"
 	},
 	{
 		image: "/images/testimonial-three.png",
-		name: "Mark Obi",
-		content: "I loved the clear explanations after each quiz",
+		name: "Sandra A.",
+		content:
+			"I never imagined learning could be this engaging! Digital Learning Circle makes education interactive and enjoyable with its collaborative and gamified approach. Definitely recommended!",
 		rating: 5,
 		bgColor: "bg-dlc-gray",
 		textColor: "text-white"

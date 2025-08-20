@@ -7,8 +7,10 @@ import { NotificationsList } from "../../components/notification-list"
 import { StatsGrid } from "../../components/stats-grid"
 import { HoursChart } from "../../components/study-bar-chart"
 import { UpcomingClasses } from "../../components/upcoming-classes"
+import { WelcomeModal } from "@/layout/modal"
 import { fetchStudentDashboardQueryOptions } from "@/services/query"
 import { transformLectureToSimpleData } from "@/utils/constants"
+import { useUiComponentStore } from "@/utils/lib/query-store"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
@@ -19,6 +21,7 @@ export const DashboardScreen = ({
 }: {
 	paymentStatus: "error" | "success" | "unpaid" | undefined
 }) => {
+	const { store, updateUiStore } = useUiComponentStore()
 	const router = useRouter()
 	const { data: dashboardData } = useSuspenseQuery({
 		...fetchStudentDashboardQueryOptions(),
@@ -76,6 +79,11 @@ export const DashboardScreen = ({
 				<NotificationsList />
 				<EnrolledClasses classes={dashboardData.recentEnrolledClasses} />
 			</div>
+
+			<WelcomeModal
+				isOpen={["screen-one", "screen-two", "screen-three"].includes(store)}
+				setIsOpen={() => updateUiStore("")}
+			/>
 		</main>
 	)
 }

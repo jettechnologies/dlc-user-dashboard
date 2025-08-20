@@ -5,10 +5,10 @@ import { useState, useRef, useEffect } from "react"
 
 interface DropdownProps {
 	title: string
-	description: string
+	description: string | React.ReactNode
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ title, description }) => {
+export const Dropdown = ({ title, description }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -44,11 +44,14 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, description }) => {
 				}`}
 				style={{ overflow: "hidden" }}
 			>
-				{isOpen && (
-					<p className="text-[8px] font-medium text-[#00393A] lg:text-xs">
-						{description}
-					</p>
-				)}
+				{isOpen &&
+					(typeof description === "string" ? (
+						<p className="text-[8px] font-medium text-[#00393A] lg:text-xs">
+							{description}
+						</p>
+					) : (
+						description
+					))}
 			</div>
 		</div>
 	)

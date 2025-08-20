@@ -7,24 +7,20 @@ import { useRouter } from "next/navigation"
 
 const descriptionsList = [
 	{
-		title: "On-demand",
+		title: "Adding classes to timetable",
 		description:
-			"The on-demand feature lets you attend classes outside the exam you registered for during onboarding for a fee. It works only with an active subscription for a set duration (e.g., 12 or 24 hours) and also allows you to preview available classes before payment.",
-		icon: "welcome-ondemand-icon"
+			"As a student, you can’t have two clashing classes with the same date and time on your timetable. You are only allowed to pick and attend one class for a specific date and time. No clashing classes is allowed on the platform.",
+		icon: "welcome-adding-classes-icon"
 	},
 	{
-		title: "Cancelled classes",
+		title: "Token Usage",
 		description:
-			"As a student, after paying for an on-demand class and the teacher eventually cancels the class, you are compensated with a token that can be used to attend another on-demand class.",
-		link: {
-			text: "Terms and Conditions pply",
-			href: "/terms"
-		},
-		icon: "welcome-classes-icon"
+			"A compensation token will be sent to the student phone number used for registration and the token can only be used once. User will input token code when they want to attend an on-demand class. Note that the token will be tantamount to the initial amount paid for on-demand and can only be used for the same number of hours",
+		icon: "welcome-token-usage-icon"
 	}
 ]
 
-export const ScreenTwo = () => {
+export const ScreenThree = () => {
 	const isTabletOrMobile = useIsTabletOrMobile()
 	const router = useRouter()
 	const { updateUiStore } = useUiComponentStore()
@@ -32,19 +28,24 @@ export const ScreenTwo = () => {
 	const handleBack = () => {
 		updateUiStore("screen-one")
 	}
-	const handleNext = () => {
-		updateUiStore("screen-three")
+	const handleContinue = () => {
+		router.push("/student")
+		updateUiStore("")
 	}
 
 	return (
 		<div className="w-full max-w-[1240px] lg:max-h-screen font-poppins grid place-content-center px-4 md:px-0">
-			<h2 className="text-[1.5rem] md:text-4xl font-semibold text-black text-center mb-4 [max-width:1600px]:mb-8">
+			<h2 className="text-[1.5rem] md:text-4xl font-semibold text-black text-center  mb-4 [max-width:1600px]:mb-8">
 				Welcome to Digital Learning Circle
 			</h2>
-			<div className="flex justify-between items-center flex-col md:flex-row mb-5 [max-width:1600px]:mb-10">
+			<div className="flex justify-between items-center flex-col md:flex-row  mb-5 [max-width:1600px]:mb-10">
 				<Image
-					src="/images/welcome-dlc-img-two.png"
-					alt="welcome screen two"
+					src={
+						isTabletOrMobile
+							? "/images/welcome-dlc-img-three-sm.png"
+							: "/images/welcome-dlc-img-three.png"
+					}
+					alt="welcome screen three"
 					width={isTabletOrMobile ? 300 : 500}
 					height={isTabletOrMobile ? 200 : 400}
 					className=""
@@ -75,9 +76,9 @@ export const ScreenTwo = () => {
 
 				<Button
 					className="w-[150px] md:w-[200px] h-[56px] rounded-[100px] bg-dlc-blue hover:bg-dlc-blue text-lg lg:text-2xl text-white font-medium font-poppins"
-					onClick={handleNext}
+					onClick={handleContinue}
 				>
-					Next
+					Continue
 				</Button>
 			</div>
 		</div>
