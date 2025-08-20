@@ -6,6 +6,7 @@ import { MobileSidebar } from "./mobile-sidebar"
 import { useIsMobile } from "@/config"
 import type { TeacherProfile, StudentProfile } from "@/types/response-type"
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
 
 interface HeaderProps {
@@ -17,14 +18,14 @@ export function Header({ userProfile, navItems }: HeaderProps) {
 	const isMobile = useIsMobile()
 	return (
 		<div className="w-full bg-white h-[81px] flex items-center justify-between lg:justify-end">
-			<div className="lg:hidden">
+			<Link href="/" className="lg:hidden">
 				<Image
 					src={isMobile ? "/images/dlc-logo-sm.png" : "/images/dlc-logo.svg"}
 					alt="dlc logo"
 					width={isMobile ? 54 : 114}
 					height={36}
 				/>
-			</div>
+			</Link>
 			<div className="flex items-center gap-5">
 				{/* <NotificationDialog /> */}
 				<div className="items-center gap-x-4 hidden lg:flex">

@@ -18,7 +18,7 @@ export const Testimonial = () => {
 				<h3 className="font-semibold text-[20px] lg:text-[40px] text-black text-center font-poppins mb-[120px]">
 					WHAT OUR USERS ARE SAYING
 				</h3>
-				<div className="w-full lg:w-[80%]">
+				<div className="w-full md:w-[90%] lg:w-[80%]">
 					<Carousel
 						isAutoPlay={true}
 						autoPlayInterval={4000}

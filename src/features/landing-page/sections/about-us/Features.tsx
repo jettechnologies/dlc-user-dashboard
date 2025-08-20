@@ -10,7 +10,7 @@ export const Features = () => {
 					WHAT WE DO
 				</h3>
 			</div>
-			<div className="flex w-full flex-col flex-wrap justify-between gap-y-8 px-8 py-6 max-md:items-center md:py-12 lg:flex-row lg:px-28">
+			<div className="flex w-full flex-col flex-wrap justify-between gap-8 px-8 py-6  md:justify-center md:py-12 md:flex-row lg:px-28">
 				{aboutFeatures.map((feature, index) => (
 					<div key={index} className="w-fit px-2">
 						<AboutFeaturesCard {...feature} />

@@ -1,5 +1,6 @@
 "use client"
 
+import { FormExample } from "../widgets"
 import { InputOTPPattern, type InputOTPProps } from "./form"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
@@ -276,7 +277,7 @@ export const EnhancedForm = {
 		return (
 			<FormProvider {...methods}>
 				<form
-					onSubmit={methods.handleSubmit((data) =>
+					onSubmitCapture={methods.handleSubmit((data) =>
 						onSubmit(data, { resetForm: methods.reset })
 					)}
 					// onSubmit={methods.handleSubmit(onSubmit)}

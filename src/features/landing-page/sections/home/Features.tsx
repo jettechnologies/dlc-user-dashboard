@@ -1,18 +1,16 @@
 "use client"
 
 import { features } from "../../data"
-import { useIsMobile } from "@/config"
+import { useIsTabletOrMobile } from "@/config"
 
 export const Features = () => {
-	const isMobile = useIsMobile()
-
-	console.log(isMobile, "is it mobile")
+	const isMobileOrTablet = useIsTabletOrMobile()
 
 	return (
 		<section
 			className="w-full h-[90vh] bg-cover bg-center"
 			style={
-				isMobile
+				isMobileOrTablet
 					? {}
 					: {
 							backgroundImage: "url(/images/subject-image.jpg)",
@@ -23,7 +21,7 @@ export const Features = () => {
 			<div
 				className="w-full lg:min-h-full h-[60vh] bg-light-yellow lg:w-1/2 flex lg:items-center px-4"
 				style={
-					isMobile
+					isMobileOrTablet
 						? {
 								clipPath: "polygon(0 0, 100% 0, 100% 68%, 0% 100%)"
 							}

@@ -12,7 +12,6 @@ export interface CardRating {
 
 interface ExamCardProps {
 	examName: string
-	rating: CardRating
 	studentCount: number
 	examImage: string
 	className?: string
@@ -53,7 +52,6 @@ export const StarRating = ({
 
 export const ExamCard = ({
 	examName,
-	rating,
 	studentCount,
 	examImage,
 	className
@@ -81,7 +79,6 @@ export const ExamCard = ({
 							{studentCount} students
 						</p>
 					</div>
-					<StarRating {...rating} />
 				</div>
 				<div className="w-full flex justify-end">
 					<EllipsisVertical size={26} />

@@ -19,6 +19,12 @@ const data = [
 		name: "Premium",
 		price: "3000",
 		validity: 30
+	},
+	{
+		_id: "dlc9109829",
+		name: "Premium",
+		price: "3000",
+		validity: 30
 	}
 ]
 export const PricingSection = () => {
@@ -46,7 +52,7 @@ export const PricingSection = () => {
 							Affordable Pricing Plans for our products, You can check it out!
 						</p>
 					</div>
-					<div className="mx-auto mt-4 flex min-h-[580px] w-full flex-wrap justify-center gap-6 pb-10 sm:justify-between">
+					<div className="mx-auto mt-4 flex min-h-[580px] w-full flex-wrap justify-center gap-6 pb-10 lg:justify-between">
 						{transformedPlans.map((subscriptionPlan) => (
 							<div key={subscriptionPlan.id}>
 								<SubscriptionCard

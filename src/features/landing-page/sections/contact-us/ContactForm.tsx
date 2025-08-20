@@ -47,7 +47,7 @@ export const ContactForm = () => {
 									toast.error(response.message)
 								}
 							}}
-							className="flex lg:min-h-screen w-full flex-col justify-center gap-y-4 "
+							className="flex lg:min-h-screen w-full flex-col justify-center gap-y-4 py-0"
 						>
 							<div className="flex w-full flex-col gap-y-4">
 								<div className="flex flex-1 flex-col gap-y-6">

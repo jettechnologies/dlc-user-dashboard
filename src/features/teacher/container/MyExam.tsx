@@ -52,8 +52,7 @@ const transform = (
 	data.data?.map((exam, index) => ({
 		examName: exam.name,
 		examImage: exam.examImage,
-		numberOfStudents: (index + 1) * 1000,
-		rating: (index + 1) * 1.5
+		numberOfStudents: (index + 1) * 1000
 	})) ?? null
 
 export const MyExams = () => {
@@ -76,12 +75,11 @@ export const MyExams = () => {
 					<h4 className="font-poppins font-semibold text-2xl text-black uppercase">
 						Teacher Exams
 					</h4>
-					<div className="mt-3 w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center md:justify-start gap-4">
+					<div className="mt-3 w-full grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 justify-center md:justify-start gap-4">
 						{teacherExamsStats.map((examStat, index) => (
 							<ExamCard
 								key={index}
 								examName={examStat.examName}
-								rating={{ value: examStat.rating }}
 								studentCount={examStat.numberOfStudents}
 								examImage={`/teacher/exam-img-${(index % 5) + 1}.png`}
 							/>

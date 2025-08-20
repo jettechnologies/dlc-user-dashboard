@@ -12,7 +12,7 @@ export const AboutFeaturesCard = ({
 	description
 }: AboutFeatureProps) => {
 	return (
-		<div className="flex w-fit gap-x-4">
+		<div className="flex md:flex-col lg:flex-row w-fit gap-4">
 			<div className="relative h-[118px] w-[145px] overflow-clip rounded-xl md:h-[200px] md:w-[244px]">
 				<Image
 					src={imgSrc}

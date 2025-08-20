@@ -2,6 +2,7 @@
 
 import { MobileNavLink } from "./MobileNavbar"
 import { Navbar } from "./Navbar"
+import { useIsMobile } from "@/config"
 import { useAuthState } from "@/stores"
 
 const getNavLinks = (userRole: string | null, authToken: string | null) => {
@@ -92,6 +93,7 @@ const getMobileNavLinks = (
 }
 export function Header() {
 	const { accessToken, role: userRole } = useAuthState()
+	const isMobile = useIsMobile()
 
 	const navLinks = getNavLinks(userRole, accessToken)
 	const mobileNavLinks = getMobileNavLinks(userRole, accessToken)
@@ -100,7 +102,7 @@ export function Header() {
 		<header id="header" className="w-full bg-[#F8F8FD]">
 			<Navbar
 				links={navLinks}
-				logoSrc="/images/dlc-logo.svg"
+				logoSrc={isMobile ? "/images/dlc-logo-sm.png" : "/images/dlc-logo.svg"}
 				mobileLinks={mobileNavLinks}
 			/>
 		</header>
