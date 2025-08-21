@@ -1,7 +1,6 @@
 import { ModalLayout } from "./ModalLayout"
 import { ScreenOne, ScreenThree, ScreenTwo } from "@/features/welcome/component"
 import { useUiComponentStore } from "@/utils/lib/query-store"
-import { useRef } from "react"
 
 interface WelcomeModalProps {
 	isOpen: boolean

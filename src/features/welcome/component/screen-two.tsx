@@ -3,7 +3,6 @@ import { Button } from "@/components/ui"
 import { useIsTabletOrMobile } from "@/config"
 import { useUiComponentStore } from "@/utils/lib/query-store"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 
 const descriptionsList = [
 	{
@@ -26,7 +25,6 @@ const descriptionsList = [
 
 export const ScreenTwo = () => {
 	const isTabletOrMobile = useIsTabletOrMobile()
-	const router = useRouter()
 	const { updateUiStore } = useUiComponentStore()
 
 	const handleBack = () => {

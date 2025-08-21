@@ -1,6 +1,5 @@
 "use client"
 
-import { FormExample } from "../widgets"
 import { InputOTPPattern, type InputOTPProps } from "./form"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
