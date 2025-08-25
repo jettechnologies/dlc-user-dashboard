@@ -51,7 +51,9 @@ const subscriptionEndpoints = {
 const onDemandEndpoints = {
 	getAllOndemandPlans: `${DLC_BASE_URL}/ondemand/plans`,
 	getAllOndemandExams: `${DLC_BASE_URL}/ondemand/all`,
-	addOnDemandExam: `${DLC_BASE_URL}/ondemand/add-ondemand`
+	addOnDemandExam: `${DLC_BASE_URL}/ondemand/add-ondemand`,
+	getAllOnDemandVouchers: `${DLC_BASE_URL}/ondemand/vouchers`,
+	redeemOnDemandVoucher: `${DLC_BASE_URL}/ondemand/redeem-voucher`
 }
 
 export const ENDPOINTS = {

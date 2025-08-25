@@ -10,3 +10,8 @@ export const useIsTabletOrMobile = () =>
 	useSafeMediaQuery({ settings: { query: "(max-width: 992px)" } })
 export const useIsDesktop = () =>
 	useSafeMediaQuery({ settings: { query: "(min-width: 993px)" } })
+
+export const useIsSmallHeight = () =>
+	useSafeMediaQuery({
+		settings: { maxHeight: 799 }
+	})

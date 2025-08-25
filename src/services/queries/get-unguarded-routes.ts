@@ -37,48 +37,6 @@ export const fetchAllExams = async (): Promise<
 	}
 }
 
-// export const fetchAllExams = async () =>
-// 	tryCatch<ResponseSingleType<IExam[]>>(
-// 		(async () => {
-// 			const { getAllExams } = ENDPOINTS.getAllUnGuardedRoutes
-
-// 			const response = await fetch(getAllExams, {
-// 				method: "GET",
-// 				headers: {
-// 					"Content-Type": "application/json"
-// 				}
-// 			})
-
-// 			const data: ResponseSingleType<IExam[]> = await response.json()
-
-// 			if (!response.ok || !data.success || !data.data) {
-// 				const errorMessage =
-// 					data?.message ?? `Request failed with status ${response.status}`
-// 				throw new Error(errorMessage)
-// 			}
-
-// 			return data
-// 		})()
-// 	)
-
-// const getExamResults = async () => {
-// 	try {
-// 		const response = await fetchAllExams()
-
-// 		if (response.success && response.data) {
-// 			const exams: IExam[] = response.data
-// 			console.log("All exams:", exams)
-// 			return exams
-// 		} else {
-// 			console.error("Failed to fetch exams:", response.message)
-// 			return []
-// 		}
-// 	} catch (error) {
-// 		console.error("Error fetching exams:", error)
-// 		return []
-// 	}
-// }
-
 export const fetchAllLevels = async (): Promise<
 	ResponseSingleType<IEducationLevel[] | null>
 > => {

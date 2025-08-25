@@ -1,9 +1,18 @@
+"use client"
+
 import { ModalLayout } from "./ModalLayout"
+import RetryOnError from "@/components/retry-on-error"
 import { Spinner } from "@/components/shared"
 import { EnhancedForm } from "@/components/shared/EnhancedForm"
+import CustomSelect from "@/components/shared/form/Select"
 import { useIsMobile } from "@/config"
-import { useAddOnDemand } from "@/services/mutation/useQuery-mutation"
+import {
+	useAddOnDemand,
+	useRedeemOnDemandVoucher
+} from "@/services/mutation/useQuery-mutation"
+import { fetchAllOnDemandVoucherQueryOpts } from "@/services/query"
 import { VoucherSchema } from "@/utils/schemas"
+import { useSuspenseQuery } from "@tanstack/react-query"
 import { toast } from "sonner"
 
 interface VoucherModalProps {
@@ -21,7 +30,30 @@ export const VoucherModal = ({
 }: VoucherModalProps) => {
 	const isMobile = useIsMobile()
 
+	const {
+		data: vouchers,
+		isError,
+		error: voucherError,
+		refetch
+	} = useSuspenseQuery({
+		...fetchAllOnDemandVoucherQueryOpts(),
+		select: (data) => data.data || []
+	})
+
+	if (isError) {
+		const errorMessage = voucherError?.message || "Error fetching vouchers"
+		toast.error(errorMessage)
+		return <RetryOnError retry={() => refetch()} message={errorMessage} />
+	}
+
+	const voucherOptions = vouchers?.map((voucher) => ({
+		value: voucher.code,
+		label: voucher.code
+	}))
+
 	const { mutateAsync: addOnDemand, isPending } = useAddOnDemand()
+	const { mutateAsync: redeemOnDemandVoucher, isPending: redeeming } =
+		useRedeemOnDemandVoucher()
 
 	const handlePaystackPayment = async () => {
 		try {
@@ -104,7 +136,23 @@ export const VoucherModal = ({
 				<div className="space-y-2">
 					<EnhancedForm.Root
 						schema={VoucherSchema}
-						onSubmit={(data) => console.log(data)}
+						onSubmit={async (data) => {
+							try {
+								if (!examId || !data.voucher_code)
+									throw new Error("No Exam Id and voucher code isn't provided")
+								await redeemOnDemandVoucher({
+									examId,
+									code: data.voucher_code
+								})
+								setIsOpen(false)
+							} catch (error) {
+								const errorMessage =
+									error instanceof Error
+										? error.message
+										: "An unexpected error occurred."
+								toast.error(errorMessage)
+							}
+						}}
 						defaultValues={{ voucher_code: "" }}
 					>
 						{(methods) => {
@@ -117,11 +165,21 @@ export const VoucherModal = ({
 										labelClassName="text-sm font-semibold text-black"
 									>
 										<div className="grid grid-cols-[1fr_auto]  border border-gray-300 rounded-lg py-1 focus-within:border focus-within:border-dlc-blue">
-											<EnhancedForm.Input
+											<EnhancedForm.Field
 												name="voucher_code"
-												type="text"
-												placeholder="Enter code here"
-												className="h-[40px] border-none focus:border-none focus:outline-none flex-2 min-w-0 bg-transparent"
+												control={methods.control}
+												render={(field) => (
+													<CustomSelect
+														field={field}
+														height="40px"
+														fontSize="12px"
+														options={voucherOptions}
+														value={field.value as string}
+														textColor="#000000"
+														placeholder="Select exam"
+														borderRadius="10px"
+													/>
+												)}
 											/>
 											<EnhancedForm.Submit
 												loading={methods.formState.isSubmitting}

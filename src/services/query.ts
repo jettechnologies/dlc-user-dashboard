@@ -7,7 +7,8 @@ import {
 } from "./queries"
 import {
 	fetchAllOndemandExams,
-	fetchAllOndemandPlans
+	fetchAllOndemandPlans,
+	fetchAllOndemandVouchers
 } from "./queries/ondemand"
 import {
 	fetchLectureTimetable,
@@ -58,7 +59,8 @@ export const queryKeys = {
 	ondemand: {
 		all: () => ["ondemand"],
 		getAllOndemandPlans: () => [...queryKeys.ondemand.all(), "plans"],
-		getAllOndemandExams: () => [...queryKeys.ondemand.all(), "exams"]
+		getAllOndemandExams: () => [...queryKeys.ondemand.all(), "exams"],
+		getAllVouchers: () => [...queryKeys.ondemand.all(), "vouchers"]
 	},
 	student: {
 		all: () => ["student"]
@@ -148,6 +150,13 @@ export const fetchAllOnDemandsQueryOpts = () => {
 	return queryOptions({
 		queryKey: queryKeys.ondemand.getAllOndemandPlans(),
 		queryFn: () => fetchAllOndemandPlans()
+	})
+}
+
+export const fetchAllOnDemandVoucherQueryOpts = () => {
+	return queryOptions({
+		queryKey: queryKeys.ondemand.getAllVouchers(),
+		queryFn: () => fetchAllOndemandVouchers()
 	})
 }
 

@@ -1,7 +1,8 @@
 import {
 	OnDemandPlans,
 	ResponseSingleType,
-	OnDemandExams
+	OnDemandExams,
+	OndemandVoucher
 } from "@/types/response-type"
 import { ENDPOINTS } from "@/utils/constants"
 import { authFetch } from "@/utils/lib/auth-fetch"
@@ -40,6 +41,29 @@ export const fetchAllOndemandExams = async (): Promise<
 		})
 
 		const data = response as ResponseSingleType<OnDemandExams[]>
+		return data
+	} catch (e) {
+		const errorMessage =
+			e instanceof Error ? e.message : "An unexpected error occurred."
+		return {
+			success: false,
+			message: errorMessage,
+			data: null
+		}
+	}
+}
+
+export const fetchAllOndemandVouchers = async (): Promise<
+	ResponseSingleType<OndemandVoucher[] | null>
+> => {
+	try {
+		const url = ENDPOINTS.onDemand.getAllOnDemandVouchers
+
+		const response = await authFetch<ResponseSingleType<OndemandVoucher[]>>({
+			url
+		})
+
+		const data = response as ResponseSingleType<OndemandVoucher[]>
 		return data
 	} catch (e) {
 		const errorMessage =

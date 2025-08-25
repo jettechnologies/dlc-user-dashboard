@@ -68,14 +68,14 @@ export const ScreenThree = () => {
 			</div>
 			<div className="w-full max-w-[500px] flex justify-between mx-auto ">
 				<Button
-					className="w-[150px] md:w-[200px] h-[56px] rounded-[100px] bg-transparent hover:bg-transparent border-2 border-dlc-blue text-lg lg:text-2xl text-dlc-blue font-medium font-poppins"
+					className="w-[120px] md:w-[200px] h-[56px] rounded-[100px] bg-transparent hover:bg-transparent border-2 border-dlc-blue text-lg lg:text-2xl text-dlc-blue font-medium font-poppins"
 					onClick={handleBack}
 				>
 					Back
 				</Button>
 
 				<Button
-					className="w-[150px] md:w-[200px] h-[56px] rounded-[100px] bg-dlc-blue hover:bg-dlc-blue text-lg lg:text-2xl text-white font-medium font-poppins"
+					className="w-[120px] md:w-[200px] h-[56px] rounded-[100px] bg-dlc-blue hover:bg-dlc-blue text-lg lg:text-2xl text-white font-medium font-poppins"
 					onClick={handleContinue}
 				>
 					Continue

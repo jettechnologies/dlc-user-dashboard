@@ -348,3 +348,15 @@ export type OnDemandExams = {
 	lectureCount: number
 	__v: number
 }
+
+export type OndemandVoucher = {
+	_id: string
+	code: string
+	studentId: string
+	lectureId: string
+	expiresAt: string
+	used: boolean
+	createdAt: string
+	updatedAt: string
+	__v: number
+}

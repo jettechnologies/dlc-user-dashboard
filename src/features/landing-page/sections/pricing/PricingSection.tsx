@@ -1,34 +1,19 @@
 import { SubscriptionCard } from "../../components"
 import { transformPlans } from "@/utils/misc"
 
-const data = [
-	{
-		_id: "dlc1234",
-		name: "Starter",
-		price: "1000",
-		validity: 1
-	},
-	{
-		_id: "dlc5678",
-		name: "Advanced",
-		price: "2000",
-		validity: 7
-	},
-	{
-		_id: "dlc9109829",
-		name: "Premium",
-		price: "3000",
-		validity: 30
-	},
-	{
-		_id: "dlc9109829",
-		name: "Premium",
-		price: "3000",
-		validity: 30
-	}
-]
-export const PricingSection = () => {
-	const transformedPlans = transformPlans(data)
+type Pricing = {
+	_id: string
+	name: string
+	price: string
+	validity: number
+}
+
+interface PricingSectionProps {
+	pricingData: Pricing[]
+}
+
+export const PricingSection = ({ pricingData }: PricingSectionProps) => {
+	const transformedPlans = transformPlans(pricingData)
 
 	return (
 		<section
@@ -52,7 +37,7 @@ export const PricingSection = () => {
 							Affordable Pricing Plans for our products, You can check it out!
 						</p>
 					</div>
-					<div className="mx-auto mt-4 flex min-h-[580px] w-full flex-wrap justify-center gap-6 pb-10 lg:justify-between">
+					<div className="mx-auto mt-4 flex min-h-[580px] w-full flex-wrap justify-center gap-6 lg:gap-x-12 pb-10 ">
 						{transformedPlans.map((subscriptionPlan) => (
 							<div key={subscriptionPlan.id}>
 								<SubscriptionCard

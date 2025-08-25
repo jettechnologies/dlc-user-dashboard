@@ -80,14 +80,6 @@ export const Footer = () => {
 						</li>
 						<li>
 							<Link
-								href="/#"
-								className="text-xs font-medium text-white sm:text-sm"
-							>
-								Instruction
-							</Link>
-						</li>
-						<li>
-							<Link
 								href="/terms"
 								className="text-xs font-medium text-white sm:text-sm"
 							>

@@ -33,7 +33,7 @@ export const ScreenOne = () => {
 	}
 
 	return (
-		<div className="w-full max-w-[1240px] h-full  lg:max-h-screen font-poppins grid place-content-center px-4 md:px-0">
+		<div className="w-full max-w-[1240px] h-full lg:max-h-screen font-poppins grid place-content-center px-4 md:px-0">
 			<h2 className="text-[1.5rem] md:text-4xl font-semibold text-black text-center mb-4 [max-width:1600px]:mb-8">
 				Welcome to Digital Learning Circle
 			</h2>
@@ -66,14 +66,14 @@ export const ScreenOne = () => {
 			</div>
 			<div className="w-full max-w-[500px] flex justify-between mx-auto gap-x-4">
 				<Button
-					className="w-[150px] md:w-[200px] h-[56px] rounded-[100px] bg-transparent hover:bg-transparent border-2 border-dlc-blue text-lg lg:text-2xl text-dlc-blue font-medium font-poppins"
+					className="w-[120px] md:w-[200px] h-[56px] rounded-[100px] bg-transparent hover:bg-transparent border-2 border-dlc-blue text-lg lg:text-2xl text-dlc-blue font-medium font-poppins"
 					onClick={handleSkip}
 				>
 					Skip
 				</Button>
 
 				<Button
-					className="w-[150px] md:w-[200px] h-[56px] rounded-[100px] bg-dlc-blue hover:bg-dlc-blue text-lg lg:text-2xl text-white font-medium font-poppins"
+					className="w-[120px] md:w-[200px] h-[56px] rounded-[100px] bg-dlc-blue hover:bg-dlc-blue text-lg lg:text-2xl text-white font-medium font-poppins"
 					onClick={handleNext}
 				>
 					Next

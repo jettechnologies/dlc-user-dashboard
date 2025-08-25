@@ -1,4 +1,9 @@
-import { addOnDemand, addOnDemandParams } from "../ondemand"
+import {
+	addOnDemand,
+	type addOnDemandParams,
+	redeemOnDemandVoucher,
+	type RedeemOnDemandVoucherParams
+} from "../ondemand"
 import {
 	studentAddClassToTimetable,
 	studentAttendClass,
@@ -78,6 +83,16 @@ export const useAddOnDemand = () =>
 		mutationFn: (params: addOnDemandParams) => addOnDemand(params),
 		meta: {
 			invalidatesQuery: queryKeys.ondemand.all(),
+			errorMessage: "Error while adding on-demand exam"
+		}
+	})
+
+export const useRedeemOnDemandVoucher = () =>
+	useMutation({
+		mutationFn: (params: RedeemOnDemandVoucherParams) =>
+			redeemOnDemandVoucher(params),
+		meta: {
+			invalidatesQuery: queryKeys.ondemand.getAllVouchers(),
 			errorMessage: "Error while adding on-demand exam"
 		}
 	})
