@@ -5,6 +5,7 @@ import { useContactUs } from "@/services/mutation/useQuery-mutation"
 import { contactFormSchema } from "@/utils/schemas"
 import { Map, APIProvider } from "@vis.gl/react-google-maps"
 import { Phone } from "lucide-react"
+import { Mail } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { toast } from "sonner"
@@ -152,15 +153,15 @@ export const ContactForm = () => {
 									</Link>
 								</div>
 							</div>
-							{/* <div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
+							<div className="flex space-x-3 py-[12px] px-[30px] w-fit rounded-xl border-2 border-light-blue">
 								<Mail size={24} className="text-light-blue font-semibold" />
 								<Link
-									href={"mailto:info@screenclass.com"}
+									href={"mailto:support@digitallearningcircle.com"}
 									className="text-xs font-medium text-light-blue sm:text-sm"
 								>
-									info@screenclass.com
+									support@digitallearningcircle.com
 								</Link>
-							</div> */}
+							</div>
 						</div>
 					</div>
 				</div>

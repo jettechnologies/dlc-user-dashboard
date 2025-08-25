@@ -92,7 +92,7 @@ export const MyExam = () => {
 				<div>
 					<div className="flex items-center gap-3 mb-6">
 						<h2 className="text-xl md:text-2xl font-bold text-gray-900">
-							Ondemand Exams
+							On-Demand Exams
 						</h2>
 					</div>
 

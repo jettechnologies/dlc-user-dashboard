@@ -14,18 +14,17 @@ export const features = [
 ]
 
 export const exams = [
+	"BECE",
 	"NECO",
 	"WAEC",
 	"JAMB",
-	"JUPEP",
+	"GCE",
 	"IJMB",
 	"IELTS",
 	"GMAT",
 	"ICAN",
 	"TOEFL"
 ]
-
-// export const exams = ["NECO", "WAEC", "JAMB", "IELTS", "ICAN", "TOEFL"]
 
 export const aboutFeatures: AboutFeatureProps[] = [
 	{

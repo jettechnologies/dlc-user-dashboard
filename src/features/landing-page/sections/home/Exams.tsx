@@ -7,7 +7,7 @@ export const Exams = () => {
 			<div className="bg-dlc-blue max-w-[1280px] w-[90dvw] min-h-[580px] flex flex-wrap justify-between lg:justify-center lg:items-center gap-y-4 lg:gap-[40px] rounded-[10px] py-6 px-2">
 				{exams.map((exam, index) => (
 					<div className="w-[48%] flex justify-center lg:w-[214px]" key={index}>
-						<ExamsContainer exam={exam} />
+						<ExamsContainer exam={exam} index={index} />
 					</div>
 				))}
 			</div>

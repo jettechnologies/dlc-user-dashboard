@@ -162,7 +162,11 @@ export const VoucherModal = ({
 									<EnhancedForm.Field
 										name="voucher_code"
 										control={methods.control}
-										label="Have a voucher code?"
+										label={
+											vouchers.length > 0
+												? `You have ${vouchers.length} voucher${vouchers.length > 1 ? "s" : ""} available.`
+												: "Have a voucher code? No voucher available"
+										}
 										labelClassName="text-sm font-semibold text-black"
 									>
 										<div className="grid grid-cols-[1fr_auto]  border border-gray-300 rounded-lg py-1 focus-within:border focus-within:border-dlc-blue">

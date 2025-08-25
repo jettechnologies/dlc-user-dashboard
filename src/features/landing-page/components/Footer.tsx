@@ -109,14 +109,14 @@ export const Footer = () => {
 								+234 809 293 3330
 							</Link>
 						</li>
-						{/* <li>
+						<li>
 							<Link
-								href={"mailto:info@screenclass.com"}
+								href={"mailto:support@digitallearningcircle.com"}
 								className="text-xs font-medium text-white sm:text-sm"
 							>
-								info@screenclass.com
+								support@digitallearningcircle.com
 							</Link>
-						</li> */}
+						</li>
 					</ul>
 				</div>
 			</div>
