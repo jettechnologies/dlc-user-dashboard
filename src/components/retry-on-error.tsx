@@ -13,7 +13,7 @@ export default function RetryOnError({
 }) {
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			;(retry && retry()) || window.location.reload()
+			retry ? retry() : window.location.reload()
 		}, delay)
 
 		return () => clearTimeout(timer)

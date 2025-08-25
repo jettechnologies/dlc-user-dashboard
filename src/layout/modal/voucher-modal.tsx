@@ -29,6 +29,9 @@ export const VoucherModal = ({
 	planId
 }: VoucherModalProps) => {
 	const isMobile = useIsMobile()
+	const { mutateAsync: addOnDemand, isPending } = useAddOnDemand()
+	const { mutateAsync: redeemOnDemandVoucher, isPending: isRedeeming } =
+		useRedeemOnDemandVoucher()
 
 	const {
 		data: vouchers,
@@ -50,10 +53,6 @@ export const VoucherModal = ({
 		value: voucher.code,
 		label: voucher.code
 	}))
-
-	const { mutateAsync: addOnDemand, isPending } = useAddOnDemand()
-	const { mutateAsync: redeemOnDemandVoucher, isPending: redeeming } =
-		useRedeemOnDemandVoucher()
 
 	const handlePaystackPayment = async () => {
 		try {
@@ -140,10 +139,12 @@ export const VoucherModal = ({
 							try {
 								if (!examId || !data.voucher_code)
 									throw new Error("No Exam Id and voucher code isn't provided")
-								await redeemOnDemandVoucher({
+								const response = await redeemOnDemandVoucher({
 									examId,
 									code: data.voucher_code
 								})
+								toast.success(response.message)
+
 								setIsOpen(false)
 							} catch (error) {
 								const errorMessage =
@@ -182,7 +183,7 @@ export const VoucherModal = ({
 												)}
 											/>
 											<EnhancedForm.Submit
-												loading={methods.formState.isSubmitting}
+												loading={methods.formState.isSubmitting || isRedeeming}
 												content="Apply"
 												className={`h-[40px] px-4 md:px-0 md:w-[125px] bg-transparent !rounded-none text-sm font-normal hover:bg-transparent text-black border-l-2 border-gray-400 flex-shrink-0 ${methods.getValues("voucher_code")?.length === 8 || methods.formState.isValid ? "text-dlc-blue" : ""}`}
 											/>
