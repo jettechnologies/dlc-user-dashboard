@@ -360,3 +360,9 @@ export type OndemandVoucher = {
 	updatedAt: string
 	__v: number
 }
+
+export type RedeemVoucherResponse = {
+	discount: true
+	onDemandExamId: "68a32b84019ca81cab333098"
+	planDuration: 12
+}
