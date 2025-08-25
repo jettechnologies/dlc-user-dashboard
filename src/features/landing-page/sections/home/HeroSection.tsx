@@ -67,7 +67,7 @@ export const HeroSection = () => {
 					</div> */}
 				</div>
 				<div
-					className="md:hidden w-full h-[445px] bg-cover flex items-end mt-4 border-2 border-black"
+					className="md:hidden w-full h-[445px] bg-cover flex items-end mt-4"
 					style={{
 						backgroundImage: "url('/images/hero-section-bg.png')",
 						backgroundRepeat: "no-repeat",
