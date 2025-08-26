@@ -2,9 +2,9 @@ import { AboutFeatureProps } from "../components"
 
 export const features = [
 	{
-		title: "OVER 20 Exams Covered",
+		title: "OVER 10 Exams Covered",
 		description:
-			"We cover over 20+ exams, including WAEC, GCE, NABTEB, IJMB, JUPEB, A-Levels, JAMB UTME, Post-UTME, Direct Entry, and more."
+			"We cover over 10+ exams, including WAEC, GCE, NABTEB, IJMB, JUPEB, A-Levels, JAMB UTME, Post-UTME, Direct Entry, and more."
 	},
 	{
 		title: "Join Interactive Live Classes — Anytime, Any Day",

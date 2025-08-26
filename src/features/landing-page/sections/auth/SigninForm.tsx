@@ -167,7 +167,7 @@ export const SigninForm = () => {
 										href="/signup"
 										className="rounded-full bg-white px-[18px] py-[7px] shadow-md"
 									>
-										<p className="text-[8px] font-normal text-[#131313] lg:text-xs">
+										<p className="text-[10px] font-normal text-[#131313] lg:text-xs">
 											Do not have an Account?{" "}
 											<span className="ml-1 text-light-blue">Sign up</span>
 										</p>

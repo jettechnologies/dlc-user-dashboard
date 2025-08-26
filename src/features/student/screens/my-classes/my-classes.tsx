@@ -3,13 +3,13 @@
 import PageHeaderText from "../../components/PageHeader"
 import { ClassCard } from "../../components/class-card"
 import { Spinner } from "@/components/shared"
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from "@/components/ui/select"
+// import {
+// 	Select,
+// 	SelectContent,
+// 	SelectItem,
+// 	SelectTrigger,
+// 	SelectValue
+// } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
 	useAddToTimetable,
@@ -68,7 +68,7 @@ export const MyClasses = () => {
 				<div className="flex justify-between md:items-center w-full flex-col md:flex-row">
 					<PageHeaderText>My Classes</PageHeaderText>
 
-					<div className="flex items-start gap-2 flex-col max-w-[200px] w-full">
+					{/* <div className="flex items-start gap-2 flex-col max-w-[200px] w-full">
 						<span className="text-sm font-medium text-gray-700">Subject</span>
 						<Select defaultValue="all">
 							<SelectTrigger className="w-full bg-white">
@@ -82,7 +82,7 @@ export const MyClasses = () => {
 								<SelectItem value="chemistry">Chemistry</SelectItem>
 							</SelectContent>
 						</Select>
-					</div>
+					</div> */}
 				</div>
 
 				<div className="max-w-7xl mx-auto px-6 mt-10 bg-white">

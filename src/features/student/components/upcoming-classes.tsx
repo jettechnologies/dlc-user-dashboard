@@ -3,13 +3,13 @@
 import { ClassCard } from "./class-card"
 import { Carousel } from "@/components/shared"
 import { Button } from "@/components/ui/button"
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue
-} from "@/components/ui/select"
+// import {
+// 	Select,
+// 	SelectContent,
+// 	SelectItem,
+// 	SelectTrigger,
+// 	SelectValue
+// } from "@/components/ui/select"
 import {
 	useJoinLecture,
 	useAddToTimetable
@@ -69,8 +69,8 @@ export function UpcomingClasses() {
 				</div>
 				<div className="flex gap-4 justify-baseline items-end">
 					<div className="flex items-start gap-2 flex-col">
-						<span className=" text-sm text-gray-600">Subjects</span>
-						<Select defaultValue="english">
+						{/* <span className=" text-sm text-gray-600">Subjects</span> */}
+						{/* <Select defaultValue="english">
 							<SelectTrigger className="w-42 bg-white">
 								<SelectValue />
 							</SelectTrigger>
@@ -79,7 +79,7 @@ export function UpcomingClasses() {
 								<SelectItem value="math">Mathematics</SelectItem>
 								<SelectItem value="science">Science</SelectItem>
 							</SelectContent>
-						</Select>
+						</Select> */}
 					</div>
 					<Button
 						size="sm"
