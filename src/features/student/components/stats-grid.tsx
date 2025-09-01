@@ -1,5 +1,5 @@
 import { StatsCard } from "./stats-card"
-import { Users, BookOpen, Download, Clock } from "lucide-react"
+import { Users, BookOpen, Download } from "lucide-react"
 import { useMemo } from "react"
 
 interface StatsCardProps {
