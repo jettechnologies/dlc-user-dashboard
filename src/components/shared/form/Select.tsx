@@ -112,7 +112,8 @@ const CustomSelect = <T extends FieldValues>({
 				}),
 				menuPortal: (base) => ({
 					...base,
-					zIndex: 1600
+					zIndex: 9999,
+					pointerEvents: "auto"
 				})
 			}}
 			className={cn("w-full text-sm")}

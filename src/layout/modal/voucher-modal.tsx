@@ -49,10 +49,12 @@ export const VoucherModal = ({
 		return <RetryOnError retry={() => refetch()} message={errorMessage} />
 	}
 
-	const voucherOptions = vouchers?.map((voucher) => ({
+	const voucherOptions = vouchers.map((voucher) => ({
 		value: voucher.code,
 		label: voucher.code
 	}))
+
+	console.log(voucherOptions, "vocuher options")
 
 	const handlePaystackPayment = async () => {
 		try {
@@ -136,6 +138,7 @@ export const VoucherModal = ({
 					<EnhancedForm.Root
 						schema={VoucherSchema}
 						onSubmit={async (data) => {
+							console.log(data, "data")
 							try {
 								if (!examId || !data.voucher_code)
 									throw new Error("No Exam Id and voucher code isn't provided")
@@ -169,7 +172,7 @@ export const VoucherModal = ({
 										}
 										labelClassName="text-sm font-semibold text-black"
 									>
-										<div className="grid grid-cols-[1fr_auto]  border border-gray-300 rounded-lg py-1 focus-within:border focus-within:border-dlc-blue">
+										<div className="grid grid-cols-[1fr_auto] border border-gray-300 rounded-lg py-1 focus-within:border focus-within:border-dlc-blue">
 											<EnhancedForm.Field
 												name="voucher_code"
 												control={methods.control}

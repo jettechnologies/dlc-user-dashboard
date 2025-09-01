@@ -33,22 +33,28 @@ export function StatsGrid({ userStats }: StatsCardProps) {
 				// change: "10% increase from last week",
 				icon: Download,
 				iconColor: "bg-blue-600"
-			},
-			{
-				title: "Learning Hours",
-				value: "46",
-				// change: "10% increase from last month",
-				icon: Clock,
-				iconColor: "bg-yellow-500"
 			}
+			// {
+			// 	title: "Learning Hours",
+			// 	value: "46",
+			// 	// change: "10% increase from last month",
+			// 	icon: Clock,
+			// 	iconColor: "bg-yellow-500"
+			// }
 		],
 		[userStats]
 	)
 
 	return (
-		<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+		<div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
 			{statsData.map((stat, index) => (
-				<StatsCard key={index} {...stat} />
+				<StatsCard
+					key={index}
+					{...stat}
+					className={
+						index === statsData.length - 1 ? "col-span-2 lg:col-span-1" : ""
+					}
+				/>
 			))}
 		</div>
 	)

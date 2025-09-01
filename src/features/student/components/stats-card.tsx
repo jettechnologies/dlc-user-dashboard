@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/utils/lib/utils"
 import type { LucideIcon } from "lucide-react"
 
 interface StatsCardProps {
@@ -7,6 +8,7 @@ interface StatsCardProps {
 	change?: string
 	icon: LucideIcon
 	iconColor: string
+	className?: string
 }
 
 export function StatsCard({
@@ -14,10 +16,11 @@ export function StatsCard({
 	value,
 	change,
 	icon: Icon,
-	iconColor
+	iconColor,
+	className
 }: StatsCardProps) {
 	return (
-		<Card className="relative bg-white border-0 shadow-sm">
+		<Card className={cn("relative bg-white border-0 shadow-sm", className)}>
 			<CardContent className="flex flex-col">
 				<div
 					className={`absolute -top-3 -left-2 p-3 rounded-full w-fit ${iconColor}`}
