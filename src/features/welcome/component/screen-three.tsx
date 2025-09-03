@@ -66,7 +66,7 @@ export const ScreenThree = () => {
 					</div>
 				</div>
 			</div>
-			<div className="w-full max-w-[500px] flex justify-between mx-auto ">
+			<div className="w-full max-w-[500px] hidden md:flex justify-between mx-auto ">
 				<Button
 					className="w-[120px] md:w-[200px] h-[56px] rounded-[100px] bg-transparent hover:bg-transparent border-2 border-dlc-blue text-lg lg:text-2xl text-dlc-blue font-medium font-poppins"
 					onClick={handleBack}
