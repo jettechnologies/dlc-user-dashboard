@@ -14,9 +14,24 @@ const InnerContent = () => {
 		(subscription) => subscription.status === "active"
 	)
 
+	console.log(data, "subscription history")
+
 	return (
 		<section className="min-h-full w-full bg-white px-14 pb-16 pt-10">
 			<div className="h-full w-full">
+				{data.length === 0 && (
+					<div className="w-full min-h-[70vh] grid place-items-center">
+						<div className="w-full flex justify-center gap-x-2">
+							<p className="text-lg text-gray-500">No Subscription History</p>
+							<Link
+								href="/student/my-subscription"
+								className="text-lg text-dlc-blue-700"
+							>
+								Upgrade Now
+							</Link>
+						</div>
+					</div>
+				)}
 				{!activeSubscription ? null : (
 					<>
 						<h4 className="text-[24px] font-medium text-black">Subscription</h4>

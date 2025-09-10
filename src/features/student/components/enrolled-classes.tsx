@@ -18,9 +18,15 @@ export const EnrolledClasses = ({ classes }: EnrolledClassCardProps) => {
 				</Button> */}
 			</CardHeader>
 			<CardContent className="space-y-4 max-h-[250px] overflow-y-auto">
-				{classes.map((cls, index) => (
-					<EnrolledClassCard key={index} {...cls} />
-				))}
+				{classes.length > 0 ? (
+					classes.map((cls, index) => (
+						<EnrolledClassCard key={index} {...cls} />
+					))
+				) : (
+					<div className="w-full h-[70px] grid place-items-center">
+						<p className="text-sm text-gray-500">No enrolled classes</p>
+					</div>
+				)}
 			</CardContent>
 		</Card>
 	)

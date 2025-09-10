@@ -279,7 +279,6 @@ export const EnhancedForm = {
 					onSubmitCapture={methods.handleSubmit((data) =>
 						onSubmit(data, { resetForm: methods.reset })
 					)}
-					// onSubmit={methods.handleSubmit(onSubmit)}
 					className={className}
 					style={style}
 				>
