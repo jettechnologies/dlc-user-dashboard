@@ -69,7 +69,10 @@ export const transformPlans = (originalPlans: SubscriptionPlan[]) => {
 export function getDateDifferenceLabel(
 	startDate: string | Date,
 	endDate: string | Date
-): { value: number; label: "day(s)" | "week(s)" | "month(s)" } {
+): {
+	value: number
+	label: "day" | "week" | "month" | "days" | "weeks" | "months"
+} {
 	const start = typeof startDate === "string" ? parseISO(startDate) : startDate
 	const end = typeof endDate === "string" ? parseISO(endDate) : endDate
 
@@ -77,11 +80,17 @@ export function getDateDifferenceLabel(
 	const weeks = differenceInWeeks(end, start)
 	const days = differenceInDays(end, start)
 
-	if (months >= 1) {
-		return { value: months, label: "month(s)" }
-	} else if (weeks >= 1) {
-		return { value: weeks, label: "week(s)" }
+	if (months > 1) {
+		return { value: months, label: "months" }
+	} else if (months === 1) {
+		return { value: months, label: "month" }
+	} else if (weeks > 1) {
+		return { value: weeks, label: "weeks" }
+	} else if (weeks === 1) {
+		return { value: weeks, label: "week" }
+	} else if (days > 1) {
+		return { value: days, label: "days" }
 	} else {
-		return { value: days, label: "day(s)" }
+		return { value: days, label: "day" }
 	}
 }

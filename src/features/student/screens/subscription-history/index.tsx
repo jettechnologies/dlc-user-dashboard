@@ -14,8 +14,6 @@ const InnerContent = () => {
 		(subscription) => subscription.status === "active"
 	)
 
-	console.log(data, "subscription history")
-
 	return (
 		<section className="min-h-full w-full bg-white px-14 pb-16 pt-10">
 			<div className="h-full w-full">
