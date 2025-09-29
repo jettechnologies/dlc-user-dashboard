@@ -11,6 +11,8 @@ const Page = async () => {
 	const examData = exams.data as IExam[]
 	const examOptions = createExamOptions(examData)
 
+	console.log(examOptions, "exam options")
+
 	return (
 		<div>
 			<Signup examOptions={examOptions} />
